@@ -2,8 +2,10 @@
   "name": "sos-bicho",
   "version": "1.0.0",
   "description": "Portal web para adoção de animais",
-  "main": "index.js",
   "dependencies": {
-    "pg": "^4.4.2"
+    "express": "^4.13.3",
+    "pg": "^4.4.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.11.0"
   }
 }
