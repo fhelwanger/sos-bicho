@@ -72,15 +72,6 @@ db.Animais = sequelize.define('animais', {
       }
     }
   },
-  especieId: {
-    type: Sequelize.INTEGER,
-    field: 'especie_id',
-    allowNull: false,
-    references: {
-      model: db.Especies,
-      key: 'id'
-    }
-  },
   raca: {
     type: Sequelize.STRING(50)
   },
@@ -89,15 +80,6 @@ db.Animais = sequelize.define('animais', {
   },
   idade: {
     type: Sequelize.INTEGER
-  },
-  usuarioId: {
-    type: Sequelize.INTEGER,
-    field: 'usuario_id',
-    allowNull: false,
-    references: {
-      model: db.Usuarios,
-      key: 'id'
-    }
   }
 });
 
@@ -107,40 +89,43 @@ db.AnimaisFotos = sequelize.define('animais_fotos', {
     autoIncrement: true,
     primaryKey: true
   },
-  animalId: {
-    type: Sequelize.INTEGER,
-    field: 'animal_id',
-    allowNull: false,
-    references: {
-      model: db.Animais,
-      key: 'id'
-    }
-  },
   foto: {
     type: Sequelize.TEXT,
     allowNull: false
   }
 });
 
-db.AnimaisInteresses = sequelize.define('animais_interesses', {
-  animalId: {
-    type: Sequelize.INTEGER,
-    field: 'animal_id',
-    primaryKey: true,
-    references: {
-      model: db.Animais,
-      key: 'id'
-    }
-  },
-  usuarioId: {
-    type: Sequelize.INTEGER,
-    field: 'usuario_id',
-    primaryKey: true,
-    references: {
-      model: db.Usuarios,
-      key: 'id'
-    }
+db.Especies.hasMany(db.Animais, {
+  foreignKey: {
+    name: 'especie_id',
+    allowNull: false
   }
+});
+
+db.Usuarios.hasMany(db.Animais, {
+  foreignKey: {
+    name: 'usuario_id',
+    allowNull: false
+  }
+});
+
+db.Animais.hasMany(db.AnimaisFotos, {
+  foreignKey: {
+    name: 'animal_id',
+    allowNull: false
+  }
+});
+
+db.Animais.belongsToMany(db.Usuarios, {
+  as: 'interessados',
+  through: 'animais_interesses',
+  foreignKey: 'animal_id'
+});
+
+db.Usuarios.belongsToMany(db.Animais, {
+  as: 'interesses',
+  through: 'animais_interesses',
+  foreignKey: 'usuario_id'
 });
 
 db.Sequelize = Sequelize;

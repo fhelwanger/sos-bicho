@@ -4,8 +4,15 @@
   "description": "Portal web para adoção de animais",
   "dependencies": {
     "express": "^4.13.3",
+    "isomorphic-fetch": "^2.1.1",
     "pg": "^4.4.2",
     "pg-hstore": "^2.3.2",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-redux": "^3.1.0",
+    "react-router": "^1.0.0-rc3",
+    "redux": "^3.0.2",
+    "redux-thunk": "^1.0.0",
     "sequelize": "^3.11.0"
   },
   "devDependencies": {

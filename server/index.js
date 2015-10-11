@@ -4,13 +4,13 @@ var db = require('./db');
 
 app.use(express.static('client/dist'));
 
-// app.get('/', function (req, res) {
-//   db.Animais.findAll().then(function (resp) {
-//     res.json(resp);
-//   });
-// });
+app.get('/animais', function (req, res) {
+  db.Animais.findAll({include: [db.AnimaisFotos, {model: db.Usuarios, as: 'interessados'}]}).then(function (animais) {
+    res.json(animais);
+  });
+});
 
-db.sequelize.sync().then(function () {
+db.sequelize.sync({force: true}).then(function () {
   var server = app.listen(1337, function () {
     console.log('Listening on port %s', server.address().port);
   });
