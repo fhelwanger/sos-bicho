@@ -1,0 +1,9 @@
+{
+  "name": "sos-bicho",
+  "version": "1.0.0",
+  "description": "Portal web para adoção de animais",
+  "main": "index.js",
+  "dependencies": {
+    "pg": "^4.4.2"
+  }
+}
