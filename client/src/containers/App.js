@@ -6,16 +6,15 @@ import { connect } from 'react-redux';
 import { solicitarAnimais } from '../actions/animais';
 
 class App extends Component {
-  a() {
+  componentDidMount() {
     this.props.dispatch(solicitarAnimais());
   }
 
   render() {
     return (
-      <div onClick={this.a.bind(this)}>
+      <div>
         <Header />
         {this.props.animais.map(this.renderAnimalCard)}
-        <p>{JSON.stringify(this.props.animais)}</p>
       </div>
     );
   }
@@ -24,7 +23,9 @@ class App extends Component {
     return (
       <AnimalCard
         key={animal.id}
-        nome={animal.nome} />
+        nome={animal.nome}
+        especie={animal.especie}
+        fotos={animal.fotos} />
     );
   }
 }

@@ -1,0 +1,29 @@
+.animal-card {
+  border: solid 1px black;
+  padding: 10px;
+  margin: 10px 0px;
+  width: 500px;
+}
+
+.animal-card > img {
+  display: inline-block;
+  height: 150px;
+  width: 200px;
+}
+
+.animal-card > div {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.animal-card > div > p {
+  margin: 0;
+  padding: 0;
+}
+
+.animal-card > div > p > b {
+  display: inline-block;
+  text-align: right;
+  width: 70px;
+  padding-right: 20px;
+}
