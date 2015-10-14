@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import { solicitarAnimais } from '../actions/animais';
 
+require('./App.css');
+
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(solicitarAnimais());
@@ -14,7 +16,9 @@ class App extends Component {
     return (
       <div>
         <Header />
-        {this.props.animais.map(this.renderAnimalCard)}
+        <div className="container">
+          {this.props.animais.map(this.renderAnimalCard)}
+        </div>
       </div>
     );
   }

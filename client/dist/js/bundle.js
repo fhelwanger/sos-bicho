@@ -21424,6 +21424,8 @@
 
 	var _actionsAnimais = __webpack_require__(181);
 
+	__webpack_require__(191);
+
 	var App = (function (_Component) {
 	  _inherits(App, _Component);
 
@@ -21445,7 +21447,11 @@
 	        'div',
 	        null,
 	        _react2['default'].createElement(_componentsHeader2['default'], null),
-	        this.props.animais.map(this.renderAnimalCard)
+	        _react2['default'].createElement(
+	          'div',
+	          { className: 'container' },
+	          this.props.animais.map(this.renderAnimalCard)
+	        )
 	      );
 	    }
 	  }, {
@@ -21487,6 +21493,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	__webpack_require__(193);
+
 	var Header = function Header(props) {
 	  return _react2['default'].createElement(
 	    'header',
@@ -21494,7 +21502,8 @@
 	    _react2['default'].createElement(
 	      'h1',
 	      null,
-	      'S.O.S Bicho'
+	      _react2['default'].createElement('i', { className: 'fa fa-paw' }),
+	      ' S.O.S Bicho'
 	    )
 	  );
 	};
@@ -21596,7 +21605,7 @@
 
 
 	// module
-	exports.push([module.id, ".animal-card {\r\n  border: solid 1px black;\r\n  padding: 10px;\r\n  margin: 10px 0px;\r\n  width: 500px;\r\n}\r\n\r\n.animal-card > img {\r\n  display: inline-block;\r\n  height: 150px;\r\n  width: 200px;\r\n}\r\n\r\n.animal-card > div {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.animal-card > div > p {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\n.animal-card > div > p > b {\r\n  display: inline-block;\r\n  text-align: right;\r\n  width: 70px;\r\n  padding-right: 20px;\r\n}\r\n", ""]);
+	exports.push([module.id, ".animal-card {\r\n  border: solid 1px #333;\r\n  padding: 10px;\r\n  margin: 10px 0px;\r\n  width: 100%;\r\n}\r\n\r\n.animal-card > img {\r\n  display: inline-block;\r\n  height: 150px;\r\n  width: 200px;\r\n}\r\n\r\n.animal-card > div {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.animal-card > div > p > b {\r\n  display: inline-block;\r\n  text-align: right;\r\n  width: 70px;\r\n  padding-right: 20px;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -21879,6 +21888,86 @@
 		if(oldSrc)
 			URL.revokeObjectURL(oldSrc);
 	}
+
+
+/***/ },
+/* 191 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(192);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(190)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./App.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./App.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 192 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(189)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "html, button, input, select {\r\n  color: #333;\r\n  font-family: 'Fira Sans';\r\n  font-size: 16px;\r\n}\r\n\r\nbody, h1, p {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\nbody {\r\n  background-color: #f5f5f5;\r\n}\r\n\r\n.container {\r\n  margin: 0 auto;\r\n  width: 800px;\r\n}\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 193 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(194);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(190)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./Header.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./Header.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 194 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(189)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "header {\r\n  background-color: #252;\r\n  padding: 10px 20px;\r\n  color: #fff;\r\n}\r\n\r\nheader h1 {\r\n  font-size: 2em;\r\n}\r\n", ""]);
+
+	// exports
 
 
 /***/ }
