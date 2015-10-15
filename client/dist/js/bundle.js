@@ -21416,15 +21416,11 @@
 
 	var _componentsHeader2 = _interopRequireDefault(_componentsHeader);
 
-	var _componentsAnimalCard = __webpack_require__(186);
+	var _AnimaisList = __webpack_require__(195);
 
-	var _componentsAnimalCard2 = _interopRequireDefault(_componentsAnimalCard);
+	var _AnimaisList2 = _interopRequireDefault(_AnimaisList);
 
-	var _reactRedux = __webpack_require__(158);
-
-	var _actionsAnimais = __webpack_require__(181);
-
-	__webpack_require__(191);
+	__webpack_require__(193);
 
 	var App = (function (_Component) {
 	  _inherits(App, _Component);
@@ -21436,11 +21432,6 @@
 	  }
 
 	  _createClass(App, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      this.props.dispatch((0, _actionsAnimais.solicitarAnimais)());
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2['default'].createElement(
@@ -21450,31 +21441,16 @@
 	        _react2['default'].createElement(
 	          'div',
 	          { className: 'container' },
-	          this.props.animais.map(this.renderAnimalCard)
+	          _react2['default'].createElement(_AnimaisList2['default'], null)
 	        )
 	      );
-	    }
-	  }, {
-	    key: 'renderAnimalCard',
-	    value: function renderAnimalCard(animal) {
-	      return _react2['default'].createElement(_componentsAnimalCard2['default'], {
-	        key: animal.id,
-	        nome: animal.nome,
-	        especie: animal.especie,
-	        fotos: animal.fotos });
 	    }
 	  }]);
 
 	  return App;
 	})(_react.Component);
 
-	function select(state) {
-	  return {
-	    animais: state.animais
-	  };
-	}
-
-	exports['default'] = (0, _reactRedux.connect)(select)(App);
+	exports['default'] = App;
 	module.exports = exports['default'];
 
 /***/ },
@@ -21493,7 +21469,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(193);
+	__webpack_require__(186);
 
 	var Header = function Header(props) {
 	  return _react2['default'].createElement(
@@ -21504,7 +21480,8 @@
 	      null,
 	      _react2['default'].createElement('i', { className: 'fa fa-paw' }),
 	      ' S.O.S Bicho'
-	    )
+	    ),
+	    _react2['default'].createElement('i', { id: 'login', title: 'Login', className: 'fa fa-sign-in' })
 	  );
 	};
 
@@ -21515,79 +21492,20 @@
 /* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	__webpack_require__(187);
-
-	var AnimalCard = function AnimalCard(props) {
-	  return _react2['default'].createElement(
-	    'div',
-	    { className: 'animal-card' },
-	    _react2['default'].createElement('img', { src: props.fotos[0] }),
-	    _react2['default'].createElement(
-	      'div',
-	      null,
-	      _react2['default'].createElement(
-	        'p',
-	        null,
-	        _react2['default'].createElement(
-	          'b',
-	          null,
-	          'Nome: '
-	        ),
-	        props.nome
-	      ),
-	      _react2['default'].createElement(
-	        'p',
-	        null,
-	        _react2['default'].createElement(
-	          'b',
-	          null,
-	          'Espécie: '
-	        ),
-	        props.especie
-	      )
-	    )
-	  );
-	};
-
-	AnimalCard.propTypes = {
-	  nome: _react.PropTypes.string.isRequired,
-	  especie: _react.PropTypes.string.isRequired,
-	  fotos: _react.PropTypes.arrayOf(_react.PropTypes.string).isRequired
-	};
-
-	exports['default'] = AnimalCard;
-	module.exports = exports['default'];
-
-/***/ },
-/* 187 */
-/***/ function(module, exports, __webpack_require__) {
-
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(188);
+	var content = __webpack_require__(187);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(190)(content, {});
+	var update = __webpack_require__(189)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./AnimalCard.css", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./AnimalCard.css");
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./Header.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./Header.css");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -21597,21 +21515,21 @@
 	}
 
 /***/ },
-/* 188 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(189)();
+	exports = module.exports = __webpack_require__(188)();
 	// imports
 
 
 	// module
-	exports.push([module.id, ".animal-card {\r\n  border: solid 1px #333;\r\n  padding: 10px;\r\n  margin: 10px 0px;\r\n  width: 100%;\r\n}\r\n\r\n.animal-card > img {\r\n  display: inline-block;\r\n  height: 150px;\r\n  width: 200px;\r\n}\r\n\r\n.animal-card > div {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.animal-card > div > p > b {\r\n  display: inline-block;\r\n  text-align: right;\r\n  width: 70px;\r\n  padding-right: 20px;\r\n}\r\n", ""]);
+	exports.push([module.id, "header {\r\n  background-color: #252;\r\n  padding: 10px 20px;\r\n  color: #fff;\r\n  height: 30px;\r\n}\r\n\r\nheader h1 {\r\n  font-size: 2em;\r\n  float: left;\r\n}\r\n\r\nheader #login {\r\n  cursor: pointer;\r\n  font-size: 2em;\r\n  float: right;\r\n}\r\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 189 */
+/* 188 */
 /***/ function(module, exports) {
 
 	/*
@@ -21666,7 +21584,7 @@
 	};
 
 /***/ },
-/* 190 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -21891,6 +21809,99 @@
 
 
 /***/ },
+/* 190 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	__webpack_require__(191);
+
+	var AnimalCard = function AnimalCard(props) {
+	  return _react2['default'].createElement(
+	    'div',
+	    { className: 'animal-card' },
+	    _react2['default'].createElement('img', { src: props.animal.fotos[0] }),
+	    _react2['default'].createElement(
+	      'div',
+	      null,
+	      _react2['default'].createElement(
+	        'p',
+	        null,
+	        _react2['default'].createElement(
+	          'b',
+	          null,
+	          'Nome: '
+	        ),
+	        props.animal.nome
+	      ),
+	      _react2['default'].createElement(
+	        'p',
+	        null,
+	        _react2['default'].createElement(
+	          'b',
+	          null,
+	          'Espécie: '
+	        ),
+	        props.animal.especie
+	      ),
+	      _react2['default'].createElement(
+	        'p',
+	        null,
+	        _react2['default'].createElement(
+	          'b',
+	          null,
+	          'Raça: '
+	        ),
+	        props.animal.raca
+	      ),
+	      _react2['default'].createElement(
+	        'p',
+	        null,
+	        _react2['default'].createElement(
+	          'b',
+	          null,
+	          'Porte: '
+	        ),
+	        props.animal.porte
+	      ),
+	      _react2['default'].createElement(
+	        'p',
+	        null,
+	        _react2['default'].createElement(
+	          'b',
+	          null,
+	          'Idade: '
+	        ),
+	        props.animal.idade
+	      ),
+	      _react2['default'].createElement(
+	        'div',
+	        { className: 'animal-card-toolbar' },
+	        _react2['default'].createElement('i', { className: 'fa fa-heart-o', onClick: props.onLikeClick.bind(null, props.animal.id) })
+	      )
+	    )
+	  );
+	};
+
+	AnimalCard.propTypes = {
+	  animal: _react.PropTypes.object.isRequired,
+	  onLikeClick: _react.PropTypes.func.isRequired
+	};
+
+	exports['default'] = AnimalCard;
+	module.exports = exports['default'];
+
+/***/ },
 /* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -21900,7 +21911,47 @@
 	var content = __webpack_require__(192);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(190)(content, {});
+	var update = __webpack_require__(189)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./AnimalCard.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./AnimalCard.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 192 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(188)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".animal-card {\r\n  background-color: #f4f4f4;\r\n  border: solid 1px #333;\r\n  padding: 10px;\r\n  margin: 10px 0px;\r\n  width: 100%;\r\n}\r\n\r\n.animal-card > img {\r\n  display: inline-block;\r\n  height: 150px;\r\n  width: 200px;\r\n}\r\n\r\n.animal-card > div {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.animal-card > div > p > b {\r\n  display: inline-block;\r\n  text-align: right;\r\n  width: 70px;\r\n  padding-right: 20px;\r\n}\r\n\r\n.animal-card-toolbar {\r\n  margin-top: 20px;\r\n  margin-left: 90px;\r\n}\r\n\r\n.animal-card-toolbar > i {\r\n  cursor: pointer;\r\n}\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 193 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(194);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(189)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -21917,58 +21968,102 @@
 	}
 
 /***/ },
-/* 192 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(189)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "html, button, input, select {\r\n  color: #333;\r\n  font-family: 'Fira Sans';\r\n  font-size: 16px;\r\n}\r\n\r\nbody, h1, p {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\nbody {\r\n  background-color: #f5f5f5;\r\n}\r\n\r\n.container {\r\n  margin: 0 auto;\r\n  width: 800px;\r\n}\r\n", ""]);
-
-	// exports
-
-
-/***/ },
-/* 193 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(194);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(190)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./Header.css", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./Header.css");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
 /* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(189)();
+	exports = module.exports = __webpack_require__(188)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "header {\r\n  background-color: #252;\r\n  padding: 10px 20px;\r\n  color: #fff;\r\n}\r\n\r\nheader h1 {\r\n  font-size: 2em;\r\n}\r\n", ""]);
+	exports.push([module.id, "html, button, input, select {\r\n  color: #333;\r\n  font-family: 'Fira Sans';\r\n  font-size: 16px;\r\n}\r\n\r\nbody, h1, p {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\nbody {\r\n  background-color: #fff;\r\n}\r\n\r\n.container {\r\n  margin: 0 auto;\r\n  width: 800px;\r\n}\r\n", ""]);
 
 	// exports
 
+
+/***/ },
+/* 195 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _componentsAnimalCard = __webpack_require__(190);
+
+	var _componentsAnimalCard2 = _interopRequireDefault(_componentsAnimalCard);
+
+	var _reactRedux = __webpack_require__(158);
+
+	var _actionsAnimais = __webpack_require__(181);
+
+	var AnimaisList = (function (_Component) {
+	  _inherits(AnimaisList, _Component);
+
+	  function AnimaisList(props) {
+	    _classCallCheck(this, AnimaisList);
+
+	    _get(Object.getPrototypeOf(AnimaisList.prototype), 'constructor', this).call(this, props);
+	    this.handleLikeClick = this.handleLikeClick.bind(this);
+	    this.renderAnimalCard = this.renderAnimalCard.bind(this);
+	  }
+
+	  _createClass(AnimaisList, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.props.dispatch((0, _actionsAnimais.solicitarAnimais)());
+	    }
+	  }, {
+	    key: 'handleLikeClick',
+	    value: function handleLikeClick(animalId) {
+	      alert(animalId);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        null,
+	        this.props.animais.map(this.renderAnimalCard)
+	      );
+	    }
+	  }, {
+	    key: 'renderAnimalCard',
+	    value: function renderAnimalCard(animal) {
+	      return _react2['default'].createElement(_componentsAnimalCard2['default'], {
+	        key: animal.id,
+	        animal: animal,
+	        onLikeClick: this.handleLikeClick });
+	    }
+	  }]);
+
+	  return AnimaisList;
+	})(_react.Component);
+
+	function select(state) {
+	  return {
+	    animais: state.animais
+	  };
+	}
+
+	exports['default'] = (0, _reactRedux.connect)(select)(AnimaisList);
+	module.exports = exports['default'];
 
 /***/ }
 /******/ ]);

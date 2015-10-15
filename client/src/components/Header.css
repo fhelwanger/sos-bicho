@@ -2,8 +2,16 @@ header {
   background-color: #252;
   padding: 10px 20px;
   color: #fff;
+  height: 30px;
 }
 
 header h1 {
   font-size: 2em;
+  float: left;
+}
+
+header #login {
+  cursor: pointer;
+  font-size: 2em;
+  float: right;
 }

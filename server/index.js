@@ -7,7 +7,14 @@ app.use(express.static('client/dist'));
 
 app.get('/animais', function (req, res) {
   var query =
-    'SELECT a.id, a.nome, e.nome as especie, a.raca, a.porte, a.idade, f.id as foto ' +
+    'SELECT a.id, a.nome, e.nome as especie, a.raca, ' +
+    'case a.porte ' +
+    '    when 1 then \'Pequeno\' ' +
+    '    when 2 then \'Médio\' ' +
+    '    when 3 then \'Grande\' ' +
+    '    else null ' +
+    'end as porte, ' +
+    'a.idade, f.id as foto ' +
     'FROM animais a ' +
     'INNER JOIN especies e ON e.id = a.especieId ' +
     'LEFT JOIN animais_fotos f ON f.animalId = a.id';
