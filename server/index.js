@@ -7,6 +7,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 require('./routes/login')(app);
+require('./routes/usuarios')(app);
 require('./routes/animais')(app);
 
 var server = app.listen(1337, function () {
