@@ -22667,6 +22667,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
@@ -22677,22 +22679,78 @@
 
 	var _reactRedux = __webpack_require__(158);
 
+	var _ComponentsTextBox = __webpack_require__(198);
+
+	var _ComponentsTextBox2 = _interopRequireDefault(_ComponentsTextBox);
+
+	var _ComponentsButton = __webpack_require__(201);
+
+	var _ComponentsButton2 = _interopRequireDefault(_ComponentsButton);
+
+	__webpack_require__(283);
+
 	var CriarConta = (function (_Component) {
 	  _inherits(CriarConta, _Component);
 
-	  function CriarConta() {
+	  function CriarConta(props) {
 	    _classCallCheck(this, CriarConta);
 
-	    _get(Object.getPrototypeOf(CriarConta.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(CriarConta.prototype), 'constructor', this).call(this, props);
+
+	    this.handleInputChange = this.handleInputChange.bind(this);
+	    this.handleCriarClick = this.handleCriarClick.bind(this);
+
+	    this.state = {
+	      nome: '',
+	      login: '',
+	      senha: ''
+	    };
 	  }
 
 	  _createClass(CriarConta, [{
+	    key: 'handleInputChange',
+	    value: function handleInputChange(value, name) {
+	      this.setState(_defineProperty({}, name, value));
+	    }
+	  }, {
+	    key: 'handleCriarClick',
+	    value: function handleCriarClick() {
+	      alert(JSON.stringify(this.state, null, 4));
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2['default'].createElement(
-	        'h1',
-	        null,
-	        'CriarConta'
+	        'div',
+	        { className: 'criar-conta' },
+	        _react2['default'].createElement(
+	          'h2',
+	          null,
+	          'Criar Conta'
+	        ),
+	        _react2['default'].createElement(_ComponentsTextBox2['default'], {
+	          name: 'nome',
+	          label: 'Nome',
+	          onChange: this.handleInputChange,
+	          required: true
+	        }),
+	        _react2['default'].createElement(_ComponentsTextBox2['default'], {
+	          name: 'login',
+	          label: 'Login',
+	          onChange: this.handleInputChange,
+	          required: true
+	        }),
+	        _react2['default'].createElement(_ComponentsTextBox2['default'], {
+	          name: 'senha',
+	          label: 'Senha',
+	          onChange: this.handleInputChange,
+	          required: true
+	        }),
+	        _react2['default'].createElement(
+	          _ComponentsButton2['default'],
+	          { onClick: this.handleCriarClick },
+	          'Criar'
+	        )
 	      );
 	    }
 	  }]);
@@ -29801,6 +29859,46 @@
 
 	exports['default'] = routes;
 	module.exports = exports['default'];
+
+/***/ },
+/* 283 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(284);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(188)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./CriarConta.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./CriarConta.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 284 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(187)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".criar-conta {\r\n  margin: 50px auto;\r\n  width: 200px;\r\n}\r\n", ""]);
+
+	// exports
+
 
 /***/ }
 /******/ ]);
