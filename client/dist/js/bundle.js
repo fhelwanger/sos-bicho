@@ -21328,6 +21328,10 @@
 
 	var _componentsHeader2 = _interopRequireDefault(_componentsHeader);
 
+	var _Login = __webpack_require__(195);
+
+	var _Login2 = _interopRequireDefault(_Login);
+
 	var _AnimaisList = __webpack_require__(189);
 
 	var _AnimaisList2 = _interopRequireDefault(_AnimaisList);
@@ -21337,19 +21341,41 @@
 	var App = (function (_Component) {
 	  _inherits(App, _Component);
 
-	  function App() {
+	  function App(props) {
 	    _classCallCheck(this, App);
 
-	    _get(Object.getPrototypeOf(App.prototype), 'constructor', this).apply(this, arguments);
+	    _get(Object.getPrototypeOf(App.prototype), 'constructor', this).call(this, props);
+
+	    this.handleLoginOpen = this.handleLoginOpen.bind(this);
+	    this.handleLoginClose = this.handleLoginClose.bind(this);
+
+	    this.state = {
+	      loginVisible: false
+	    };
 	  }
 
 	  _createClass(App, [{
+	    key: 'handleLoginOpen',
+	    value: function handleLoginOpen() {
+	      this.setState({
+	        loginVisible: true
+	      });
+	    }
+	  }, {
+	    key: 'handleLoginClose',
+	    value: function handleLoginClose() {
+	      this.setState({
+	        loginVisible: false
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2['default'].createElement(
 	        'div',
 	        null,
-	        _react2['default'].createElement(_componentsHeader2['default'], null),
+	        _react2['default'].createElement(_componentsHeader2['default'], { onLoginClick: this.handleLoginOpen }),
+	        this.state.loginVisible ? _react2['default'].createElement(_Login2['default'], { onCloseClick: this.handleLoginClose }) : null,
 	        _react2['default'].createElement(
 	          'div',
 	          { className: 'container' },
@@ -21375,7 +21401,15 @@
 	  value: true
 	});
 
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _react = __webpack_require__(1);
 
@@ -21383,18 +21417,48 @@
 
 	__webpack_require__(185);
 
-	var Header = function Header(props) {
-	  return _react2['default'].createElement(
-	    'header',
-	    null,
-	    _react2['default'].createElement(
-	      'h1',
-	      null,
-	      _react2['default'].createElement('i', { className: 'fa fa-paw' }),
-	      ' S.O.S Bicho'
-	    ),
-	    _react2['default'].createElement('i', { id: 'login', title: 'Login', className: 'fa fa-sign-in' })
-	  );
+	var Header = (function (_Component) {
+	  _inherits(Header, _Component);
+
+	  function Header(props) {
+	    _classCallCheck(this, Header);
+
+	    _get(Object.getPrototypeOf(Header.prototype), 'constructor', this).call(this, props);
+	    this.handleLoginClick = this.handleLoginClick.bind(this);
+	  }
+
+	  _createClass(Header, [{
+	    key: 'handleLoginClick',
+	    value: function handleLoginClick(e) {
+	      e.preventDefault();
+	      this.props.onLoginClick();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'header',
+	        null,
+	        _react2['default'].createElement(
+	          'h1',
+	          null,
+	          _react2['default'].createElement('i', { className: 'fa fa-paw' }),
+	          ' S.O.S Bicho'
+	        ),
+	        _react2['default'].createElement(
+	          'a',
+	          { href: '#', title: 'Login', onClick: this.handleLoginClick },
+	          _react2['default'].createElement('i', { className: 'fa fa-sign-in' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Header;
+	})(_react.Component);
+
+	Header.propTypes = {
+	  onLoginClick: _react.PropTypes.func.isRequired
 	};
 
 	exports['default'] = Header;
@@ -21435,7 +21499,7 @@
 
 
 	// module
-	exports.push([module.id, "header {\r\n  background-color: #252;\r\n  padding: 10px 20px;\r\n  color: #fff;\r\n  height: 30px;\r\n}\r\n\r\nheader h1 {\r\n  font-size: 2em;\r\n  float: left;\r\n}\r\n\r\nheader #login {\r\n  cursor: pointer;\r\n  font-size: 2em;\r\n  float: right;\r\n}\r\n", ""]);
+	exports.push([module.id, "header {\r\n  background-color: #252;\r\n  padding: 10px 20px;\r\n  color: #fff;\r\n  height: 30px;\r\n}\r\n\r\nheader > h1 {\r\n  font-size: 2em;\r\n  float: left;\r\n}\r\n\r\nheader > a {\r\n  color: #fff;\r\n  cursor: pointer;\r\n  font-size: 2em;\r\n  float: right;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -21795,13 +21859,13 @@
 	  return AnimaisList;
 	})(_react.Component);
 
-	function select(state) {
+	function mapStateToProps(state) {
 	  return {
 	    animais: state.animais
 	  };
 	}
 
-	exports['default'] = (0, _reactRedux.connect)(select)(AnimaisList);
+	exports['default'] = (0, _reactRedux.connect)(mapStateToProps)(AnimaisList);
 	module.exports = exports['default'];
 
 /***/ },
@@ -21972,7 +22036,374 @@
 
 
 	// module
-	exports.push([module.id, "html, button, input, select {\r\n  color: #333;\r\n  font-family: 'Fira Sans';\r\n  font-size: 16px;\r\n}\r\n\r\nbody, h1, p {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\nbody {\r\n  background-color: #fff;\r\n}\r\n\r\n.container {\r\n  margin: 0 auto;\r\n  width: 800px;\r\n}\r\n", ""]);
+	exports.push([module.id, "html, button, input, select {\r\n  color: #333;\r\n  font-family: 'Fira Sans';\r\n  font-size: 16px;\r\n}\r\n\r\ninput:focus, select:focus {\r\n  outline: none;\r\n}\r\n\r\nbody, h1, h2, h3, h4, h5, h6, p, ul, li {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\nbody {\r\n  background-color: #fff;\r\n}\r\n\r\n.container {\r\n  margin: 0 auto;\r\n  width: 800px;\r\n}\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 195 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _ComponentsTextBox = __webpack_require__(198);
+
+	var _ComponentsTextBox2 = _interopRequireDefault(_ComponentsTextBox);
+
+	var _ComponentsButton = __webpack_require__(201);
+
+	var _ComponentsButton2 = _interopRequireDefault(_ComponentsButton);
+
+	var _reactRedux = __webpack_require__(158);
+
+	__webpack_require__(196);
+
+	var Login = (function (_Component) {
+	  _inherits(Login, _Component);
+
+	  function Login(props) {
+	    _classCallCheck(this, Login);
+
+	    _get(Object.getPrototypeOf(Login.prototype), 'constructor', this).call(this, props);
+	    this.handleCloseClick = this.handleCloseClick.bind(this);
+	    this.handleLoginClick = this.handleLoginClick.bind(this);
+	  }
+
+	  _createClass(Login, [{
+	    key: 'handleCloseClick',
+	    value: function handleCloseClick(e) {
+	      e.preventDefault();
+	      this.props.onCloseClick();
+	    }
+	  }, {
+	    key: 'handleLoginClick',
+	    value: function handleLoginClick() {
+	      alert('Não implementado');
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'login' },
+	        _react2['default'].createElement(
+	          'h2',
+	          null,
+	          'Login',
+	          _react2['default'].createElement(
+	            'a',
+	            { href: '#', onClick: this.handleCloseClick },
+	            _react2['default'].createElement('i', { className: 'fa fa-times' })
+	          )
+	        ),
+	        _react2['default'].createElement(_ComponentsTextBox2['default'], { label: 'Usuário' }),
+	        _react2['default'].createElement(_ComponentsTextBox2['default'], { label: 'Senha', type: 'password' }),
+	        _react2['default'].createElement(
+	          _ComponentsButton2['default'],
+	          { onClick: this.handleLoginClick },
+	          'Login'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Login;
+	})(_react.Component);
+
+	Login.propTypes = {
+	  onCloseClick: _react.PropTypes.func.isRequired
+	};
+
+	exports['default'] = (0, _reactRedux.connect)()(Login);
+	module.exports = exports['default'];
+
+/***/ },
+/* 196 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(197);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(188)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./Login.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./Login.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 197 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(187)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".login {\r\n  position: fixed;\r\n  left: 50%;\r\n  top: 50%;\r\n  transform: translate(-50%, -50%);\r\n  border: solid 1px #333;\r\n  background-color: #f4f4f4;\r\n  padding: 10px;\r\n}\r\n\r\n.login > h2 {\r\n  padding-bottom: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.login > h2 > a {\r\n  color: #333;\r\n  float: right;\r\n}\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 198 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	__webpack_require__(199);
+
+	var TextBox = (function (_Component) {
+	  _inherits(TextBox, _Component);
+
+	  function TextBox(props) {
+	    _classCallCheck(this, TextBox);
+
+	    _get(Object.getPrototypeOf(TextBox.prototype), 'constructor', this).call(this, props);
+
+	    this.handleChange = this.handleChange.bind(this);
+
+	    this.state = {
+	      errorMessage: ''
+	    };
+	  }
+
+	  _createClass(TextBox, [{
+	    key: 'handleChange',
+	    value: function handleChange() {
+	      var val = this.refs.input.value;
+	      var errorMessage = '';
+
+	      if (this.props.required && !val) {
+	        errorMessage = 'Campo obrigatório';
+	      }
+
+	      this.setState({
+	        errorMessage: errorMessage
+	      });
+
+	      if (this.props.onChange) {
+	        this.props.onChange(val);
+	      }
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var type = this.props.type || 'text';
+
+	      return _react2['default'].createElement(
+	        'label',
+	        { className: 'textbox' },
+	        this.props.label,
+	        _react2['default'].createElement('input', {
+	          ref: 'input',
+	          type: type,
+	          className: this.state.errorMessage ? 'error' : '',
+	          onChange: this.handleChange
+	        }),
+	        _react2['default'].createElement(
+	          'span',
+	          { className: 'error-message' },
+	          this.state.errorMessage
+	        )
+	      );
+	    }
+	  }]);
+
+	  return TextBox;
+	})(_react.Component);
+
+	TextBox.propTypes = {
+	  label: _react.PropTypes.string,
+	  type: _react.PropTypes.string,
+	  required: _react.PropTypes.bool,
+	  onChange: _react.PropTypes.func
+	};
+
+	exports['default'] = TextBox;
+	module.exports = exports['default'];
+
+/***/ },
+/* 199 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(200);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(188)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./TextBox.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./TextBox.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 200 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(187)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".textbox {\r\n  padding: 3px 0px;\r\n  display: block;\r\n}\r\n\r\n.textbox > input {\r\n  border: solid 1px #333;\r\n  display: block;\r\n}\r\n\r\n.textbox > input:focus {\r\n  background-color: #ffffdd;\r\n}\r\n\r\n.textbox > input.error {\r\n  border-color: #f22;\r\n}\r\n\r\n.textbox > .error-message {\r\n  color: #f22;\r\n  font-size: 0.8em;\r\n}\r\n", ""]);
+
+	// exports
+
+
+/***/ },
+/* 201 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	__webpack_require__(202);
+
+	var Button = (function (_Component) {
+	  _inherits(Button, _Component);
+
+	  function Button() {
+	    _classCallCheck(this, Button);
+
+	    _get(Object.getPrototypeOf(Button.prototype), 'constructor', this).apply(this, arguments);
+	  }
+
+	  _createClass(Button, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'button',
+	        { className: 'button', type: 'button', onClick: this.props.onClick },
+	        this.props.children
+	      );
+	    }
+	  }]);
+
+	  return Button;
+	})(_react.Component);
+
+	Button.propTypes = {
+	  onClick: _react.PropTypes.func
+	};
+
+	exports['default'] = Button;
+	module.exports = exports['default'];
+
+/***/ },
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(203);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(188)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./Button.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./Button.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(187)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".button {\r\n  margin-top: 10px;\r\n  padding: 4px 10px;\r\n  background-color: #252;\r\n  color: #fff;\r\n  border: none;\r\n}\r\n\r\n.button:hover {\r\n  background-color: #474;\r\n}\r\n", ""]);
 
 	// exports
 

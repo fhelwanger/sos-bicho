@@ -36,10 +36,10 @@ class AnimaisList extends Component {
   }
 }
 
-function select(state) {
+function mapStateToProps(state) {
   return {
     animais: state.animais
   };
 }
 
-export default connect(select)(AnimaisList);
+export default connect(mapStateToProps)(AnimaisList);

@@ -5,12 +5,13 @@ header {
   height: 30px;
 }
 
-header h1 {
+header > h1 {
   font-size: 2em;
   float: left;
 }
 
-header #login {
+header > a {
+  color: #fff;
   cursor: pointer;
   font-size: 2em;
   float: right;
