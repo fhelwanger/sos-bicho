@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Portal web para adoção de animais",
   "dependencies": {
+    "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "isomorphic-fetch": "^2.1.1",
     "lodash": "^3.10.1",

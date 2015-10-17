@@ -1,6 +1,7 @@
 CREATE TABLE usuarios (
   id SERIAL NOT NULL,
   nome VARCHAR(50) NOT NULL,
+  login VARCHAR(50) NOT NULL,
   senha VARCHAR(50) NOT NULL,
   CONSTRAINT pk_usuarios PRIMARY KEY (id)
 );
