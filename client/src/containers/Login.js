@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
+import { connect } from 'react-redux';
 import TextBox from '../Components/TextBox';
 import Button from '../Components/Button';
-import { connect } from 'react-redux';
 import { fazerLogin, loginMensagemErro } from '../actions/login';
 
 require('./Login.css');
@@ -65,6 +66,7 @@ class Login extends Component {
         <span className="error-message">
           {this.props.mensagemErro}
         </span>
+        <Link to="/criar-conta">Criar Conta</Link>
         <Button onClick={this.handleLoginClick}>Login</Button>
       </div>
     );

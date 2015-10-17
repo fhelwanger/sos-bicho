@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import AnimalCard from '../components/AnimalCard';
 import { connect } from 'react-redux';
+import AnimalCard from '../components/AnimalCard';
 import { solicitarAnimais } from '../actions/animais';
 
 class AnimaisList extends Component {

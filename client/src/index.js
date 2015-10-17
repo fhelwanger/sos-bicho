@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router } from 'react-router';
 import { Provider } from 'react-redux';
+import { createHashHistory } from 'history';
+import routes from './routes';
 import store from './store';
-import App from './containers/App';
 import { fazerLogin } from './actions/login';
 
 const credentials = localStorage.getItem('credentials');
@@ -12,9 +14,13 @@ if (credentials) {
   store.dispatch(fazerLogin(login, senha));
 }
 
+const history = createHashHistory({
+  queryKey: false
+});
+
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router routes={routes} history={history} />
   </Provider>,
   document.getElementById('root')
 );

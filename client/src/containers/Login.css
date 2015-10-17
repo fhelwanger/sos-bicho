@@ -18,6 +18,10 @@
   float: right;
 }
 
+.login > a {
+  display: block;
+}
+
 .login > .error-message {
   color: #f22;
   font-size: 0.9em;

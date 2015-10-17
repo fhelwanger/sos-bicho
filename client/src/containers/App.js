@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Header from '../components/Header';
 import Login from './Login';
-import AnimaisList from './AnimaisList';
-import { connect } from 'react-redux';
 import { fazerLogout } from '../actions/login';
 
 require('./App.css');
@@ -54,7 +53,7 @@ class App extends Component {
           : null
         }
         <div className="container">
-          <AnimaisList />
+          {this.props.children}
         </div>
       </div>
     );
