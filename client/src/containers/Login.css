@@ -17,3 +17,9 @@
   color: #333;
   float: right;
 }
+
+.login > .error-message {
+  color: #f22;
+  font-size: 0.9em;
+  display: block;
+}

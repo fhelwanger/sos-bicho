@@ -26,19 +26,18 @@ class TextBox extends Component {
     });
 
     if (this.props.onChange) {
-      this.props.onChange(val);
+      this.props.onChange(val, this.props.name);
     }
   }
 
   render() {
-    const type = this.props.type || 'text';
-
     return (
       <label className="textbox">
         {this.props.label}
         <input
           ref="input"
-          type={type}
+          name={this.props.name}
+          type={this.props.type || 'text'}
           className={this.state.errorMessage ? 'error' : ''}
           onChange={this.handleChange}
         />
@@ -51,8 +50,9 @@ class TextBox extends Component {
 }
 
 TextBox.propTypes = {
-  label: PropTypes.string,
+  name: PropTypes.string,
   type: PropTypes.string,
+  label: PropTypes.string,
   required: PropTypes.bool,
   onChange: PropTypes.func
 }

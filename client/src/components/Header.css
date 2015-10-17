@@ -10,9 +10,17 @@ header > h1 {
   float: left;
 }
 
-header > a {
+header > div {
+  float: right;
+}
+
+header > div > .usuario {
+  vertical-align: super;
+  margin-right: 10px;
+}
+
+header > div > a {
   color: #fff;
   cursor: pointer;
   font-size: 2em;
-  float: right;
 }

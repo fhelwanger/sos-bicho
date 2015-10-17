@@ -46,6 +46,8 @@
 
 	'use strict';
 
+	var _slicedToArray = (function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i['return']) _i['return'](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError('Invalid attempt to destructure non-iterable instance'); } }; })();
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 	var _react = __webpack_require__(1);
@@ -65,6 +67,21 @@
 	var _containersApp = __webpack_require__(183);
 
 	var _containersApp2 = _interopRequireDefault(_containersApp);
+
+	var _actionsLogin = __webpack_require__(205);
+
+	var credentials = localStorage.getItem('credentials');
+
+	if (credentials) {
+	  var _atob$split = atob(credentials).split(':');
+
+	  var _atob$split2 = _slicedToArray(_atob$split, 2);
+
+	  var login = _atob$split2[0];
+	  var senha = _atob$split2[1];
+
+	  _store2['default'].dispatch((0, _actionsLogin.fazerLogin)(login, senha));
+	}
 
 	_reactDom2['default'].render(_react2['default'].createElement(
 	  _reactRedux.Provider,
@@ -20877,8 +20894,13 @@
 
 	var _animais2 = _interopRequireDefault(_animais);
 
+	var _login = __webpack_require__(204);
+
+	var _login2 = _interopRequireDefault(_login);
+
 	exports['default'] = (0, _redux.combineReducers)({
-	  animais: _animais2['default']
+	  animais: _animais2['default'],
+	  login: _login2['default']
 	});
 	module.exports = exports['default'];
 
@@ -21336,6 +21358,10 @@
 
 	var _AnimaisList2 = _interopRequireDefault(_AnimaisList);
 
+	var _reactRedux = __webpack_require__(158);
+
+	var _actionsLogin = __webpack_require__(205);
+
 	__webpack_require__(193);
 
 	var App = (function (_Component) {
@@ -21348,6 +21374,7 @@
 
 	    this.handleLoginOpen = this.handleLoginOpen.bind(this);
 	    this.handleLoginClose = this.handleLoginClose.bind(this);
+	    this.handleLogout = this.handleLogout.bind(this);
 
 	    this.state = {
 	      loginVisible: false
@@ -21369,13 +21396,26 @@
 	      });
 	    }
 	  }, {
+	    key: 'handleLogout',
+	    value: function handleLogout() {
+	      this.setState({
+	        loginVisible: false
+	      });
+
+	      this.props.dispatch((0, _actionsLogin.fazerLogout)());
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2['default'].createElement(
 	        'div',
 	        null,
-	        _react2['default'].createElement(_componentsHeader2['default'], { onLoginClick: this.handleLoginOpen }),
-	        this.state.loginVisible ? _react2['default'].createElement(_Login2['default'], { onCloseClick: this.handleLoginClose }) : null,
+	        _react2['default'].createElement(_componentsHeader2['default'], {
+	          usuario: this.props.usuario,
+	          onLoginClick: this.handleLoginOpen,
+	          onLogoutClick: this.handleLogout
+	        }),
+	        this.state.loginVisible && !this.props.usuario ? _react2['default'].createElement(_Login2['default'], { onCloseClick: this.handleLoginClose }) : null,
 	        _react2['default'].createElement(
 	          'div',
 	          { className: 'container' },
@@ -21388,7 +21428,13 @@
 	  return App;
 	})(_react.Component);
 
-	exports['default'] = App;
+	function mapStateToProps(state) {
+	  return {
+	    usuario: state.login.usuario
+	  };
+	}
+
+	exports['default'] = (0, _reactRedux.connect)(mapStateToProps)(App);
 	module.exports = exports['default'];
 
 /***/ },
@@ -21425,6 +21471,7 @@
 
 	    _get(Object.getPrototypeOf(Header.prototype), 'constructor', this).call(this, props);
 	    this.handleLoginClick = this.handleLoginClick.bind(this);
+	    this.handleLogoutClick = this.handleLogoutClick.bind(this);
 	  }
 
 	  _createClass(Header, [{
@@ -21432,6 +21479,12 @@
 	    value: function handleLoginClick(e) {
 	      e.preventDefault();
 	      this.props.onLoginClick();
+	    }
+	  }, {
+	    key: 'handleLogoutClick',
+	    value: function handleLogoutClick(e) {
+	      e.preventDefault();
+	      this.props.onLogoutClick();
 	    }
 	  }, {
 	    key: 'render',
@@ -21445,12 +21498,38 @@
 	          _react2['default'].createElement('i', { className: 'fa fa-paw' }),
 	          ' S.O.S Bicho'
 	        ),
-	        _react2['default'].createElement(
-	          'a',
-	          { href: '#', title: 'Login', onClick: this.handleLoginClick },
-	          _react2['default'].createElement('i', { className: 'fa fa-sign-in' })
-	        )
+	        this.renderToolbar()
 	      );
+	    }
+	  }, {
+	    key: 'renderToolbar',
+	    value: function renderToolbar() {
+	      if (this.props.usuario) {
+	        return _react2['default'].createElement(
+	          'div',
+	          null,
+	          _react2['default'].createElement(
+	            'span',
+	            { className: 'usuario' },
+	            this.props.usuario.nome
+	          ),
+	          _react2['default'].createElement(
+	            'a',
+	            { href: '#', title: 'Logout', onClick: this.handleLogoutClick },
+	            _react2['default'].createElement('i', { className: 'fa fa-sign-out' })
+	          )
+	        );
+	      } else {
+	        return _react2['default'].createElement(
+	          'div',
+	          null,
+	          _react2['default'].createElement(
+	            'a',
+	            { href: '#', title: 'Login', onClick: this.handleLoginClick },
+	            _react2['default'].createElement('i', { className: 'fa fa-sign-in' })
+	          )
+	        );
+	      }
 	    }
 	  }]);
 
@@ -21458,7 +21537,9 @@
 	})(_react.Component);
 
 	Header.propTypes = {
-	  onLoginClick: _react.PropTypes.func.isRequired
+	  usuario: _react.PropTypes.object,
+	  onLoginClick: _react.PropTypes.func.isRequired,
+	  onLogoutClick: _react.PropTypes.func.isRequired
 	};
 
 	exports['default'] = Header;
@@ -21499,7 +21580,7 @@
 
 
 	// module
-	exports.push([module.id, "header {\r\n  background-color: #252;\r\n  padding: 10px 20px;\r\n  color: #fff;\r\n  height: 30px;\r\n}\r\n\r\nheader > h1 {\r\n  font-size: 2em;\r\n  float: left;\r\n}\r\n\r\nheader > a {\r\n  color: #fff;\r\n  cursor: pointer;\r\n  font-size: 2em;\r\n  float: right;\r\n}\r\n", ""]);
+	exports.push([module.id, "header {\r\n  background-color: #252;\r\n  padding: 10px 20px;\r\n  color: #fff;\r\n  height: 30px;\r\n}\r\n\r\nheader > h1 {\r\n  font-size: 2em;\r\n  float: left;\r\n}\r\n\r\nheader > div {\r\n  float: right;\r\n}\r\n\r\nheader > div > .usuario {\r\n  vertical-align: super;\r\n  margin-right: 10px;\r\n}\r\n\r\nheader > div > a {\r\n  color: #fff;\r\n  cursor: pointer;\r\n  font-size: 2em;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -22057,6 +22138,8 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
@@ -22075,6 +22158,8 @@
 
 	var _reactRedux = __webpack_require__(158);
 
+	var _actionsLogin = __webpack_require__(205);
+
 	__webpack_require__(196);
 
 	var Login = (function (_Component) {
@@ -22084,20 +22169,37 @@
 	    _classCallCheck(this, Login);
 
 	    _get(Object.getPrototypeOf(Login.prototype), 'constructor', this).call(this, props);
+
 	    this.handleCloseClick = this.handleCloseClick.bind(this);
 	    this.handleLoginClick = this.handleLoginClick.bind(this);
+	    this.handleInputChange = this.handleInputChange.bind(this);
+
+	    this.state = {
+	      login: '',
+	      senha: ''
+	    };
 	  }
 
 	  _createClass(Login, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.props.dispatch((0, _actionsLogin.loginMensagemErro)(''));
+	    }
+	  }, {
 	    key: 'handleCloseClick',
 	    value: function handleCloseClick(e) {
 	      e.preventDefault();
 	      this.props.onCloseClick();
 	    }
 	  }, {
+	    key: 'handleInputChange',
+	    value: function handleInputChange(valor, name) {
+	      this.setState(_defineProperty({}, name, valor));
+	    }
+	  }, {
 	    key: 'handleLoginClick',
 	    value: function handleLoginClick() {
-	      alert('Não implementado');
+	      this.props.dispatch((0, _actionsLogin.fazerLogin)(this.state.login, this.state.senha));
 	    }
 	  }, {
 	    key: 'render',
@@ -22115,8 +22217,22 @@
 	            _react2['default'].createElement('i', { className: 'fa fa-times' })
 	          )
 	        ),
-	        _react2['default'].createElement(_ComponentsTextBox2['default'], { label: 'Usuário' }),
-	        _react2['default'].createElement(_ComponentsTextBox2['default'], { label: 'Senha', type: 'password' }),
+	        _react2['default'].createElement(_ComponentsTextBox2['default'], {
+	          name: 'login',
+	          label: 'Usuário',
+	          onChange: this.handleInputChange
+	        }),
+	        _react2['default'].createElement(_ComponentsTextBox2['default'], {
+	          name: 'senha',
+	          label: 'Senha',
+	          onChange: this.handleInputChange,
+	          type: 'password'
+	        }),
+	        _react2['default'].createElement(
+	          'span',
+	          { className: 'error-message' },
+	          this.props.mensagemErro
+	        ),
 	        _react2['default'].createElement(
 	          _ComponentsButton2['default'],
 	          { onClick: this.handleLoginClick },
@@ -22133,7 +22249,13 @@
 	  onCloseClick: _react.PropTypes.func.isRequired
 	};
 
-	exports['default'] = (0, _reactRedux.connect)()(Login);
+	function mapStateToProps(state) {
+	  return {
+	    mensagemErro: state.login.mensagemErro
+	  };
+	}
+
+	exports['default'] = (0, _reactRedux.connect)(mapStateToProps)(Login);
 	module.exports = exports['default'];
 
 /***/ },
@@ -22171,7 +22293,7 @@
 
 
 	// module
-	exports.push([module.id, ".login {\r\n  position: fixed;\r\n  left: 50%;\r\n  top: 50%;\r\n  transform: translate(-50%, -50%);\r\n  border: solid 1px #333;\r\n  background-color: #f4f4f4;\r\n  padding: 10px;\r\n}\r\n\r\n.login > h2 {\r\n  padding-bottom: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.login > h2 > a {\r\n  color: #333;\r\n  float: right;\r\n}\r\n", ""]);
+	exports.push([module.id, ".login {\r\n  position: fixed;\r\n  left: 50%;\r\n  top: 50%;\r\n  transform: translate(-50%, -50%);\r\n  border: solid 1px #333;\r\n  background-color: #f4f4f4;\r\n  padding: 10px;\r\n}\r\n\r\n.login > h2 {\r\n  padding-bottom: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.login > h2 > a {\r\n  color: #333;\r\n  float: right;\r\n}\r\n\r\n.login > .error-message {\r\n  color: #f22;\r\n  font-size: 0.9em;\r\n  display: block;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -22232,21 +22354,20 @@
 	      });
 
 	      if (this.props.onChange) {
-	        this.props.onChange(val);
+	        this.props.onChange(val, this.props.name);
 	      }
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var type = this.props.type || 'text';
-
 	      return _react2['default'].createElement(
 	        'label',
 	        { className: 'textbox' },
 	        this.props.label,
 	        _react2['default'].createElement('input', {
 	          ref: 'input',
-	          type: type,
+	          name: this.props.name,
+	          type: this.props.type || 'text',
 	          className: this.state.errorMessage ? 'error' : '',
 	          onChange: this.handleChange
 	        }),
@@ -22263,8 +22384,9 @@
 	})(_react.Component);
 
 	TextBox.propTypes = {
-	  label: _react.PropTypes.string,
+	  name: _react.PropTypes.string,
 	  type: _react.PropTypes.string,
+	  label: _react.PropTypes.string,
 	  required: _react.PropTypes.bool,
 	  onChange: _react.PropTypes.func
 	};
@@ -22307,7 +22429,7 @@
 
 
 	// module
-	exports.push([module.id, ".textbox {\r\n  padding: 3px 0px;\r\n  display: block;\r\n}\r\n\r\n.textbox > input {\r\n  border: solid 1px #333;\r\n  display: block;\r\n}\r\n\r\n.textbox > input:focus {\r\n  background-color: #ffffdd;\r\n}\r\n\r\n.textbox > input.error {\r\n  border-color: #f22;\r\n}\r\n\r\n.textbox > .error-message {\r\n  color: #f22;\r\n  font-size: 0.8em;\r\n}\r\n", ""]);
+	exports.push([module.id, ".textbox {\r\n  padding: 3px 0px;\r\n  display: block;\r\n}\r\n\r\n.textbox > input {\r\n  border: solid 1px #333;\r\n  display: block;\r\n}\r\n\r\n.textbox > input:focus {\r\n  background-color: #ffffdd;\r\n}\r\n\r\n.textbox > input.error {\r\n  border-color: #f22;\r\n}\r\n\r\n.textbox > .error-message {\r\n  color: #f22;\r\n  font-size: 0.9em;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -22407,6 +22529,116 @@
 
 	// exports
 
+
+/***/ },
+/* 204 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _actionsLogin = __webpack_require__(205);
+
+	var initialState = {
+	  usuario: null,
+	  mensagemErro: ''
+	};
+
+	exports['default'] = function (state, action) {
+	  if (state === undefined) state = initialState;
+
+	  switch (action.type) {
+	    case _actionsLogin.USUARIO_LOGADO:
+	      return Object.assign({}, state, {
+	        usuario: action.usuario,
+	        mensagemErro: ''
+	      });
+	    case _actionsLogin.LOGIN_MENSAGEM_ERRO:
+	      return Object.assign({}, state, {
+	        mensagemErro: action.mensagem
+	      });
+	    default:
+	      return state;
+	  }
+	};
+
+	;
+	module.exports = exports['default'];
+
+/***/ },
+/* 205 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	exports.loginMensagemErro = loginMensagemErro;
+	exports.fazerLogin = fazerLogin;
+	exports.fazerLogout = fazerLogout;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _isomorphicFetch = __webpack_require__(181);
+
+	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
+
+	var USUARIO_LOGADO = 'USUARIO_LOGADO';
+	exports.USUARIO_LOGADO = USUARIO_LOGADO;
+	var LOGIN_MENSAGEM_ERRO = 'LOGIN_MENSAGEM_ERRO';
+
+	exports.LOGIN_MENSAGEM_ERRO = LOGIN_MENSAGEM_ERRO;
+	function usuarioLogado(usuario) {
+	  return {
+	    type: USUARIO_LOGADO,
+	    usuario: usuario
+	  };
+	}
+
+	function loginMensagemErro(mensagem) {
+	  return {
+	    type: LOGIN_MENSAGEM_ERRO,
+	    mensagem: mensagem
+	  };
+	}
+
+	function fazerLogin(login, senha) {
+	  return function (dispatch) {
+	    (0, _isomorphicFetch2['default'])('/login', {
+	      method: 'POST',
+	      headers: {
+	        'Accept': 'application/json',
+	        'Content-Type': 'application/json'
+	      },
+	      body: JSON.stringify({
+	        login: login,
+	        senha: senha
+	      })
+	    }).then(function (response) {
+	      if (response.ok) {
+	        localStorage.setItem('credentials', btoa(login + ':' + senha));
+	        response.json().then(function (json) {
+	          dispatch(usuarioLogado(json));
+	        });
+	      } else {
+	        response.text().then(function (text) {
+	          dispatch(loginMensagemErro(text));
+	        });
+	      }
+	    });
+	  };
+	}
+
+	function fazerLogout() {
+	  return function (dispatch) {
+	    localStorage.removeItem('credentials');
+	    dispatch(usuarioLogado(null));
+	  };
+	}
 
 /***/ }
 /******/ ]);

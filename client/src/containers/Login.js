@@ -2,14 +2,26 @@ import React, { Component, PropTypes } from 'react';
 import TextBox from '../Components/TextBox';
 import Button from '../Components/Button';
 import { connect } from 'react-redux';
+import { fazerLogin, loginMensagemErro } from '../actions/login';
 
 require('./Login.css');
 
 class Login extends Component {
   constructor(props) {
     super(props);
+
     this.handleCloseClick = this.handleCloseClick.bind(this);
     this.handleLoginClick = this.handleLoginClick.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+
+    this.state = {
+      login: '',
+      senha: ''
+    };
+  }
+
+  componentDidMount() {
+    this.props.dispatch(loginMensagemErro(''));
   }
 
   handleCloseClick(e) {
@@ -17,8 +29,17 @@ class Login extends Component {
     this.props.onCloseClick();
   }
 
+  handleInputChange(valor, name) {
+    this.setState({
+      [name]: valor
+    });
+  }
+
   handleLoginClick() {
-    alert('Não implementado');
+    this.props.dispatch(fazerLogin(
+      this.state.login,
+      this.state.senha
+    ));
   }
 
   render() {
@@ -30,8 +51,20 @@ class Login extends Component {
             <i className="fa fa-times"></i>
           </a>
         </h2>
-        <TextBox label="Usuário" />
-        <TextBox label="Senha" type="password" />
+        <TextBox
+          name="login"
+          label="Usuário"
+          onChange={this.handleInputChange}
+        />
+        <TextBox
+          name="senha"
+          label="Senha"
+          onChange={this.handleInputChange}
+          type="password"
+        />
+        <span className="error-message">
+          {this.props.mensagemErro}
+        </span>
         <Button onClick={this.handleLoginClick}>Login</Button>
       </div>
     );
@@ -42,4 +75,10 @@ Login.propTypes = {
   onCloseClick: PropTypes.func.isRequired
 }
 
-export default connect()(Login);
+function mapStateToProps(state) {
+  return {
+    mensagemErro: state.login.mensagemErro
+  }
+}
+
+export default connect(mapStateToProps)(Login);
