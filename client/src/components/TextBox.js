@@ -13,12 +13,18 @@ class TextBox extends Component {
     }
   }
 
+  componentWillReceiveProps(newProps) {
+    this.setState({
+      errorMessage: newProps.errorMessage
+    });
+  }
+
   handleChange() {
     const val = this.refs.input.value;
     let errorMessage = '';
 
     if (this.props.required && !val) {
-      errorMessage = 'Campo obrigatório'
+      errorMessage = 'Campo obrigatório.'
     }
 
     this.setState({

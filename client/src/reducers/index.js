@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import animais from './animais';
 import login from './login';
+import usuarios from './usuarios';
+import animais from './animais';
 
 export default combineReducers({
-  animais,
-  login
+  login,
+  usuarios,
+  animais
 });

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TextBox from '../Components/TextBox';
 import Button from '../Components/Button';
+import { informarErros, criarUsuario } from '../actions/usuarios';
 
 require('./CriarConta.css');
 
@@ -19,6 +20,10 @@ class CriarConta extends Component {
     };
   }
 
+  componentDidMount() {
+    this.props.dispatch(informarErros([]));
+  }
+
   handleInputChange(value, name) {
     this.setState({
       [name]: value
@@ -26,7 +31,7 @@ class CriarConta extends Component {
   }
 
   handleCriarClick() {
-    alert(JSON.stringify(this.state, null, 4));
+    this.props.dispatch(criarUsuario(this.state, this.props.history));
   }
 
   render() {
@@ -36,20 +41,24 @@ class CriarConta extends Component {
         <TextBox
           name="nome"
           label="Nome"
-          onChange={this.handleInputChange}
           required
+          errorMessage={this.props.erros.nome}
+          onChange={this.handleInputChange}
         />
         <TextBox
           name="login"
           label="Login"
-          onChange={this.handleInputChange}
           required
+          errorMessage={this.props.erros.login}
+          onChange={this.handleInputChange}
         />
         <TextBox
           name="senha"
           label="Senha"
-          onChange={this.handleInputChange}
+          type="password"
           required
+          errorMessage={this.props.erros.senha}
+          onChange={this.handleInputChange}
         />
         <Button onClick={this.handleCriarClick}>
           Criar
@@ -59,4 +68,16 @@ class CriarConta extends Component {
   }
 }
 
-export default connect()(CriarConta);
+function mapStateToProps(state) {
+  let erros = state.usuarios.erros.reduce((acc, x) => {
+    return Object.assign(acc, {
+      [x.prop]: x.msg
+    });
+  }, {});
+
+  return {
+    erros
+  };
+}
+
+export default connect(mapStateToProps)(CriarConta);

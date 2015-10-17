@@ -66,7 +66,7 @@ class Login extends Component {
         <span className="error-message">
           {this.props.mensagemErro}
         </span>
-        <Link to="/criar-conta">Criar Conta</Link>
+        <Link to="/criar-conta" tabIndex="-1">Criar Conta</Link>
         <Button onClick={this.handleLoginClick}>Login</Button>
       </div>
     );

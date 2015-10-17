@@ -20898,17 +20898,22 @@
 
 	var _redux = __webpack_require__(165);
 
-	var _animais = __webpack_require__(179);
-
-	var _animais2 = _interopRequireDefault(_animais);
-
 	var _login = __webpack_require__(204);
 
 	var _login2 = _interopRequireDefault(_login);
 
+	var _usuarios = __webpack_require__(286);
+
+	var _usuarios2 = _interopRequireDefault(_usuarios);
+
+	var _animais = __webpack_require__(179);
+
+	var _animais2 = _interopRequireDefault(_animais);
+
 	exports['default'] = (0, _redux.combineReducers)({
-	  animais: _animais2['default'],
-	  login: _login2['default']
+	  login: _login2['default'],
+	  usuarios: _usuarios2['default'],
+	  animais: _animais2['default']
 	});
 	module.exports = exports['default'];
 
@@ -22241,7 +22246,7 @@
 	        ),
 	        _react2['default'].createElement(
 	          _reactRouter.Link,
-	          { to: '/criar-conta' },
+	          { to: '/criar-conta', tabIndex: '-1' },
 	          'Criar Conta'
 	        ),
 	        _react2['default'].createElement(
@@ -22351,13 +22356,20 @@
 	  }
 
 	  _createClass(TextBox, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(newProps) {
+	      this.setState({
+	        errorMessage: newProps.errorMessage
+	      });
+	    }
+	  }, {
 	    key: 'handleChange',
 	    value: function handleChange() {
 	      var val = this.refs.input.value;
 	      var errorMessage = '';
 
 	      if (this.props.required && !val) {
-	        errorMessage = 'Campo obrigatório';
+	        errorMessage = 'Campo obrigatório.';
 	      }
 
 	      this.setState({
@@ -22687,6 +22699,8 @@
 
 	var _ComponentsButton2 = _interopRequireDefault(_ComponentsButton);
 
+	var _actionsUsuarios = __webpack_require__(285);
+
 	__webpack_require__(283);
 
 	var CriarConta = (function (_Component) {
@@ -22708,6 +22722,11 @@
 	  }
 
 	  _createClass(CriarConta, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.props.dispatch((0, _actionsUsuarios.informarErros)([]));
+	    }
+	  }, {
 	    key: 'handleInputChange',
 	    value: function handleInputChange(value, name) {
 	      this.setState(_defineProperty({}, name, value));
@@ -22715,7 +22734,7 @@
 	  }, {
 	    key: 'handleCriarClick',
 	    value: function handleCriarClick() {
-	      alert(JSON.stringify(this.state, null, 4));
+	      this.props.dispatch((0, _actionsUsuarios.criarUsuario)(this.state, this.props.history));
 	    }
 	  }, {
 	    key: 'render',
@@ -22731,20 +22750,24 @@
 	        _react2['default'].createElement(_ComponentsTextBox2['default'], {
 	          name: 'nome',
 	          label: 'Nome',
-	          onChange: this.handleInputChange,
-	          required: true
+	          required: true,
+	          errorMessage: this.props.erros.nome,
+	          onChange: this.handleInputChange
 	        }),
 	        _react2['default'].createElement(_ComponentsTextBox2['default'], {
 	          name: 'login',
 	          label: 'Login',
-	          onChange: this.handleInputChange,
-	          required: true
+	          required: true,
+	          errorMessage: this.props.erros.login,
+	          onChange: this.handleInputChange
 	        }),
 	        _react2['default'].createElement(_ComponentsTextBox2['default'], {
 	          name: 'senha',
 	          label: 'Senha',
-	          onChange: this.handleInputChange,
-	          required: true
+	          type: 'password',
+	          required: true,
+	          errorMessage: this.props.erros.senha,
+	          onChange: this.handleInputChange
 	        }),
 	        _react2['default'].createElement(
 	          _ComponentsButton2['default'],
@@ -22758,7 +22781,17 @@
 	  return CriarConta;
 	})(_react.Component);
 
-	exports['default'] = (0, _reactRedux.connect)()(CriarConta);
+	function mapStateToProps(state) {
+	  var erros = state.usuarios.erros.reduce(function (acc, x) {
+	    return Object.assign(acc, _defineProperty({}, x.prop, x.msg));
+	  }, {});
+
+	  return {
+	    erros: erros
+	  };
+	}
+
+	exports['default'] = (0, _reactRedux.connect)(mapStateToProps)(CriarConta);
 	module.exports = exports['default'];
 
 /***/ },
@@ -29899,6 +29932,95 @@
 
 	// exports
 
+
+/***/ },
+/* 285 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	exports.informarErros = informarErros;
+	exports.criarUsuario = criarUsuario;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _isomorphicFetch = __webpack_require__(181);
+
+	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
+
+	var _login = __webpack_require__(205);
+
+	var ERROS_USUARIOS = 'ERROS_USUARIOS';
+
+	exports.ERROS_USUARIOS = ERROS_USUARIOS;
+
+	function informarErros(erros) {
+	  return {
+	    type: ERROS_USUARIOS,
+	    erros: erros
+	  };
+	}
+
+	function criarUsuario(usuario, history) {
+	  return function (dispatch) {
+	    (0, _isomorphicFetch2['default'])('/usuarios', {
+	      method: 'POST',
+	      headers: {
+	        'Accept': 'application/json',
+	        'Content-Type': 'application/json'
+	      },
+	      body: JSON.stringify(usuario)
+	    }).then(function (response) {
+	      if (response.ok) {
+	        dispatch((0, _login.fazerLogin)(usuario.login, usuario.senha));
+	        history.pushState(null, '/');
+	      } else if (response.status === 400) {
+	        response.json().then(function (erros) {
+	          return dispatch(informarErros(erros));
+	        });
+	      } else if (response.status === 500) {
+	        response.text().then(function (text) {
+	          return alert(text);
+	        });
+	      }
+	    });
+	  };
+	}
+
+/***/ },
+/* 286 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _actionsUsuarios = __webpack_require__(285);
+
+	var initialState = {
+	  erros: []
+	};
+
+	exports['default'] = function (state, action) {
+	  if (state === undefined) state = initialState;
+
+	  switch (action.type) {
+	    case _actionsUsuarios.ERROS_USUARIOS:
+	      return Object.assign({}, state, {
+	        erros: action.erros
+	      });
+	    default:
+	      return state;
+	  }
+	};
+
+	;
+	module.exports = exports['default'];
 
 /***/ }
 /******/ ]);
