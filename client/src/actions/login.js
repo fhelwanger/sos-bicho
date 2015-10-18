@@ -1,18 +1,18 @@
 import fetch from 'isomorphic-fetch';
 
-export const USUARIO_LOGADO = 'USUARIO_LOGADO';
-export const LOGIN_MENSAGEM_ERRO = 'LOGIN_MENSAGEM_ERRO';
+export const LOGIN_INFORMAR_USUARIO = 'LOGIN_INFORMAR_USUARIO';
+export const LOGIN_INFORMAR_MENSAGEM_ERRO = 'LOGIN_INFORMAR_MENSAGEM_ERRO';
 
-function usuarioLogado(usuario) {
+function informarUsuario(usuario) {
   return {
-    type: USUARIO_LOGADO,
+    type: LOGIN_INFORMAR_USUARIO,
     usuario
   };
 }
 
-export function loginMensagemErro(mensagem) {
+export function informarMensagemErro(mensagem) {
   return {
-    type: LOGIN_MENSAGEM_ERRO,
+    type: LOGIN_INFORMAR_MENSAGEM_ERRO,
     mensagem
   };
 }
@@ -33,11 +33,11 @@ export function fazerLogin(login, senha) {
       if (response.ok) {
         localStorage.setItem('credentials', btoa(`${login}:${senha}`));
         response.json().then(json => {
-          dispatch(usuarioLogado(json));
+          dispatch(informarUsuario(json));
         });
       } else {
         response.text().then(text => {
-          dispatch(loginMensagemErro(text));
+          dispatch(informarMensagemErro(text));
         });
       }
     });
@@ -47,6 +47,6 @@ export function fazerLogin(login, senha) {
 export function fazerLogout() {
   return dispatch => {
     localStorage.removeItem('credentials');
-    dispatch(usuarioLogado(null));
+    dispatch(informarUsuario(null));
   };
 }

@@ -1,11 +1,10 @@
 import fetch from 'isomorphic-fetch';
 
-export const SOLICITAR_ANIMAIS = 'SOLICITAR_ANIMAIS';
-export const RECEBER_ANIMAIS = 'RECEBER_ANIMAIS';
+export const ANIMAIS_INFORMAR = 'ANIMAIS_INFORMAR';
 
-function receberAnimais(animais) {
+function informarAnimais(animais) {
   return {
-    type: RECEBER_ANIMAIS,
+    type: ANIMAIS_INFORMAR,
     animais
   };
 }
@@ -14,6 +13,6 @@ export function solicitarAnimais() {
   return dispatch => {
     fetch('animais')
       .then(response => response.json())
-      .then(json => dispatch(receberAnimais(json)));
+      .then(json => dispatch(informarAnimais(json)));
   };
 }

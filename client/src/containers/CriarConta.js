@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TextBox from '../Components/TextBox';
 import Button from '../Components/Button';
-import {
-  criarUsuario,
-  informarErros,
-  limparErro
-} from '../actions/usuarios';
+import { criarUsuario } from '../actions/usuarios';
+import { informarErros, limparErro } from '../actions/erros';
 
 require('./CriarConta.css');
 
@@ -75,7 +72,7 @@ class CriarConta extends Component {
 }
 
 function mapStateToProps(state) {
-  let erros = state.usuarios.erros.reduce((acc, x) => {
+  const erros = state.erros.reduce((acc, x) => {
     return Object.assign(acc, {
       [x.prop]: x.msg
     });

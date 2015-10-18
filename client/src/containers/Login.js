@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import TextBox from '../Components/TextBox';
 import Button from '../Components/Button';
-import { fazerLogin, loginMensagemErro } from '../actions/login';
+import { fazerLogin, informarMensagemErro } from '../actions/login';
 
 require('./Login.css');
 
@@ -22,7 +22,7 @@ class Login extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(loginMensagemErro(''));
+    this.props.dispatch(informarMensagemErro(''));
   }
 
   handleCloseClick(e) {
