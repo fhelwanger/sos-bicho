@@ -14,9 +14,11 @@ class TextBox extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    this.setState({
-      errorMessage: newProps.errorMessage
-    });
+    if (newProps.errorMessage) {
+      this.setState({
+        errorMessage: newProps.errorMessage
+      });
+    }
   }
 
   handleChange() {

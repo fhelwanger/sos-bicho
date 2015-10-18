@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 
 require('./Header.css')
 
@@ -31,20 +32,23 @@ class Header extends Component {
   renderToolbar() {
     if (this.props.usuario) {
       return (
-        <div>
+        <div className="toolbar">
           <span className="usuario">
             {this.props.usuario.nome}
           </span>
-          <a href="#" title="Logout" onClick={this.handleLogoutClick}>
-            <i className="fa fa-sign-out"></i>
+          <Link to="/meus-animais">
+            <i className="fa fa-paw"></i>Meus Animais
+          </Link>
+          <a href="#" onClick={this.handleLogoutClick}>
+            <i className="fa fa-sign-out"></i>Sair
           </a>
         </div>
       );
     } else {
       return (
-        <div>
-          <a href="#" title="Login" onClick={this.handleLoginClick}>
-            <i className="fa fa-sign-in"></i>
+        <div className="toolbar">
+          <a href="#" onClick={this.handleLoginClick}>
+            <i className="fa fa-sign-in"></i>Entrar
           </a>
         </div>
       );

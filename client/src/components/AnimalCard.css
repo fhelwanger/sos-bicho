@@ -29,6 +29,10 @@
   margin-left: 90px;
 }
 
-.animal-card-toolbar > i {
-  cursor: pointer;
+.animal-card-toolbar > a {
+  border: solid 1px #333;
+  padding: 3px 6px;
+  background-color: #474;
+  text-decoration: none;
+  color: #fff;
 }

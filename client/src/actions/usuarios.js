@@ -1,11 +1,19 @@
 import fetch from 'isomorphic-fetch';
 import { fazerLogin } from './login';
 
-export const ERROS_USUARIOS = 'ERROS_USUARIOS';
+export const INFORMAR_ERROS_USUARIOS = 'INFORMAR_ERROS_USUARIOS';
+export const LIMPAR_ERRO_USUARIOS = 'LIMPAR_ERRO_USUARIOS';
+
+export function limparErro(prop) {
+  return {
+    type: LIMPAR_ERRO_USUARIOS,
+    prop
+  };
+}
 
 export function informarErros(erros) {
   return {
-    type: ERROS_USUARIOS,
+    type: INFORMAR_ERROS_USUARIOS,
     erros
   };
 }

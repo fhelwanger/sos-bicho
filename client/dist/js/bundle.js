@@ -21470,6 +21470,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRouter = __webpack_require__(207);
+
 	__webpack_require__(185);
 
 	var Header = (function (_Component) {
@@ -21516,26 +21518,34 @@
 	      if (this.props.usuario) {
 	        return _react2['default'].createElement(
 	          'div',
-	          null,
+	          { className: 'toolbar' },
 	          _react2['default'].createElement(
 	            'span',
 	            { className: 'usuario' },
 	            this.props.usuario.nome
 	          ),
 	          _react2['default'].createElement(
+	            _reactRouter.Link,
+	            { to: '/meus-animais' },
+	            _react2['default'].createElement('i', { className: 'fa fa-paw' }),
+	            'Meus Animais'
+	          ),
+	          _react2['default'].createElement(
 	            'a',
-	            { href: '#', title: 'Logout', onClick: this.handleLogoutClick },
-	            _react2['default'].createElement('i', { className: 'fa fa-sign-out' })
+	            { href: '#', onClick: this.handleLogoutClick },
+	            _react2['default'].createElement('i', { className: 'fa fa-sign-out' }),
+	            'Sair'
 	          )
 	        );
 	      } else {
 	        return _react2['default'].createElement(
 	          'div',
-	          null,
+	          { className: 'toolbar' },
 	          _react2['default'].createElement(
 	            'a',
-	            { href: '#', title: 'Login', onClick: this.handleLoginClick },
-	            _react2['default'].createElement('i', { className: 'fa fa-sign-in' })
+	            { href: '#', onClick: this.handleLoginClick },
+	            _react2['default'].createElement('i', { className: 'fa fa-sign-in' }),
+	            'Entrar'
 	          )
 	        );
 	      }
@@ -21589,7 +21599,7 @@
 
 
 	// module
-	exports.push([module.id, "header {\r\n  background-color: #252;\r\n  padding: 10px 20px;\r\n  color: #fff;\r\n  height: 30px;\r\n}\r\n\r\nheader > h1 {\r\n  font-size: 2em;\r\n  float: left;\r\n}\r\n\r\nheader > div {\r\n  float: right;\r\n}\r\n\r\nheader > div > .usuario {\r\n  vertical-align: super;\r\n  margin-right: 10px;\r\n}\r\n\r\nheader > div > a {\r\n  color: #fff;\r\n  cursor: pointer;\r\n  font-size: 2em;\r\n}\r\n", ""]);
+	exports.push([module.id, "header {\r\n  background-color: #252;\r\n  padding: 10px 20px;\r\n  color: #fff;\r\n  height: 30px;\r\n}\r\n\r\nheader > h1 {\r\n  font-size: 2em;\r\n  float: left;\r\n}\r\n\r\nheader > .toolbar {\r\n  float: right;\r\n}\r\n\r\nheader > .toolbar > .usuario {\r\n  vertical-align: super;\r\n  margin-right: 30px;\r\n}\r\n\r\nheader > .toolbar > a {\r\n  color: #fff;\r\n  text-decoration: none;\r\n}\r\n\r\nheader > .toolbar > a > i {\r\n  font-size: 2em;\r\n}\r\n\r\nheader > .toolbar > a > span {\r\n  vertical-align: super;\r\n  padding-left: 5px;\r\n  margin-right: 10px;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -21942,6 +21952,7 @@
 	      return _react2['default'].createElement(_componentsAnimalCard2['default'], {
 	        key: animal.id,
 	        animal: animal,
+	        usuario: this.props.usuario,
 	        onLikeClick: this.handleLikeClick });
 	    }
 	  }]);
@@ -21951,7 +21962,8 @@
 
 	function mapStateToProps(state) {
 	  return {
-	    animais: state.animais
+	    animais: state.animais,
+	    usuario: state.login.usuario
 	  };
 	}
 
@@ -21968,7 +21980,15 @@
 	  value: true
 	});
 
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var _react = __webpack_require__(1);
 
@@ -21976,72 +21996,99 @@
 
 	__webpack_require__(191);
 
-	var AnimalCard = function AnimalCard(props) {
-	  return _react2['default'].createElement(
-	    'div',
-	    { className: 'animal-card' },
-	    _react2['default'].createElement('img', { src: props.animal.fotos[0] }),
-	    _react2['default'].createElement(
-	      'div',
-	      null,
-	      _react2['default'].createElement(
-	        'p',
-	        null,
-	        _react2['default'].createElement(
-	          'b',
-	          null,
-	          'Nome: '
-	        ),
-	        props.animal.nome
-	      ),
-	      _react2['default'].createElement(
-	        'p',
-	        null,
-	        _react2['default'].createElement(
-	          'b',
-	          null,
-	          'Espécie: '
-	        ),
-	        props.animal.especie
-	      ),
-	      _react2['default'].createElement(
-	        'p',
-	        null,
-	        _react2['default'].createElement(
-	          'b',
-	          null,
-	          'Raça: '
-	        ),
-	        props.animal.raca
-	      ),
-	      _react2['default'].createElement(
-	        'p',
-	        null,
-	        _react2['default'].createElement(
-	          'b',
-	          null,
-	          'Porte: '
-	        ),
-	        props.animal.porte
-	      ),
-	      _react2['default'].createElement(
-	        'p',
-	        null,
-	        _react2['default'].createElement(
-	          'b',
-	          null,
-	          'Idade: '
-	        ),
-	        props.animal.idade
-	      ),
-	      _react2['default'].createElement(
+	var AnimalCard = (function (_Component) {
+	  _inherits(AnimalCard, _Component);
+
+	  function AnimalCard(props) {
+	    _classCallCheck(this, AnimalCard);
+
+	    _get(Object.getPrototypeOf(AnimalCard.prototype), 'constructor', this).call(this, props);
+	    this.handleLikeClick = this.handleLikeClick.bind(this);
+	  }
+
+	  _createClass(AnimalCard, [{
+	    key: 'handleLikeClick',
+	    value: function handleLikeClick(e) {
+	      e.preventDefault();
+	      this.props.onLikeClick(this.props.animal.id);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
 	        'div',
-	        { className: 'animal-card-toolbar' },
-	        _react2['default'].createElement('i', { className: 'fa fa-heart-o', onClick: props.onLikeClick.bind(null, props.animal.id) })
-	      )
-	    )
-	  );
-	};
+	        { className: 'animal-card' },
+	        _react2['default'].createElement('img', { src: this.props.animal.fotos[0] }),
+	        _react2['default'].createElement(
+	          'div',
+	          null,
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            _react2['default'].createElement(
+	              'b',
+	              null,
+	              'Nome: '
+	            ),
+	            this.props.animal.nome
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            _react2['default'].createElement(
+	              'b',
+	              null,
+	              'Espécie: '
+	            ),
+	            this.props.animal.especie
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            _react2['default'].createElement(
+	              'b',
+	              null,
+	              'Raça: '
+	            ),
+	            this.props.animal.raca
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            _react2['default'].createElement(
+	              'b',
+	              null,
+	              'Porte: '
+	            ),
+	            this.props.animal.porte
+	          ),
+	          _react2['default'].createElement(
+	            'p',
+	            null,
+	            _react2['default'].createElement(
+	              'b',
+	              null,
+	              'Idade: '
+	            ),
+	            this.props.animal.idade
+	          ),
+	          this.props.usuario ? _react2['default'].createElement(
+	            'div',
+	            { className: 'animal-card-toolbar' },
+	            _react2['default'].createElement(
+	              'a',
+	              { href: '#', onClick: this.handleLikeClick },
+	              _react2['default'].createElement('i', { className: 'fa fa-heart-o' }),
+	              ' Eu quero!'
+	            )
+	          ) : null
+	        )
+	      );
+	    }
+	  }]);
+
+	  return AnimalCard;
+	})(_react.Component);
 
 	AnimalCard.propTypes = {
 	  animal: _react.PropTypes.object.isRequired,
@@ -22086,7 +22133,7 @@
 
 
 	// module
-	exports.push([module.id, ".animal-card {\r\n  background-color: #f4f4f4;\r\n  border: solid 1px #333;\r\n  padding: 10px;\r\n  margin: 10px 0px;\r\n  width: 100%;\r\n}\r\n\r\n.animal-card > img {\r\n  display: inline-block;\r\n  height: 150px;\r\n  width: 200px;\r\n}\r\n\r\n.animal-card > div {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.animal-card > div > p > b {\r\n  display: inline-block;\r\n  text-align: right;\r\n  width: 70px;\r\n  padding-right: 20px;\r\n}\r\n\r\n.animal-card-toolbar {\r\n  margin-top: 20px;\r\n  margin-left: 90px;\r\n}\r\n\r\n.animal-card-toolbar > i {\r\n  cursor: pointer;\r\n}\r\n", ""]);
+	exports.push([module.id, ".animal-card {\r\n  background-color: #f4f4f4;\r\n  border: solid 1px #333;\r\n  padding: 10px;\r\n  margin: 10px 0px;\r\n  width: 100%;\r\n}\r\n\r\n.animal-card > img {\r\n  display: inline-block;\r\n  height: 150px;\r\n  width: 200px;\r\n}\r\n\r\n.animal-card > div {\r\n  display: inline-block;\r\n  vertical-align: top;\r\n}\r\n\r\n.animal-card > div > p > b {\r\n  display: inline-block;\r\n  text-align: right;\r\n  width: 70px;\r\n  padding-right: 20px;\r\n}\r\n\r\n.animal-card-toolbar {\r\n  margin-top: 20px;\r\n  margin-left: 90px;\r\n}\r\n\r\n.animal-card-toolbar > a {\r\n  border: solid 1px #333;\r\n  padding: 3px 6px;\r\n  background-color: #474;\r\n  text-decoration: none;\r\n  color: #fff;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -22309,7 +22356,7 @@
 
 
 	// module
-	exports.push([module.id, ".login {\r\n  position: fixed;\r\n  left: 50%;\r\n  top: 50%;\r\n  transform: translate(-50%, -50%);\r\n  border: solid 1px #333;\r\n  background-color: #f4f4f4;\r\n  padding: 10px;\r\n}\r\n\r\n.login > h2 {\r\n  padding-bottom: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.login > h2 > a {\r\n  color: #333;\r\n  float: right;\r\n}\r\n\r\n.login > a {\r\n  display: block;\r\n}\r\n\r\n.login > .error-message {\r\n  color: #f22;\r\n  font-size: 0.9em;\r\n  display: block;\r\n}\r\n", ""]);
+	exports.push([module.id, ".login {\r\n  position: fixed;\r\n  right: 20px;\r\n  top: 10px;\r\n  border: solid 1px #333;\r\n  background-color: #f4f4f4;\r\n  padding: 10px;\r\n}\r\n\r\n.login > h2 {\r\n  padding-bottom: 10px;\r\n  width: 100%;\r\n}\r\n\r\n.login > h2 > a {\r\n  color: #333;\r\n  float: right;\r\n}\r\n\r\n.login > a {\r\n  display: block;\r\n}\r\n\r\n.login > .error-message {\r\n  color: #f22;\r\n  font-size: 0.9em;\r\n  display: block;\r\n}\r\n", ""]);
 
 	// exports
 
@@ -22358,9 +22405,11 @@
 	  _createClass(TextBox, [{
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(newProps) {
-	      this.setState({
-	        errorMessage: newProps.errorMessage
-	      });
+	      if (newProps.errorMessage) {
+	        this.setState({
+	          errorMessage: newProps.errorMessage
+	        });
+	      }
 	    }
 	  }, {
 	    key: 'handleChange',
@@ -22729,6 +22778,8 @@
 	  }, {
 	    key: 'handleInputChange',
 	    value: function handleInputChange(value, name) {
+	      this.props.dispatch((0, _actionsUsuarios.limparErro)(name));
+
 	      this.setState(_defineProperty({}, name, value));
 	    }
 	  }, {
@@ -29942,6 +29993,7 @@
 	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
+	exports.limparErro = limparErro;
 	exports.informarErros = informarErros;
 	exports.criarUsuario = criarUsuario;
 
@@ -29953,13 +30005,22 @@
 
 	var _login = __webpack_require__(205);
 
-	var ERROS_USUARIOS = 'ERROS_USUARIOS';
+	var INFORMAR_ERROS_USUARIOS = 'INFORMAR_ERROS_USUARIOS';
+	exports.INFORMAR_ERROS_USUARIOS = INFORMAR_ERROS_USUARIOS;
+	var LIMPAR_ERRO_USUARIOS = 'LIMPAR_ERRO_USUARIOS';
 
-	exports.ERROS_USUARIOS = ERROS_USUARIOS;
+	exports.LIMPAR_ERRO_USUARIOS = LIMPAR_ERRO_USUARIOS;
+
+	function limparErro(prop) {
+	  return {
+	    type: LIMPAR_ERRO_USUARIOS,
+	    prop: prop
+	  };
+	}
 
 	function informarErros(erros) {
 	  return {
-	    type: ERROS_USUARIOS,
+	    type: INFORMAR_ERROS_USUARIOS,
 	    erros: erros
 	  };
 	}
@@ -30010,9 +30071,15 @@
 	  if (state === undefined) state = initialState;
 
 	  switch (action.type) {
-	    case _actionsUsuarios.ERROS_USUARIOS:
+	    case _actionsUsuarios.INFORMAR_ERROS_USUARIOS:
 	      return Object.assign({}, state, {
 	        erros: action.erros
+	      });
+	    case _actionsUsuarios.LIMPAR_ERRO_USUARIOS:
+	      return Object.assign({}, state, {
+	        erros: state.erros.filter(function (e) {
+	          return e.prop !== action.prop;
+	        })
 	      });
 	    default:
 	      return state;

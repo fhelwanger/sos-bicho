@@ -1,8 +1,7 @@
 .login {
   position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  right: 20px;
+  top: 10px;
   border: solid 1px #333;
   background-color: #f4f4f4;
   padding: 10px;

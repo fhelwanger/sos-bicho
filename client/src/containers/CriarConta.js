@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TextBox from '../Components/TextBox';
 import Button from '../Components/Button';
-import { informarErros, criarUsuario } from '../actions/usuarios';
+import {
+  criarUsuario,
+  informarErros,
+  limparErro
+} from '../actions/usuarios';
 
 require('./CriarConta.css');
 
@@ -25,6 +29,8 @@ class CriarConta extends Component {
   }
 
   handleInputChange(value, name) {
+    this.props.dispatch(limparErro(name));
+
     this.setState({
       [name]: value
     });

@@ -31,6 +31,7 @@ class AnimaisList extends Component {
       <AnimalCard
         key={animal.id}
         animal={animal}
+        usuario={this.props.usuario}
         onLikeClick={this.handleLikeClick} />
     );
   }
@@ -38,7 +39,8 @@ class AnimaisList extends Component {
 
 function mapStateToProps(state) {
   return {
-    animais: state.animais
+    animais: state.animais,
+    usuario: state.login.usuario
   };
 }
 
