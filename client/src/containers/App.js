@@ -37,6 +37,7 @@ class App extends Component {
     });
 
     this.props.dispatch(fazerLogout());
+    this.props.history.pushState(null, '/');
   }
 
   render() {

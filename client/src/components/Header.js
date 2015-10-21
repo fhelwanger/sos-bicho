@@ -36,6 +36,9 @@ class Header extends Component {
           <span className="usuario">
             {this.props.usuario.nome}
           </span>
+          <Link to="/">
+            <i className="fa fa-home"></i>Página Inicial
+          </Link>
           <Link to="/meus-animais">
             <i className="fa fa-paw"></i>Meus Animais
           </Link>

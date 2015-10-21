@@ -27920,10 +27920,19 @@
 
 	var _containersAnimaisList2 = _interopRequireDefault(_containersAnimaisList);
 
+	var _containersMeusAnimais = __webpack_require__(288);
+
+	var _containersMeusAnimais2 = _interopRequireDefault(_containersMeusAnimais);
+
+	function verificarUsuarioLogado(nextState, replaceState) {
+	  // TODO
+	}
+
 	var routes = [{
 	  path: '/',
 	  component: _containersApp2['default'],
-	  indexRoute: { component: _containersAnimaisList2['default'] }
+	  indexRoute: { component: _containersAnimaisList2['default'] },
+	  childRoutes: [{ path: '/meus-animais', component: _containersMeusAnimais2['default'], onEnter: verificarUsuarioLogado }]
 	}, {
 	  path: '/criar-conta',
 	  component: _containersCriarConta2['default']
@@ -28009,6 +28018,7 @@
 	      });
 
 	      this.props.dispatch((0, _actionsLogin.fazerLogout)());
+	      this.props.history.pushState(null, '/');
 	    }
 	  }, {
 	    key: 'render',
@@ -28120,6 +28130,12 @@
 	            'span',
 	            { className: 'usuario' },
 	            this.props.usuario.nome
+	          ),
+	          _react2['default'].createElement(
+	            _reactRouter.Link,
+	            { to: '/' },
+	            _react2['default'].createElement('i', { className: 'fa fa-home' }),
+	            'Página Inicial'
 	          ),
 	          _react2['default'].createElement(
 	            _reactRouter.Link,
@@ -30091,6 +30107,143 @@
 
 	;
 	module.exports = exports['default'];
+
+/***/ },
+/* 288 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(204);
+
+	__webpack_require__(289);
+
+	var MeusAnimais = (function (_Component) {
+	  _inherits(MeusAnimais, _Component);
+
+	  function MeusAnimais() {
+	    _classCallCheck(this, MeusAnimais);
+
+	    _get(Object.getPrototypeOf(MeusAnimais.prototype), 'constructor', this).apply(this, arguments);
+	  }
+
+	  _createClass(MeusAnimais, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'div',
+	        { className: 'meus-animais' },
+	        _react2['default'].createElement(
+	          'h2',
+	          null,
+	          'Meus Animais'
+	        ),
+	        _react2['default'].createElement(
+	          'table',
+	          null,
+	          _react2['default'].createElement(
+	            'thead',
+	            null,
+	            _react2['default'].createElement(
+	              'tr',
+	              null,
+	              _react2['default'].createElement(
+	                'th',
+	                null,
+	                'Nome'
+	              )
+	            )
+	          ),
+	          _react2['default'].createElement(
+	            'tbody',
+	            null,
+	            _react2['default'].createElement(
+	              'tr',
+	              null,
+	              _react2['default'].createElement(
+	                'td',
+	                null,
+	                'Tom'
+	              )
+	            ),
+	            _react2['default'].createElement(
+	              'tr',
+	              null,
+	              _react2['default'].createElement(
+	                'td',
+	                null,
+	                'Pluto'
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return MeusAnimais;
+	})(_react.Component);
+
+	exports['default'] = (0, _reactRedux.connect)()(MeusAnimais);
+	module.exports = exports['default'];
+
+/***/ },
+/* 289 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(290);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(257)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./MeusAnimais.css", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./MeusAnimais.css");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 290 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(256)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".meus-animais h2 {\r\n  display: block;\r\n  margin-top: 20px;\r\n  text-align: center;\r\n  width: 100%;\r\n}\r\n", ""]);
+
+	// exports
+
 
 /***/ }
 /******/ ]);
