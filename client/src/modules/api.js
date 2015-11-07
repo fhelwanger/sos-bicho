@@ -17,7 +17,11 @@ export function post(endpoint, data) {
 
     fetch(basePath + endpoint, options).then(response => {
       if (response.ok) {
-        response.json().then(resolve);
+        if (response.status === 200) {
+          response.json().then(resolve);
+        } else {
+          resolve();
+        }
       } else {
         if (response.status === 400) {
           response.json().then(reject);

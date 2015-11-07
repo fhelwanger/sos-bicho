@@ -10,7 +10,7 @@ function post(req, res) {
   validarUsuario(dados, function (err, erros) {
     if (err) {
       return res.status(500).send(err);
-    } else if (erros.length > 0) {
+    } else if (Object.keys(erros).length > 0) {
       return res.status(400).json(erros);
     }
 
@@ -27,27 +27,18 @@ function post(req, res) {
 }
 
 function validarUsuario(dados, callback) {
-  var erros = [];
+  var erros = {};
 
   if (!dados.nome || dados.nome.trim() === '') {
-    erros.push({
-      prop: 'nome',
-      msg: 'Campo obrigatório.'
-    });
+    erros.nome = 'Campo obrigatório.';
   }
 
   if (!dados.login || dados.login.trim() === '') {
-    erros.push({
-      prop: 'login',
-      msg: 'Campo obrigatório.'
-    });
+    erros.login = 'Campo obrigatório.';
   }
 
   if (!dados.senha || dados.senha.trim() === '') {
-    erros.push({
-      prop: 'senha',
-      msg: 'Campo obrigatório.'
-    });
+    erros.senha = 'Campo obrigatório.';
   }
 
   db.query('SELECT id FROM usuarios WHERE login = $1', [dados.login], function (err, result) {
@@ -56,10 +47,7 @@ function validarUsuario(dados, callback) {
     }
 
     if (result.rowCount > 0) {
-      erros.push({
-        prop: 'login',
-        msg: 'Login já cadastrado.'
-      });
+      erros.login = 'Login já cadastrado.';
     }
 
     callback(null, erros);
