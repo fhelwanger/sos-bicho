@@ -1,0 +1,24 @@
+@import '_variables.scss';
+
+.form-row {
+  padding: 3px 0px;
+  display: block;
+
+  input {
+    border: solid 1px $textbox-border-color;
+    display: block;
+
+    &.active {
+      background-color: $textbox-active-background-color;
+    }
+
+    &.invalid {
+      border-color: $textbox-invalid-border-color;
+    }
+  }
+
+  .error-message {
+    color: $error-font-color;
+    font-size: $error-font-size;
+  }
+}

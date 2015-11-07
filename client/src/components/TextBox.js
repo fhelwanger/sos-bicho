@@ -1,68 +1,40 @@
 import React, { Component, PropTypes } from 'react';
-
-require('./TextBox.css');
+import classNames from 'classnames';
+import '../styles/TextBox.scss';
 
 class TextBox extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleChange = this.handleChange.bind(this);
-
-    this.state = {
-      errorMessage: ''
-    }
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.errorMessage) {
-      this.setState({
-        errorMessage: newProps.errorMessage
-      });
-    }
-  }
-
-  handleChange() {
-    const val = this.refs.input.value;
-    let errorMessage = '';
-
-    if (this.props.required && !val) {
-      errorMessage = 'Campo obrigatório.'
-    }
-
-    this.setState({
-      errorMessage
-    });
-
-    if (this.props.onChange) {
-      this.props.onChange(val, this.props.name);
-    }
+  static propTypes = {
+    label: PropTypes.string.isRequired,
+    type: PropTypes.string,
+    autoFocus: PropTypes.bool,
+    field: PropTypes.object.isRequired
   }
 
   render() {
-    return (
-      <label className="textbox">
-        {this.props.label}
-        <input
-          ref="input"
-          name={this.props.name}
-          type={this.props.type || 'text'}
-          className={this.state.errorMessage ? 'error' : ''}
-          onChange={this.handleChange}
-        />
-        <span className="error-message">
-          {this.state.errorMessage}
-        </span>
-      </label>
-    )
-  }
-}
+    const {
+      label,
+      type,
+      autoFocus,
+      field
+    } = this.props;
 
-TextBox.propTypes = {
-  name: PropTypes.string,
-  type: PropTypes.string,
-  label: PropTypes.string,
-  required: PropTypes.bool,
-  onChange: PropTypes.func
+    return (
+      <div className="form-row">
+        <label htmlFor={field.name}>{label}</label>
+        <input
+          id={field.name}
+          type={type || 'text'}
+          autoFocus={autoFocus}
+          className={classNames({
+            'invalid': field.touched && field.invalid,
+            'active': field.active
+          })}
+          {...field}
+        />
+        {field.touched && field.error && <span className="error-message">{field.error}</span>}
+      </div>
+    );
+  }
 }
 
 export default TextBox;

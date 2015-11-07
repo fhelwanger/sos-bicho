@@ -1,0 +1,30 @@
+@import '_variables.scss';
+
+.login {
+  position: fixed;
+  right: 20px;
+  top: 10px;
+  border: solid 1px $panel-border-color;
+  background-color: $panel-background-color;
+  padding: 10px;
+
+  h2 {
+    padding-bottom: 10px;
+    width: 100%;
+
+    a {
+      color: $font-color;
+      float: right;
+    }
+  }
+
+  a {
+    display: block;
+  }
+
+  .error-message {
+    color: $error-font-color;
+    font-size: $error-font-size;
+    display: block;
+  }
+}

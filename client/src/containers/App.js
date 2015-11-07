@@ -1,58 +1,40 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
+import { setLoginVisible } from '../actions/app';
+import { fazerLogout } from '../actions/login';
 import Header from '../components/Header';
 import Login from './Login';
-import { fazerLogout } from '../actions/login';
+import '../styles/App.scss';
 
-require('./App.css');
-
+@connect(
+  state => ({
+    loginVisible: state.app.loginVisible,
+    usuarioLogado: state.app.usuarioLogado
+  }),
+  { setLoginVisible, fazerLogout }
+)
 class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleLoginOpen = this.handleLoginOpen.bind(this);
-    this.handleLoginClose = this.handleLoginClose.bind(this);
-    this.handleLogout = this.handleLogout.bind(this);
-
-    this.state = {
-      loginVisible: false
-    };
+  static propTypes = {
+    loginVisible: PropTypes.bool.isRequired
   }
 
-  handleLoginOpen() {
-    this.setState({
-      loginVisible: true
-    });
+  handleLoginClick() {
+    this.props.setLoginVisible(true);
   }
 
-  handleLoginClose() {
-    this.setState({
-      loginVisible: false
-    });
-  }
-
-  handleLogout() {
-    this.setState({
-      loginVisible: false
-    });
-
-    this.props.dispatch(fazerLogout());
-    this.props.history.pushState(null, '/');
+  handleLogoutClick() {
+    this.props.fazerLogout();
   }
 
   render() {
     return (
       <div>
         <Header
-          usuario={this.props.usuario}
-          onLoginClick={this.handleLoginOpen}
-          onLogoutClick={this.handleLogout}
+          onLoginClick={::this.handleLoginClick}
+          onLogoutClick={::this.handleLogoutClick}
+          usuarioLogado={this.props.usuarioLogado}
         />
-        {
-          this.state.loginVisible && !this.props.usuario
-          ? <Login onCloseClick={this.handleLoginClose} />
-          : null
-        }
+        {this.props.loginVisible && <Login />}
         <div className="container">
           {this.props.children}
         </div>
@@ -61,10 +43,4 @@ class App extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    usuario: state.login.usuario
-  };
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

@@ -1,86 +1,60 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import TextBox from '../Components/TextBox';
-import Button from '../Components/Button';
-import { fazerLogin, informarMensagemErro } from '../actions/login';
+import { reduxForm } from 'redux-form';
+import { setLoginVisible } from '../actions/app';
+import { fazerLogin } from '../actions/login';
+import TextBox from '../components/TextBox';
+import Button from '../components/Button';
+import '../styles/Login.scss';
 
-require('./Login.css');
-
+@connect(
+  null,
+  { setLoginVisible, fazerLogin }
+)
+@reduxForm({
+  form: 'login',
+  fields: ['login', 'senha']
+})
 class Login extends Component {
-  constructor(props) {
-    super(props);
-
-    this.handleCloseClick = this.handleCloseClick.bind(this);
-    this.handleLoginClick = this.handleLoginClick.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-
-    this.state = {
-      login: '',
-      senha: ''
-    };
+  static propTypes = {
+    fields: PropTypes.object.isRequired,
+    handleSubmit: PropTypes.func.isRequired
   }
 
-  componentDidMount() {
-    this.props.dispatch(informarMensagemErro(''));
+  handleSubmit(values, dispatch) {
+    return this.props.fazerLogin(values.login, values.senha);
   }
 
   handleCloseClick(e) {
     e.preventDefault();
-    this.props.onCloseClick();
-  }
-
-  handleInputChange(valor, name) {
-    this.setState({
-      [name]: valor
-    });
-  }
-
-  handleLoginClick() {
-    this.props.dispatch(fazerLogin(
-      this.state.login,
-      this.state.senha
-    ));
+    this.props.setLoginVisible(false);
   }
 
   render() {
+    const {
+      fields: { login, senha },
+      handleSubmit
+    } = this.props;
+
     return (
-      <div className="login">
+      <form className="login" onSubmit={handleSubmit(::this.handleSubmit)}>
         <h2>
           Login
-          <a href="#" onClick={this.handleCloseClick}>
+          <a href="#" onClick={::this.handleCloseClick}>
             <i className="fa fa-times"></i>
           </a>
         </h2>
-        <TextBox
-          name="login"
-          label="Usuário"
-          onChange={this.handleInputChange}
-        />
-        <TextBox
-          name="senha"
-          label="Senha"
-          onChange={this.handleInputChange}
-          type="password"
-        />
+        <TextBox label="Usuário" field={login} autoFocus />
+        <TextBox label="Senha" field={senha} type="password" />
         <span className="error-message">
-          {this.props.mensagemErro}
+          {this.props.error}
         </span>
         <Link to="/criar-conta" tabIndex="-1">Criar Conta</Link>
-        <Button onClick={this.handleLoginClick}>Login</Button>
-      </div>
+        <Button type="submit">Login</Button>
+      </form>
     );
   }
 }
 
-Login.propTypes = {
-  onCloseClick: PropTypes.func.isRequired
-}
-
-function mapStateToProps(state) {
-  return {
-    mensagemErro: state.login.mensagemErro
-  }
-}
-
-export default connect(mapStateToProps)(Login);
+export default Login;

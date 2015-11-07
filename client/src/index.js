@@ -1,12 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from 'react-router';
 import { Provider } from 'react-redux';
-import { createHashHistory } from 'history';
-import routes from './routes';
+import { ReduxRouter } from 'redux-router';
 import store from './store';
 import { fazerLogin } from './actions/login';
-
 const credentials = localStorage.getItem('credentials');
 
 if (credentials) {
@@ -14,13 +11,9 @@ if (credentials) {
   store.dispatch(fazerLogin(login, senha));
 }
 
-const history = createHashHistory({
-  queryKey: false
-});
-
 ReactDOM.render(
   <Provider store={store}>
-    <Router routes={routes} history={history} />
+    <ReduxRouter />
   </Provider>,
   document.getElementById('root')
 );
