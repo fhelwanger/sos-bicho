@@ -4,6 +4,7 @@ import '../styles/Button.scss';
 class Button extends Component {
   static propTypes = {
     onClick: PropTypes.func,
+    submitting: PropTypes.bool,
     type: PropTypes.string
   }
 
@@ -15,13 +16,15 @@ class Button extends Component {
 
   render() {
     return (
-      <button
-        className="button"
-        type={this.props.type || 'button'}
-        onClick={::this.handleOnClick}
-      >
-        {this.props.children}
-      </button>
+      <div className="button">
+        <button
+          type={this.props.type || 'button'}
+          onClick={::this.handleOnClick}
+        >
+          {this.props.children}
+        </button>
+        {this.props.submitting && <i className="fa fa-spinner fa-spin"></i>}
+      </div>
     )
   }
 }

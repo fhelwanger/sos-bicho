@@ -30,6 +30,7 @@ import '../styles/Animal.scss';
 class Animal extends Component {
   static propTypes = {
     fields: PropTypes.object.isRequired,
+    submitting: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired
   }
 
@@ -54,6 +55,7 @@ class Animal extends Component {
     const {
       fields,
       especies,
+      submitting,
       handleSubmit
     } = this.props;
 
@@ -97,7 +99,7 @@ class Animal extends Component {
           fotos={this.props.fotos}
           onAddFoto={::this.handleAddFoto}
         />
-        <Button type="submit">Salvar</Button>
+        <Button type="submit" submitting={submitting}>Salvar</Button>
       </form>
     );
   }
