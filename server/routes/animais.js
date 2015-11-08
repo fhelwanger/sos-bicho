@@ -86,6 +86,6 @@ function createSaveFoto(animalId) {
 }
 
 module.exports = function (app) {
-  app.get('/animais', auth, get);
-  app.post('/animais', auth, post);
+  app.get('/animais', auth(), get);
+  app.post('/animais', auth(), post);
 };

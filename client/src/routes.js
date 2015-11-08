@@ -1,5 +1,6 @@
 import App from './containers/App';
 import CriarConta from './containers/CriarConta';
+import Feed from './containers/Feed';
 import MeusAnimais from './containers/MeusAnimais';
 import Animal from './containers/Animal';
 
@@ -13,6 +14,7 @@ const routes = [
   {
     path: '/',
     component: App,
+    indexRoute: { component: Feed },
     childRoutes: [
       { path: 'meus-animais', component: MeusAnimais, onEnter: checkLoggedIn },
       { path: 'animal', component: Animal, onEnter: checkLoggedIn }

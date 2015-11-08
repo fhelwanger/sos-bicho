@@ -1,4 +1,5 @@
 var async = require('async');
+var auth = require('../auth');
 var db = require('../db');
 
 function get(req, res) {
@@ -13,6 +14,10 @@ function get(req, res) {
     "a.idade " +
     "FROM animais a " +
     "INNER JOIN especies e ON e.id = a.especieId";
+
+  if (req.user) {
+    query += " WHERE a.usuarioId != " + req.user.id;
+  }
 
   db.query(query, function (err, result) {
     if (err) {
@@ -30,7 +35,7 @@ function get(req, res) {
           }
 
           result.rows.forEach(function (r)  {
-            animal.fotos.push('fotos/' + r.id);
+            animal.fotos.push('/api/fotos/' + r.id);
           });
 
           callback();
@@ -48,5 +53,5 @@ function get(req, res) {
 }
 
 module.exports = function (app) {
-  app.get('/feed', get);
+  app.get('/feed', auth({ optional: true }), get);
 };
