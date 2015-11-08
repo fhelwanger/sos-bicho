@@ -108,10 +108,16 @@ webpackJsonp([0],{
 
 	var _containersAnimal2 = _interopRequireDefault(_containersAnimal);
 
+	function checkLoggedIn(nextState, replaceState) {
+	  if (!localStorage.getItem('credentials')) {
+	    replaceState(null, '/');
+	  }
+	}
+
 	var routes = [{
 	  path: '/',
 	  component: _containersApp2['default'],
-	  childRoutes: [{ path: 'meus-animais', component: _containersMeusAnimais2['default'] }, { path: 'animal(/:id)', component: _containersAnimal2['default'] }]
+	  childRoutes: [{ path: 'meus-animais', component: _containersMeusAnimais2['default'], onEnter: checkLoggedIn }, { path: 'animal(/:id)', component: _containersAnimal2['default'], onEnter: checkLoggedIn }]
 	}, {
 	  path: '/criar-conta',
 	  component: _containersCriarConta2['default']
