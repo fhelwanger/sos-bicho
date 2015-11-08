@@ -18,6 +18,7 @@ require('./routes/usuarios')(api);
 require('./routes/feed')(api);
 require('./routes/fotos')(api);
 require('./routes/animais')(api);
+require('./routes/especies')(api);
 
 var server = app.listen(1337, function () {
   console.log('Listening on port %s', server.address().port);

@@ -104,10 +104,14 @@ webpackJsonp([0],{
 
 	var _containersMeusAnimais2 = _interopRequireDefault(_containersMeusAnimais);
 
+	var _containersAnimal = __webpack_require__(344);
+
+	var _containersAnimal2 = _interopRequireDefault(_containersAnimal);
+
 	var routes = [{
 	  path: '/',
 	  component: _containersApp2['default'],
-	  childRoutes: [{ path: 'meus-animais', component: _containersMeusAnimais2['default'] }]
+	  childRoutes: [{ path: 'meus-animais', component: _containersMeusAnimais2['default'] }, { path: 'animal(/:id)', component: _containersAnimal2['default'] }]
 	}, {
 	  path: '/criar-conta',
 	  component: _containersCriarConta2['default']
@@ -1045,7 +1049,7 @@ webpackJsonp([0],{
 
 
 	// module
-	exports.push([module.id, ".form-row {\n  padding: 3px 0px;\n  display: block; }\n  .form-row input {\n    border: solid 1px #333;\n    display: block; }\n    .form-row input.active {\n      background-color: #ffffdd; }\n    .form-row input.invalid {\n      border-color: #f22; }\n  .form-row .error-message {\n    color: #f22;\n    font-size: 0.9em; }\n", ""]);
+	exports.push([module.id, ".form-row {\n  padding: 3px 0px;\n  display: block; }\n  .form-row input {\n    border: solid 1px #333;\n    display: block;\n    width: 200px; }\n    .form-row input.active {\n      background-color: #ffffdd; }\n    .form-row input.invalid {\n      border-color: #f22; }\n  .form-row .error-message {\n    color: #f22;\n    font-size: 0.9em; }\n", ""]);
 
 	// exports
 
@@ -1363,6 +1367,7 @@ webpackJsonp([0],{
 
 	_validateJs.validate.options = { fullMessages: false };
 	_validateJs.validate.validators.presence.options = { message: 'Campo obrigatório.' };
+	_validateJs.validate.validators.numericality.options = { message: 'Valor deve ser numérico.' };
 
 	exports['default'] = function (attributes, constraints) {
 	  return _validateJs.validate(attributes, constraints) || {};
@@ -1459,7 +1464,13 @@ webpackJsonp([0],{
 
 	var _reactRedux = __webpack_require__(159);
 
+	var _reduxRouter = __webpack_require__(177);
+
 	var _actionsAnimais = __webpack_require__(337);
+
+	var _componentsButton = __webpack_require__(321);
+
+	var _componentsButton2 = _interopRequireDefault(_componentsButton);
 
 	var _componentsTable = __webpack_require__(343);
 
@@ -1480,6 +1491,10 @@ webpackJsonp([0],{
 	    this.props.carregarLista();
 	  };
 
+	  MeusAnimais.prototype.handleNovoClick = function handleNovoClick() {
+	    this.props.pushState(null, '/animal');
+	  };
+
 	  MeusAnimais.prototype.render = function render() {
 	    var columns = [{ key: 'nome', header: 'Nome' }];
 
@@ -1489,7 +1504,12 @@ webpackJsonp([0],{
 	      _react2['default'].createElement(
 	        'h2',
 	        null,
-	        'Meus animais'
+	        'Meus animais',
+	        _react2['default'].createElement(
+	          _componentsButton2['default'],
+	          { onClick: this.handleNovoClick.bind(this) },
+	          'Novo'
+	        )
 	      ),
 	      _react2['default'].createElement(_componentsTable2['default'], {
 	        columns: columns,
@@ -1503,7 +1523,7 @@ webpackJsonp([0],{
 	    return {
 	      lista: state.animais.lista
 	    };
-	  }, { carregarLista: _actionsAnimais.carregarLista })(MeusAnimais) || MeusAnimais;
+	  }, { carregarLista: _actionsAnimais.carregarLista, pushState: _reduxRouter.pushState })(MeusAnimais) || MeusAnimais;
 	  return MeusAnimais;
 	})(_react.Component);
 
@@ -1519,8 +1539,11 @@ webpackJsonp([0],{
 
 	exports.__esModule = true;
 	exports.carregarLista = carregarLista;
+	exports.criarAnimal = criarAnimal;
 
 	var _modulesApi = __webpack_require__(274);
+
+	var _reduxRouter = __webpack_require__(177);
 
 	var ANIMAIS_SET_LISTA = 'ANIMAIS_SET_LISTA';
 
@@ -1530,6 +1553,14 @@ webpackJsonp([0],{
 	  return function (dispatch) {
 	    return _modulesApi.get('animais').then(function (animais) {
 	      dispatch(setarLista(animais));
+	    });
+	  };
+	}
+
+	function criarAnimal(dados) {
+	  return function (dispatch) {
+	    return _modulesApi.post('animais', dados).then(function () {
+	      dispatch(_reduxRouter.pushState(null, '/meus-animais'));
 	    });
 	  };
 	}
@@ -1566,11 +1597,16 @@ webpackJsonp([0],{
 
 	var _animais2 = _interopRequireDefault(_animais);
 
+	var _especies = __webpack_require__(351);
+
+	var _especies2 = _interopRequireDefault(_especies);
+
 	var reducers = _redux.combineReducers({
 	  router: _reduxRouter.routerStateReducer,
 	  form: _reduxForm.reducer,
 	  app: _app2['default'],
-	  animais: _animais2['default']
+	  animais: _animais2['default'],
+	  especies: _especies2['default']
 	});
 
 	exports['default'] = reducers;
@@ -1678,7 +1714,7 @@ webpackJsonp([0],{
 
 
 	// module
-	exports.push([module.id, ".meus-animais {\n  margin-top: 20px; }\n  .meus-animais table {\n    margin-top: 10px; }\n", ""]);
+	exports.push([module.id, ".meus-animais {\n  margin-top: 20px; }\n  .meus-animais h2 .button {\n    margin-top: 0px;\n    float: right; }\n  .meus-animais table {\n    margin-top: 10px; }\n", ""]);
 
 	// exports
 
@@ -1775,6 +1811,407 @@ webpackJsonp([0],{
 	})(_react.Component);
 
 	exports['default'] = Table;
+	module.exports = exports['default'];
+
+/***/ },
+
+/***/ 344:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(159);
+
+	var _reduxForm = __webpack_require__(283);
+
+	var _modulesValidate = __webpack_require__(329);
+
+	var _modulesValidate2 = _interopRequireDefault(_modulesValidate);
+
+	var _actionsEspecies = __webpack_require__(350);
+
+	var _actionsAnimais = __webpack_require__(337);
+
+	var _componentsTextBox = __webpack_require__(317);
+
+	var _componentsTextBox2 = _interopRequireDefault(_componentsTextBox);
+
+	var _componentsSelect = __webpack_require__(347);
+
+	var _componentsSelect2 = _interopRequireDefault(_componentsSelect);
+
+	var _componentsButton = __webpack_require__(321);
+
+	var _componentsButton2 = _interopRequireDefault(_componentsButton);
+
+	__webpack_require__(345);
+
+	var Animal = (function (_Component) {
+	  _inherits(Animal, _Component);
+
+	  function Animal() {
+	    _classCallCheck(this, _Animal);
+
+	    _Component.apply(this, arguments);
+	  }
+
+	  Animal.prototype.componentDidMount = function componentDidMount() {
+	    this.props.carregarEspecies();
+	  };
+
+	  Animal.prototype.handleSubmit = function handleSubmit(values, dispatch) {
+	    return this.props.criarAnimal(values);
+	  };
+
+	  Animal.prototype.render = function render() {
+	    var _props = this.props;
+	    var fields = _props.fields;
+	    var especies = _props.especies;
+	    var handleSubmit = _props.handleSubmit;
+
+	    var portes = [{ id: 1, nome: 'Pequeno' }, { id: 2, nome: 'Médio' }, { id: 3, nome: 'Grande' }];
+
+	    return _react2['default'].createElement(
+	      'form',
+	      { className: 'animal', onSubmit: handleSubmit(this.handleSubmit.bind(this)) },
+	      _react2['default'].createElement(
+	        'h2',
+	        null,
+	        'Dados do Animal'
+	      ),
+	      _react2['default'].createElement(_componentsTextBox2['default'], {
+	        label: 'Nome',
+	        field: fields.nome,
+	        autoFocus: true
+	      }),
+	      _react2['default'].createElement(_componentsSelect2['default'], {
+	        label: 'Espécie',
+	        field: fields.especie,
+	        dataSource: especies,
+	        displayProperty: 'nome',
+	        valueProperty: 'id'
+	      }),
+	      _react2['default'].createElement(_componentsTextBox2['default'], {
+	        label: 'Raça',
+	        field: fields.raca
+	      }),
+	      _react2['default'].createElement(_componentsSelect2['default'], {
+	        label: 'Porte',
+	        field: fields.porte,
+	        dataSource: portes,
+	        displayProperty: 'nome',
+	        valueProperty: 'id'
+	      }),
+	      _react2['default'].createElement(_componentsTextBox2['default'], {
+	        label: 'Idade',
+	        field: fields.idade
+	      }),
+	      _react2['default'].createElement(
+	        _componentsButton2['default'],
+	        { type: 'submit' },
+	        'Salvar'
+	      )
+	    );
+	  };
+
+	  _createClass(Animal, null, [{
+	    key: 'propTypes',
+	    value: {
+	      fields: _react.PropTypes.object.isRequired,
+	      handleSubmit: _react.PropTypes.func.isRequired
+	    },
+	    enumerable: true
+	  }]);
+
+	  var _Animal = Animal;
+	  Animal = _reduxForm.reduxForm({
+	    form: 'animal',
+	    fields: ['nome', 'especie', 'raca', 'porte', 'idade'],
+	    validate: function validate(values) {
+	      return _modulesValidate2['default'](values, {
+	        nome: { presence: true },
+	        especie: { presence: true },
+	        porte: { presence: true },
+	        idade: { numericality: { onlyInteger: true, greaterThan: 0 } }
+	      });
+	    }
+	  })(Animal) || Animal;
+	  Animal = _reactRedux.connect(function (state) {
+	    return {
+	      especies: state.especies.lista
+	    };
+	  }, { carregarEspecies: _actionsEspecies.carregarLista, criarAnimal: _actionsAnimais.criarAnimal })(Animal) || Animal;
+	  return Animal;
+	})(_react.Component);
+
+	exports['default'] = Animal;
+	module.exports = exports['default'];
+
+/***/ },
+
+/***/ 345:
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(346);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(281)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Animal.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Animal.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+
+/***/ 346:
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(280)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".animal {\n  margin-top: 20px; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+
+/***/ 347:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _classnames = __webpack_require__(318);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	__webpack_require__(348);
+
+	var Select = (function (_Component) {
+	  _inherits(Select, _Component);
+
+	  function Select() {
+	    _classCallCheck(this, Select);
+
+	    _Component.apply(this, arguments);
+	  }
+
+	  Select.prototype.render = function render() {
+	    var _props = this.props;
+	    var label = _props.label;
+	    var autoFocus = _props.autoFocus;
+	    var field = _props.field;
+	    var dataSource = _props.dataSource;
+
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: 'form-row' },
+	      _react2['default'].createElement(
+	        'label',
+	        { htmlFor: field.name },
+	        label
+	      ),
+	      _react2['default'].createElement(
+	        'select',
+	        _extends({
+	          id: field.name,
+	          autoFocus: autoFocus,
+	          className: _classnames2['default']({
+	            'invalid': field.touched && field.invalid,
+	            'active': field.active
+	          })
+	        }, field),
+	        _react2['default'].createElement('option', null),
+	        dataSource.map(this.renderOption.bind(this))
+	      ),
+	      field.touched && field.error && _react2['default'].createElement(
+	        'span',
+	        { className: 'error-message' },
+	        field.error
+	      )
+	    );
+	  };
+
+	  Select.prototype.renderOption = function renderOption(option) {
+	    var _props2 = this.props;
+	    var displayProperty = _props2.displayProperty;
+	    var valueProperty = _props2.valueProperty;
+
+	    return _react2['default'].createElement(
+	      'option',
+	      {
+	        key: option[valueProperty],
+	        value: option[valueProperty]
+	      },
+	      option[displayProperty]
+	    );
+	  };
+
+	  _createClass(Select, null, [{
+	    key: 'propTypes',
+	    value: {
+	      label: _react.PropTypes.string.isRequired,
+	      autoFocus: _react.PropTypes.bool,
+	      field: _react.PropTypes.object.isRequired,
+	      dataSource: _react.PropTypes.arrayOf(_react.PropTypes.object).isRequired,
+	      displayProperty: _react.PropTypes.string.isRequired,
+	      valueProperty: _react.PropTypes.string.isRequired
+	    },
+	    enumerable: true
+	  }]);
+
+	  return Select;
+	})(_react.Component);
+
+	exports['default'] = Select;
+	module.exports = exports['default'];
+
+/***/ },
+
+/***/ 348:
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(349);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(281)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Select.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Select.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+
+/***/ 349:
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(280)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".form-row select {\n  border: solid 1px #333;\n  display: block;\n  width: 200px; }\n  .form-row select.active {\n    background-color: #ffffdd; }\n  .form-row select.invalid {\n    border-color: #f22; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+
+/***/ 350:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.carregarLista = carregarLista;
+
+	var _modulesApi = __webpack_require__(274);
+
+	var ESPECIES_SET_LISTA = 'ESPECIES_SET_LISTA';
+
+	exports.ESPECIES_SET_LISTA = ESPECIES_SET_LISTA;
+
+	function carregarLista() {
+	  return function (dispatch) {
+	    return _modulesApi.get('especies').then(function (especies) {
+	      dispatch(setarLista(especies));
+	    });
+	  };
+	}
+
+	function setarLista(lista) {
+	  return {
+	    type: ESPECIES_SET_LISTA,
+	    lista: lista
+	  };
+	}
+
+/***/ },
+
+/***/ 351:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _actionsEspecies = __webpack_require__(350);
+
+	var initialState = {
+	  lista: []
+	};
+
+	exports['default'] = function (state, action) {
+	  if (state === undefined) state = initialState;
+
+	  switch (action.type) {
+	    case _actionsEspecies.ESPECIES_SET_LISTA:
+	      return Object.assign({}, state, {
+	        lista: action.lista
+	      });
+	    default:
+	      return state;
+	  }
+	};
+
 	module.exports = exports['default'];
 
 /***/ }
