@@ -6,17 +6,27 @@ function get(req, res) {
   var query =
     "SELECT a.id, a.nome, e.nome as especie, a.raca, " +
     "case a.porte " +
-    "    when 1 then 'Pequeno' " +
-    "    when 2 then 'Médio' " +
-    "    when 3 then 'Grande' " +
-    "    else null " +
+    "  when 1 then 'Pequeno' " +
+    "  when 2 then 'Médio' " +
+    "  when 3 then 'Grande' " +
+    "  else null " +
     "end as porte, " +
-    "a.idade " +
-    "FROM animais a " +
-    "INNER JOIN especies e ON e.id = a.especieId";
+    "a.idade ";
 
   if (req.user) {
-    query += " WHERE a.usuarioId != " + req.user.id;
+    query +=
+      ", EXISTS (" +
+      "  SELECT animalId FROM animais_interesses " +
+      "  WHERE animalId = a.id AND usuarioId = " + req.user.id +
+      ") as interessado ";
+  }
+
+  query +=
+    "FROM animais a " +
+    "INNER JOIN especies e ON e.id = a.especieId ";
+
+  if (req.user) {
+    query += "WHERE a.usuarioId != " + req.user.id;
   }
 
   db.query(query, function (err, result) {
