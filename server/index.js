@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 var app = express();
 var api = express.Router();
 
+app.set('port', process.env.PORT || 1337);
+
 app.use(express.static('client/dist'));
 app.use(bodyParser.json({ limit: '20mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '20mb' }));
@@ -20,6 +22,6 @@ require('./routes/fotos')(api);
 require('./routes/animais')(api);
 require('./routes/especies')(api);
 
-var server = app.listen(1337, function () {
+var server = app.listen(app.get('port'), function () {
   console.log('Listening on port %s', server.address().port);
 });

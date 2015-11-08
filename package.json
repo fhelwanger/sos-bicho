@@ -2,6 +2,9 @@
   "name": "sos-bicho",
   "version": "1.0.0",
   "description": "Portal web para adoção de animais",
+  "scripts": {
+    "start": "node server/index.js"
+  },
   "dependencies": {
     "async": "^1.5.0",
     "basic-auth": "^1.0.3",

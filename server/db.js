@@ -1,5 +1,6 @@
 var pg = require('pg');
-var connectionString = "postgres://postgres:_43690@localhost/sos_bicho";
+var connectionString =
+  process.env.DATABASE_URL || "postgres://postgres:_43690@localhost/sos_bicho";
 
 function query(query, parameters, callback) {
   if (!callback) {
