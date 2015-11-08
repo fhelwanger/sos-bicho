@@ -15,7 +15,7 @@ const routes = [
     component: App,
     childRoutes: [
       { path: 'meus-animais', component: MeusAnimais, onEnter: checkLoggedIn },
-      { path: 'animal(/:id)', component: Animal, onEnter: checkLoggedIn }
+      { path: 'animal', component: Animal, onEnter: checkLoggedIn }
     ]
   },
   {

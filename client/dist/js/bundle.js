@@ -19,11 +19,11 @@ webpackJsonp([0],{
 
 	var _reduxRouter = __webpack_require__(177);
 
-	var _store = __webpack_require__(239);
+	var _store = __webpack_require__(243);
 
 	var _store2 = _interopRequireDefault(_store);
 
-	var _actionsLogin = __webpack_require__(273);
+	var _actionsLogin = __webpack_require__(253);
 
 	var credentials = localStorage.getItem('credentials');
 
@@ -44,7 +44,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 239:
+/***/ 243:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55,19 +55,19 @@ webpackJsonp([0],{
 
 	var _redux = __webpack_require__(166);
 
-	var _reduxThunk = __webpack_require__(240);
+	var _reduxThunk = __webpack_require__(244);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
 	var _reduxRouter = __webpack_require__(177);
 
-	var _history = __webpack_require__(241);
+	var _history = __webpack_require__(245);
 
-	var _routes = __webpack_require__(270);
+	var _routes = __webpack_require__(250);
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _reducers = __webpack_require__(338);
+	var _reducers = __webpack_require__(328);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -83,7 +83,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 270:
+/***/ 250:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -92,19 +92,19 @@ webpackJsonp([0],{
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _containersApp = __webpack_require__(271);
+	var _containersApp = __webpack_require__(251);
 
 	var _containersApp2 = _interopRequireDefault(_containersApp);
 
-	var _containersCriarConta = __webpack_require__(328);
+	var _containersCriarConta = __webpack_require__(308);
 
 	var _containersCriarConta2 = _interopRequireDefault(_containersCriarConta);
 
-	var _containersMeusAnimais = __webpack_require__(336);
+	var _containersMeusAnimais = __webpack_require__(316);
 
 	var _containersMeusAnimais2 = _interopRequireDefault(_containersMeusAnimais);
 
-	var _containersAnimal = __webpack_require__(344);
+	var _containersAnimal = __webpack_require__(321);
 
 	var _containersAnimal2 = _interopRequireDefault(_containersAnimal);
 
@@ -117,7 +117,7 @@ webpackJsonp([0],{
 	var routes = [{
 	  path: '/',
 	  component: _containersApp2['default'],
-	  childRoutes: [{ path: 'meus-animais', component: _containersMeusAnimais2['default'], onEnter: checkLoggedIn }, { path: 'animal(/:id)', component: _containersAnimal2['default'], onEnter: checkLoggedIn }]
+	  childRoutes: [{ path: 'meus-animais', component: _containersMeusAnimais2['default'], onEnter: checkLoggedIn }, { path: 'animal', component: _containersAnimal2['default'], onEnter: checkLoggedIn }]
 	}, {
 	  path: '/criar-conta',
 	  component: _containersCriarConta2['default']
@@ -128,7 +128,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 271:
+/***/ 251:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -149,19 +149,19 @@ webpackJsonp([0],{
 
 	var _reactRedux = __webpack_require__(159);
 
-	var _actionsApp = __webpack_require__(272);
+	var _actionsApp = __webpack_require__(252);
 
-	var _actionsLogin = __webpack_require__(273);
+	var _actionsLogin = __webpack_require__(253);
 
-	var _componentsHeader = __webpack_require__(277);
+	var _componentsHeader = __webpack_require__(257);
 
 	var _componentsHeader2 = _interopRequireDefault(_componentsHeader);
 
-	var _Login = __webpack_require__(282);
+	var _Login = __webpack_require__(262);
 
 	var _Login2 = _interopRequireDefault(_Login);
 
-	__webpack_require__(326);
+	__webpack_require__(306);
 
 	var App = (function (_Component) {
 	  _inherits(App, _Component);
@@ -221,7 +221,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 272:
+/***/ 252:
 /***/ function(module, exports) {
 
 	'use strict';
@@ -251,7 +251,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 273:
+/***/ 253:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -262,9 +262,9 @@ webpackJsonp([0],{
 
 	var _reduxRouter = __webpack_require__(177);
 
-	var _modulesApi = __webpack_require__(274);
+	var _modulesApi = __webpack_require__(254);
 
-	var _app = __webpack_require__(272);
+	var _app = __webpack_require__(252);
 
 	function fazerLogin(login, senha) {
 	  return function (dispatch) {
@@ -286,7 +286,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 274:
+/***/ 254:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -297,7 +297,7 @@ webpackJsonp([0],{
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _isomorphicFetch = __webpack_require__(275);
+	var _isomorphicFetch = __webpack_require__(255);
 
 	var _isomorphicFetch2 = _interopRequireDefault(_isomorphicFetch);
 
@@ -369,7 +369,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 277:
+/***/ 257:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -390,7 +390,7 @@ webpackJsonp([0],{
 
 	var _reactRouter = __webpack_require__(181);
 
-	__webpack_require__(278);
+	__webpack_require__(258);
 
 	var Header = (function (_Component) {
 	  _inherits(Header, _Component);
@@ -488,16 +488,16 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 278:
+/***/ 258:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(279);
+	var content = __webpack_require__(259);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(281)(content, {});
+	var update = __webpack_require__(261)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -515,10 +515,10 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 279:
+/***/ 259:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(280)();
+	exports = module.exports = __webpack_require__(260)();
 	// imports
 
 
@@ -530,7 +530,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 280:
+/***/ 260:
 /***/ function(module, exports) {
 
 	/*
@@ -587,7 +587,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 281:
+/***/ 261:
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -813,7 +813,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 282:
+/***/ 262:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -836,21 +836,21 @@ webpackJsonp([0],{
 
 	var _reactRedux = __webpack_require__(159);
 
-	var _reduxForm = __webpack_require__(283);
+	var _reduxForm = __webpack_require__(263);
 
-	var _actionsApp = __webpack_require__(272);
+	var _actionsApp = __webpack_require__(252);
 
-	var _actionsLogin = __webpack_require__(273);
+	var _actionsLogin = __webpack_require__(253);
 
-	var _componentsTextBox = __webpack_require__(317);
+	var _componentsTextBox = __webpack_require__(297);
 
 	var _componentsTextBox2 = _interopRequireDefault(_componentsTextBox);
 
-	var _componentsButton = __webpack_require__(321);
+	var _componentsButton = __webpack_require__(301);
 
 	var _componentsButton2 = _interopRequireDefault(_componentsButton);
 
-	__webpack_require__(324);
+	__webpack_require__(304);
 
 	var Login = (function (_Component) {
 	  _inherits(Login, _Component);
@@ -933,7 +933,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 317:
+/***/ 297:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -954,11 +954,11 @@ webpackJsonp([0],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(318);
+	var _classnames = __webpack_require__(298);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	__webpack_require__(319);
+	__webpack_require__(299);
 
 	var TextBox = (function (_Component) {
 	  _inherits(TextBox, _Component);
@@ -1020,16 +1020,16 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 319:
+/***/ 299:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(320);
+	var content = __webpack_require__(300);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(281)(content, {});
+	var update = __webpack_require__(261)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1047,10 +1047,10 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 320:
+/***/ 300:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(280)();
+	exports = module.exports = __webpack_require__(260)();
 	// imports
 
 
@@ -1062,7 +1062,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 321:
+/***/ 301:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1081,7 +1081,7 @@ webpackJsonp([0],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	__webpack_require__(322);
+	__webpack_require__(302);
 
 	var Button = (function (_Component) {
 	  _inherits(Button, _Component);
@@ -1127,16 +1127,16 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 322:
+/***/ 302:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(323);
+	var content = __webpack_require__(303);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(281)(content, {});
+	var update = __webpack_require__(261)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1154,10 +1154,10 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 323:
+/***/ 303:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(280)();
+	exports = module.exports = __webpack_require__(260)();
 	// imports
 
 
@@ -1169,16 +1169,16 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 324:
+/***/ 304:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(325);
+	var content = __webpack_require__(305);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(281)(content, {});
+	var update = __webpack_require__(261)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1196,10 +1196,10 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 325:
+/***/ 305:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(280)();
+	exports = module.exports = __webpack_require__(260)();
 	// imports
 
 
@@ -1211,16 +1211,16 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 326:
+/***/ 306:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(327);
+	var content = __webpack_require__(307);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(281)(content, {});
+	var update = __webpack_require__(261)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1238,10 +1238,10 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 327:
+/***/ 307:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(280)();
+	exports = module.exports = __webpack_require__(260)();
 	// imports
 
 
@@ -1253,7 +1253,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 328:
+/***/ 308:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1274,23 +1274,23 @@ webpackJsonp([0],{
 
 	var _reactRedux = __webpack_require__(159);
 
-	var _reduxForm = __webpack_require__(283);
+	var _reduxForm = __webpack_require__(263);
 
-	var _modulesValidate = __webpack_require__(329);
+	var _modulesValidate = __webpack_require__(309);
 
 	var _modulesValidate2 = _interopRequireDefault(_modulesValidate);
 
-	var _actionsConta = __webpack_require__(333);
+	var _actionsConta = __webpack_require__(313);
 
-	var _componentsTextBox = __webpack_require__(317);
+	var _componentsTextBox = __webpack_require__(297);
 
 	var _componentsTextBox2 = _interopRequireDefault(_componentsTextBox);
 
-	var _componentsButton = __webpack_require__(321);
+	var _componentsButton = __webpack_require__(301);
 
 	var _componentsButton2 = _interopRequireDefault(_componentsButton);
 
-	__webpack_require__(334);
+	__webpack_require__(314);
 
 	var CriarConta = (function (_Component) {
 	  _inherits(CriarConta, _Component);
@@ -1362,14 +1362,14 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 329:
+/***/ 309:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _validateJs = __webpack_require__(330);
+	var _validateJs = __webpack_require__(310);
 
 	_validateJs.validate.options = { fullMessages: false };
 	_validateJs.validate.validators.presence.options = { message: 'Campo obrigatório.' };
@@ -1384,7 +1384,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 333:
+/***/ 313:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1394,9 +1394,9 @@ webpackJsonp([0],{
 
 	var _reduxRouter = __webpack_require__(177);
 
-	var _modulesApi = __webpack_require__(274);
+	var _modulesApi = __webpack_require__(254);
 
-	var _login = __webpack_require__(273);
+	var _login = __webpack_require__(253);
 
 	function criarConta(dados) {
 	  return function (dispatch) {
@@ -1409,16 +1409,16 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 334:
+/***/ 314:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(335);
+	var content = __webpack_require__(315);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(281)(content, {});
+	var update = __webpack_require__(261)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -1436,10 +1436,10 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 335:
+/***/ 315:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(280)();
+	exports = module.exports = __webpack_require__(260)();
 	// imports
 
 
@@ -1451,7 +1451,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 336:
+/***/ 316:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1472,17 +1472,17 @@ webpackJsonp([0],{
 
 	var _reduxRouter = __webpack_require__(177);
 
-	var _actionsAnimais = __webpack_require__(337);
+	var _actionsAnimais = __webpack_require__(317);
 
-	var _componentsButton = __webpack_require__(321);
+	var _componentsButton = __webpack_require__(301);
 
 	var _componentsButton2 = _interopRequireDefault(_componentsButton);
 
-	var _componentsTable = __webpack_require__(343);
+	var _componentsTable = __webpack_require__(318);
 
 	var _componentsTable2 = _interopRequireDefault(_componentsTable);
 
-	__webpack_require__(341);
+	__webpack_require__(319);
 
 	var MeusAnimais = (function (_Component) {
 	  _inherits(MeusAnimais, _Component);
@@ -1538,7 +1538,7 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 337:
+/***/ 317:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1546,14 +1546,20 @@ webpackJsonp([0],{
 	exports.__esModule = true;
 	exports.carregarLista = carregarLista;
 	exports.criarAnimal = criarAnimal;
+	exports.limparFotos = limparFotos;
+	exports.adicionarFoto = adicionarFoto;
 
-	var _modulesApi = __webpack_require__(274);
+	var _modulesApi = __webpack_require__(254);
 
 	var _reduxRouter = __webpack_require__(177);
 
 	var ANIMAIS_SET_LISTA = 'ANIMAIS_SET_LISTA';
-
 	exports.ANIMAIS_SET_LISTA = ANIMAIS_SET_LISTA;
+	var ANIMAIS_CLEAR_FOTOS = 'ANIMAIS_CLEAR_FOTOS';
+	exports.ANIMAIS_CLEAR_FOTOS = ANIMAIS_CLEAR_FOTOS;
+	var ANIMAIS_ADD_FOTO = 'ANIMAIS_ADD_FOTO';
+
+	exports.ANIMAIS_ADD_FOTO = ANIMAIS_ADD_FOTO;
 
 	function carregarLista() {
 	  return function (dispatch) {
@@ -1578,156 +1584,22 @@ webpackJsonp([0],{
 	  };
 	}
 
-/***/ },
+	function limparFotos() {
+	  return {
+	    type: ANIMAIS_CLEAR_FOTOS
+	  };
+	}
 
-/***/ 338:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _redux = __webpack_require__(166);
-
-	var _reduxRouter = __webpack_require__(177);
-
-	var _reduxForm = __webpack_require__(283);
-
-	var _app = __webpack_require__(339);
-
-	var _app2 = _interopRequireDefault(_app);
-
-	var _animais = __webpack_require__(340);
-
-	var _animais2 = _interopRequireDefault(_animais);
-
-	var _especies = __webpack_require__(351);
-
-	var _especies2 = _interopRequireDefault(_especies);
-
-	var reducers = _redux.combineReducers({
-	  router: _reduxRouter.routerStateReducer,
-	  form: _reduxForm.reducer,
-	  app: _app2['default'],
-	  animais: _animais2['default'],
-	  especies: _especies2['default']
-	});
-
-	exports['default'] = reducers;
-	module.exports = exports['default'];
-
-/***/ },
-
-/***/ 339:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	var _actionsApp = __webpack_require__(272);
-
-	var initialState = {
-	  loginVisible: false,
-	  usuarioLogado: null
-	};
-
-	exports['default'] = function (state, action) {
-	  if (state === undefined) state = initialState;
-
-	  switch (action.type) {
-	    case _actionsApp.APP_SET_LOGIN_VISIBLE:
-	      return Object.assign({}, state, {
-	        loginVisible: action.visible
-	      });
-	    case _actionsApp.APP_SET_USUARIO_LOGADO:
-	      return Object.assign({}, state, {
-	        usuarioLogado: action.usuario
-	      });
-	    default:
-	      return state;
-	  }
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-
-/***/ 340:
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	var _actionsAnimais = __webpack_require__(337);
-
-	var initialState = {
-	  lista: []
-	};
-
-	exports['default'] = function (state, action) {
-	  if (state === undefined) state = initialState;
-
-	  switch (action.type) {
-	    case _actionsAnimais.ANIMAIS_SET_LISTA:
-	      return Object.assign({}, state, {
-	        lista: action.lista
-	      });
-	    default:
-	      return state;
-	  }
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-
-/***/ 341:
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(342);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(281)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./MeusAnimais.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./MeusAnimais.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
+	function adicionarFoto(foto) {
+	  return {
+	    type: ANIMAIS_ADD_FOTO,
+	    foto: foto
+	  };
 	}
 
 /***/ },
 
-/***/ 342:
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(280)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".meus-animais {\n  margin-top: 20px; }\n  .meus-animais h2 .button {\n    margin-top: 0px;\n    float: right; }\n  .meus-animais table {\n    margin-top: 10px; }\n", ""]);
-
-	// exports
-
-
-/***/ },
-
-/***/ 343:
+/***/ 318:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1821,7 +1693,49 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 344:
+/***/ 319:
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(320);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(261)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./MeusAnimais.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./MeusAnimais.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+
+/***/ 320:
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(260)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".meus-animais {\n  margin-top: 20px; }\n  .meus-animais h2 .button {\n    margin-top: 0px;\n    float: right; }\n  .meus-animais table {\n    margin-top: 10px; }\n    .meus-animais table th {\n      text-align: left; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+
+/***/ 321:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -1842,29 +1756,33 @@ webpackJsonp([0],{
 
 	var _reactRedux = __webpack_require__(159);
 
-	var _reduxForm = __webpack_require__(283);
+	var _reduxForm = __webpack_require__(263);
 
-	var _modulesValidate = __webpack_require__(329);
+	var _modulesValidate = __webpack_require__(309);
 
 	var _modulesValidate2 = _interopRequireDefault(_modulesValidate);
 
-	var _actionsEspecies = __webpack_require__(350);
+	var _actionsEspecies = __webpack_require__(322);
 
-	var _actionsAnimais = __webpack_require__(337);
+	var _actionsAnimais = __webpack_require__(317);
 
-	var _componentsTextBox = __webpack_require__(317);
+	var _componentsTextBox = __webpack_require__(297);
 
 	var _componentsTextBox2 = _interopRequireDefault(_componentsTextBox);
 
-	var _componentsSelect = __webpack_require__(347);
+	var _componentsSelect = __webpack_require__(323);
 
 	var _componentsSelect2 = _interopRequireDefault(_componentsSelect);
 
-	var _componentsButton = __webpack_require__(321);
+	var _componentsButton = __webpack_require__(301);
 
 	var _componentsButton2 = _interopRequireDefault(_componentsButton);
 
-	__webpack_require__(345);
+	var _componentsFotoList = __webpack_require__(332);
+
+	var _componentsFotoList2 = _interopRequireDefault(_componentsFotoList);
+
+	__webpack_require__(326);
 
 	var Animal = (function (_Component) {
 	  _inherits(Animal, _Component);
@@ -1877,10 +1795,21 @@ webpackJsonp([0],{
 
 	  Animal.prototype.componentDidMount = function componentDidMount() {
 	    this.props.carregarEspecies();
+	    this.props.limparFotos();
 	  };
 
 	  Animal.prototype.handleSubmit = function handleSubmit(values, dispatch) {
-	    return this.props.criarAnimal(values);
+	    var data = Object.assign({}, values, {
+	      fotos: this.props.fotos.map(function (foto) {
+	        return foto.replace(/^data:image\/\w+\;base64\,/, '');
+	      })
+	    });
+
+	    return this.props.criarAnimal(data);
+	  };
+
+	  Animal.prototype.handleAddFoto = function handleAddFoto(foto) {
+	    this.props.adicionarFoto(foto);
 	  };
 
 	  Animal.prototype.render = function render() {
@@ -1926,6 +1855,10 @@ webpackJsonp([0],{
 	        label: 'Idade',
 	        field: fields.idade
 	      }),
+	      _react2['default'].createElement(_componentsFotoList2['default'], {
+	        fotos: this.props.fotos,
+	        onAddFoto: this.handleAddFoto.bind(this)
+	      }),
 	      _react2['default'].createElement(
 	        _componentsButton2['default'],
 	        { type: 'submit' },
@@ -1958,9 +1891,10 @@ webpackJsonp([0],{
 	  })(Animal) || Animal;
 	  Animal = _reactRedux.connect(function (state) {
 	    return {
-	      especies: state.especies.lista
+	      especies: state.especies.lista,
+	      fotos: state.animais.fotos
 	    };
-	  }, { carregarEspecies: _actionsEspecies.carregarLista, criarAnimal: _actionsAnimais.criarAnimal })(Animal) || Animal;
+	  }, { carregarEspecies: _actionsEspecies.carregarLista, criarAnimal: _actionsAnimais.criarAnimal, limparFotos: _actionsAnimais.limparFotos, adicionarFoto: _actionsAnimais.adicionarFoto })(Animal) || Animal;
 	  return Animal;
 	})(_react.Component);
 
@@ -1969,49 +1903,38 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 345:
+/***/ 322:
 /***/ function(module, exports, __webpack_require__) {
 
-	// style-loader: Adds some css to the DOM by adding a <style> tag
+	'use strict';
 
-	// load the styles
-	var content = __webpack_require__(346);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(281)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Animal.scss", function() {
-				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Animal.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
+	exports.__esModule = true;
+	exports.carregarLista = carregarLista;
+
+	var _modulesApi = __webpack_require__(254);
+
+	var ESPECIES_SET_LISTA = 'ESPECIES_SET_LISTA';
+
+	exports.ESPECIES_SET_LISTA = ESPECIES_SET_LISTA;
+
+	function carregarLista() {
+	  return function (dispatch) {
+	    return _modulesApi.get('especies').then(function (especies) {
+	      dispatch(setarLista(especies));
+	    });
+	  };
+	}
+
+	function setarLista(lista) {
+	  return {
+	    type: ESPECIES_SET_LISTA,
+	    lista: lista
+	  };
 	}
 
 /***/ },
 
-/***/ 346:
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(280)();
-	// imports
-
-
-	// module
-	exports.push([module.id, ".animal {\n  margin-top: 20px; }\n", ""]);
-
-	// exports
-
-
-/***/ },
-
-/***/ 347:
+/***/ 323:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -2032,11 +1955,11 @@ webpackJsonp([0],{
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _classnames = __webpack_require__(318);
+	var _classnames = __webpack_require__(298);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	__webpack_require__(348);
+	__webpack_require__(324);
 
 	var Select = (function (_Component) {
 	  _inherits(Select, _Component);
@@ -2119,16 +2042,16 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 348:
+/***/ 324:
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(349);
+	var content = __webpack_require__(325);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(281)(content, {});
+	var update = __webpack_require__(261)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -2146,10 +2069,10 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 349:
+/***/ 325:
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(280)();
+	exports = module.exports = __webpack_require__(260)();
 	// imports
 
 
@@ -2161,45 +2084,170 @@ webpackJsonp([0],{
 
 /***/ },
 
-/***/ 350:
+/***/ 326:
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	// style-loader: Adds some css to the DOM by adding a <style> tag
 
-	exports.__esModule = true;
-	exports.carregarLista = carregarLista;
-
-	var _modulesApi = __webpack_require__(274);
-
-	var ESPECIES_SET_LISTA = 'ESPECIES_SET_LISTA';
-
-	exports.ESPECIES_SET_LISTA = ESPECIES_SET_LISTA;
-
-	function carregarLista() {
-	  return function (dispatch) {
-	    return _modulesApi.get('especies').then(function (especies) {
-	      dispatch(setarLista(especies));
-	    });
-	  };
-	}
-
-	function setarLista(lista) {
-	  return {
-	    type: ESPECIES_SET_LISTA,
-	    lista: lista
-	  };
+	// load the styles
+	var content = __webpack_require__(327);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(261)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Animal.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./Animal.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
 	}
 
 /***/ },
 
-/***/ 351:
+/***/ 327:
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(260)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".animal {\n  margin-top: 20px; }\n", ""]);
+
+	// exports
+
+
+/***/ },
+
+/***/ 328:
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	exports.__esModule = true;
 
-	var _actionsEspecies = __webpack_require__(350);
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _redux = __webpack_require__(166);
+
+	var _reduxRouter = __webpack_require__(177);
+
+	var _reduxForm = __webpack_require__(263);
+
+	var _app = __webpack_require__(329);
+
+	var _app2 = _interopRequireDefault(_app);
+
+	var _animais = __webpack_require__(330);
+
+	var _animais2 = _interopRequireDefault(_animais);
+
+	var _especies = __webpack_require__(331);
+
+	var _especies2 = _interopRequireDefault(_especies);
+
+	var reducers = _redux.combineReducers({
+	  router: _reduxRouter.routerStateReducer,
+	  form: _reduxForm.reducer,
+	  app: _app2['default'],
+	  animais: _animais2['default'],
+	  especies: _especies2['default']
+	});
+
+	exports['default'] = reducers;
+	module.exports = exports['default'];
+
+/***/ },
+
+/***/ 329:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _actionsApp = __webpack_require__(252);
+
+	var initialState = {
+	  loginVisible: false,
+	  usuarioLogado: null
+	};
+
+	exports['default'] = function (state, action) {
+	  if (state === undefined) state = initialState;
+
+	  switch (action.type) {
+	    case _actionsApp.APP_SET_LOGIN_VISIBLE:
+	      return Object.assign({}, state, {
+	        loginVisible: action.visible
+	      });
+	    case _actionsApp.APP_SET_USUARIO_LOGADO:
+	      return Object.assign({}, state, {
+	        usuarioLogado: action.usuario
+	      });
+	    default:
+	      return state;
+	  }
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+
+/***/ 330:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _actionsAnimais = __webpack_require__(317);
+
+	var initialState = {
+	  lista: [],
+	  fotos: []
+	};
+
+	exports['default'] = function (state, action) {
+	  if (state === undefined) state = initialState;
+
+	  switch (action.type) {
+	    case _actionsAnimais.ANIMAIS_SET_LISTA:
+	      return Object.assign({}, state, {
+	        lista: action.lista
+	      });
+	    case _actionsAnimais.ANIMAIS_CLEAR_FOTOS:
+	      return Object.assign({}, state, {
+	        fotos: []
+	      });
+	    case _actionsAnimais.ANIMAIS_ADD_FOTO:
+	      return Object.assign({}, state, {
+	        fotos: [].concat(state.fotos, [action.foto])
+	      });
+	    default:
+	      return state;
+	  }
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+
+/***/ 331:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _actionsEspecies = __webpack_require__(322);
 
 	var initialState = {
 	  lista: []
@@ -2219,6 +2267,145 @@ webpackJsonp([0],{
 	};
 
 	module.exports = exports['default'];
+
+/***/ },
+
+/***/ 332:
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _Button = __webpack_require__(301);
+
+	var _Button2 = _interopRequireDefault(_Button);
+
+	__webpack_require__(333);
+
+	var FotoList = (function (_Component) {
+	  _inherits(FotoList, _Component);
+
+	  function FotoList() {
+	    _classCallCheck(this, FotoList);
+
+	    _Component.apply(this, arguments);
+	  }
+
+	  FotoList.prototype.handleAddClick = function handleAddClick() {
+	    this.refs.file.click();
+	  };
+
+	  FotoList.prototype.handleAddFoto = function handleAddFoto(e) {
+	    var _this = this;
+
+	    var reader = new FileReader();
+	    var file = e.target.files[0];
+
+	    reader.onloadend = function () {
+	      _this.props.onAddFoto(reader.result);
+	      _this.refs.file.value = '';
+	    };
+
+	    reader.readAsDataURL(file);
+	  };
+
+	  FotoList.prototype.render = function render() {
+	    return _react2['default'].createElement(
+	      'div',
+	      { className: 'foto-list' },
+	      _react2['default'].createElement(
+	        _Button2['default'],
+	        { onClick: this.handleAddClick.bind(this) },
+	        'Adicionar Foto'
+	      ),
+	      _react2['default'].createElement('input', {
+	        type: 'file',
+	        ref: 'file',
+	        accept: 'image/*',
+	        onChange: this.handleAddFoto.bind(this),
+	        style: { display: 'none' }
+	      }),
+	      _react2['default'].createElement(
+	        'div',
+	        null,
+	        this.props.fotos.map(this.renderImg)
+	      )
+	    );
+	  };
+
+	  FotoList.prototype.renderImg = function renderImg(foto, index) {
+	    return _react2['default'].createElement('img', { key: index, src: foto });
+	  };
+
+	  _createClass(FotoList, null, [{
+	    key: 'propTypes',
+	    value: {
+	      fotos: _react.PropTypes.arrayOf(_react.PropTypes.string).isRequired,
+	      onAddFoto: _react.PropTypes.func.isRequired
+	    },
+	    enumerable: true
+	  }]);
+
+	  return FotoList;
+	})(_react.Component);
+
+	exports['default'] = FotoList;
+	module.exports = exports['default'];
+
+/***/ },
+
+/***/ 333:
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(334);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(261)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./FotoList.scss", function() {
+				var newContent = require("!!./../../../node_modules/css-loader/index.js!./../../../node_modules/sass-loader/index.js!./FotoList.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+
+/***/ 334:
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(260)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".foto-list div img {\n  border: solid 1px #333;\n  height: 150px;\n  width: 200px;\n  margin: 10px 10px 0px 0px; }\n", ""]);
+
+	// exports
+
 
 /***/ }
 

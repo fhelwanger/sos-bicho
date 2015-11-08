@@ -1,3 +1,4 @@
+var async = require('async');
 var auth = require('../auth');
 var db = require('../db');
 
@@ -21,7 +22,8 @@ function post(req, res) {
     raca: req.body.raca,
     porte: parseInt(req.body.porte) || null,
     idade: parseInt(req.body.idade) || null,
-    usuarioId: req.user.id
+    usuarioId: req.user.id,
+    fotos: req.body.fotos
   };
 
   validarAnimal(dados, function (err, erros) {
@@ -33,7 +35,7 @@ function post(req, res) {
 
     var query = 'INSERT INTO animais ' +
                 '(nome, especieId, raca, porte, idade, usuarioId) ' +
-                'VALUES ($1, $2, $3, $4, $5, $6)';
+                'VALUES ($1, $2, $3, $4, $5, $6) RETURNING id';
 
     var params = [
       dados.nome,
@@ -49,7 +51,9 @@ function post(req, res) {
         return res.status(500).send(err);
       }
 
-      return res.status(201).send();
+      async.each(dados.fotos, createSaveFoto(result.rows[0].id), function () {
+        return res.status(201).send();
+      });
     });
   });
 }
@@ -70,6 +74,15 @@ function validarAnimal(dados, callback) {
   }
 
   callback(null, erros);
+}
+
+function createSaveFoto(animalId) {
+  return function (foto, callback) {
+    var query = 'INSERT INTO animais_fotos (animalId, foto) VALUES ($1, $2)';
+    var params = [animalId, foto];
+
+    db.query(query, params, callback);
+  };
 }
 
 module.exports = function (app) {

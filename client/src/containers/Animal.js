@@ -3,17 +3,19 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import validate from '../modules/validate';
 import { carregarLista as carregarEspecies } from '../actions/especies';
-import { criarAnimal } from '../actions/animais';
+import { criarAnimal, limparFotos, adicionarFoto } from '../actions/animais';
 import TextBox from '../components/TextBox';
 import Select from '../components/Select';
 import Button from '../components/Button';
+import FotoList from '../components/FotoList';
 import '../styles/Animal.scss';
 
 @connect(
   state => ({
-    especies: state.especies.lista
+    especies: state.especies.lista,
+    fotos: state.animais.fotos
   }),
-  { carregarEspecies, criarAnimal }
+  { carregarEspecies, criarAnimal, limparFotos, adicionarFoto }
 )
 @reduxForm({
   form: 'animal',
@@ -33,10 +35,19 @@ class Animal extends Component {
 
   componentDidMount() {
     this.props.carregarEspecies();
+    this.props.limparFotos();
   }
 
   handleSubmit(values, dispatch) {
-    return this.props.criarAnimal(values);
+    const data = Object.assign({}, values, {
+      fotos: this.props.fotos.map(foto => foto.replace(/^data:image\/\w+\;base64\,/, ''))
+    });
+
+    return this.props.criarAnimal(data);
+  }
+
+  handleAddFoto(foto) {
+    this.props.adicionarFoto(foto);
   }
 
   render() {
@@ -81,6 +92,10 @@ class Animal extends Component {
         <TextBox
           label="Idade"
           field={fields.idade}
+        />
+        <FotoList
+          fotos={this.props.fotos}
+          onAddFoto={::this.handleAddFoto}
         />
         <Button type="submit">Salvar</Button>
       </form>

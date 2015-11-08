@@ -1,0 +1,12 @@
+@import '_variables.scss';
+
+.foto-list {
+  div {
+    img {
+      border: solid 1px $panel-border-color;
+      height: 150px;
+      width: 200px;
+      margin: 10px 10px 0px 0px;
+    }
+  }
+}

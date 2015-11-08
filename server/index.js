@@ -5,8 +5,8 @@ var app = express();
 var api = express.Router();
 
 app.use(express.static('client/dist'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit: '20mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '20mb' }));
 app.use('/api', api);
 
 app.get('*', function (req, res) {
