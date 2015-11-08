@@ -25,8 +25,29 @@ function get(req, res) {
     "FROM animais a " +
     "INNER JOIN especies e ON e.id = a.especieId ";
 
+  var filtros = '';
+
   if (req.user) {
-    query += "WHERE a.usuarioId != " + req.user.id;
+    filtros += "a.usuarioId != " + req.user.id;
+  }
+
+  if (req.query.especie) {
+    if (filtros) filtros += " AND ";
+    filtros += "a.especieId = " + req.query.especie;
+  }
+
+  if (req.query.porte) {
+    if (filtros) filtros += " AND ";
+    filtros += "a.porte = " + req.query.porte;
+  }
+
+  if (req.query.idade) {
+    if (filtros) filtros += " AND ";
+    filtros += "a.idade = " + req.query.idade;
+  }
+
+  if (filtros) {
+    query += "WHERE " + filtros;
   }
 
   db.query(query, function (err, result) {

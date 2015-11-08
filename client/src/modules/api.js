@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch';
+import qs from 'qs/dist/qs';
 
 const basePath = '/api/';
 
@@ -10,7 +11,7 @@ function includeAuthorization(headers) {
   }
 }
 
-export function get(endpoint) {
+export function get(endpoint, params) {
   return new Promise((resolve, reject) => {
     const headers = {};
 
@@ -21,7 +22,11 @@ export function get(endpoint) {
       headers
     };
 
-    fetch(basePath + endpoint, options).then(response => {
+    const query = qs.stringify(params);
+
+    const url = basePath + endpoint + (query ? '?' + query : '');
+
+    fetch(url, options).then(response => {
       if (response.ok) {
         response.json().then(resolve);
       } else {

@@ -8,6 +8,7 @@ module.exports = {
       'classnames',
       'history',
       'isomorphic-fetch',
+      'qs/dist/qs',
       'react',
       'react-dom',
       'react-redux',

@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import validate from '../modules/validate';
+import { portes } from '../modules/portes';
 import { carregarLista as carregarEspecies } from '../actions/especies';
 import { criarAnimal, limparFotos, adicionarFoto } from '../actions/animais';
 import TextBox from '../components/TextBox';
@@ -58,12 +59,6 @@ class Animal extends Component {
       submitting,
       handleSubmit
     } = this.props;
-
-    const portes = [
-      { id: 1, nome: 'Pequeno' },
-      { id: 2, nome: 'Médio' },
-      { id: 3, nome: 'Grande' }
-    ];
 
     return (
       <form className="animal" onSubmit={handleSubmit(::this.handleSubmit)}>
