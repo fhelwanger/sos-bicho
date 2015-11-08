@@ -5,6 +5,7 @@ module.exports = {
   entry: {
     app: path.join(__dirname, 'client/src/index.js'),
     vendor: [
+      'classnames',
       'history',
       'isomorphic-fetch',
       'react',
@@ -13,7 +14,9 @@ module.exports = {
       'react-router',
       'redux',
       'redux-form',
-      'redux-router'
+      'redux-router',
+      'redux-thunk',
+      'validate.js'
     ]
   },
   output: {

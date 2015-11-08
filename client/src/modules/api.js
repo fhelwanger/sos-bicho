@@ -1,6 +1,35 @@
 import fetch from 'isomorphic-fetch';
 
-const basePath = '/api/'
+const basePath = '/api/';
+
+function includeAuthorization(headers) {
+  const credentials = localStorage.getItem('credentials');
+
+  if (credentials) {
+    headers['Authorization'] = 'Basic ' + credentials;
+  }
+}
+
+export function get(endpoint) {
+  return new Promise((resolve, reject) => {
+    const headers = {};
+
+    includeAuthorization(headers);
+
+    const options = {
+      method: 'GET',
+      headers
+    };
+
+    fetch(basePath + endpoint, options).then(response => {
+      if (response.ok) {
+        response.json().then(resolve);
+      } else {
+        response.text().then(reject);
+      }
+    });
+  });
+}
 
 export function post(endpoint, data) {
   return new Promise((resolve, reject) => {
@@ -8,6 +37,8 @@ export function post(endpoint, data) {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     };
+
+    includeAuthorization(headers);
 
     const options = {
       method: 'POST',

@@ -98,15 +98,18 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(240);
-	__webpack_require__(313);
+	__webpack_require__(318);
+	__webpack_require__(241);
+	__webpack_require__(275);
 	__webpack_require__(1);
 	__webpack_require__(158);
 	__webpack_require__(159);
 	__webpack_require__(181);
 	__webpack_require__(166);
-	__webpack_require__(278);
-	module.exports = __webpack_require__(177);
+	__webpack_require__(283);
+	__webpack_require__(177);
+	__webpack_require__(240);
+	module.exports = __webpack_require__(330);
 
 
 /***/ },
@@ -26058,6 +26061,28 @@
 /***/ },
 /* 239 */,
 /* 240 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports['default'] = thunkMiddleware;
+
+	function thunkMiddleware(_ref) {
+	  var dispatch = _ref.dispatch;
+	  var getState = _ref.getState;
+
+	  return function (next) {
+	    return function (action) {
+	      return typeof action === 'function' ? action(dispatch, getState) : next(action);
+	    };
+	  };
+	}
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26066,49 +26091,49 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _createBrowserHistory = __webpack_require__(241);
+	var _createBrowserHistory = __webpack_require__(242);
 
 	var _createBrowserHistory2 = _interopRequireDefault(_createBrowserHistory);
 
 	exports.createHistory = _createBrowserHistory2['default'];
 
-	var _createHashHistory2 = __webpack_require__(258);
+	var _createHashHistory2 = __webpack_require__(259);
 
 	var _createHashHistory3 = _interopRequireDefault(_createHashHistory2);
 
 	exports.createHashHistory = _createHashHistory3['default'];
 
-	var _createMemoryHistory2 = __webpack_require__(259);
+	var _createMemoryHistory2 = __webpack_require__(260);
 
 	var _createMemoryHistory3 = _interopRequireDefault(_createMemoryHistory2);
 
 	exports.createMemoryHistory = _createMemoryHistory3['default'];
 
-	var _createLocation2 = __webpack_require__(254);
+	var _createLocation2 = __webpack_require__(255);
 
 	var _createLocation3 = _interopRequireDefault(_createLocation2);
 
 	exports.createLocation = _createLocation3['default'];
 
-	var _useBasename2 = __webpack_require__(260);
+	var _useBasename2 = __webpack_require__(261);
 
 	var _useBasename3 = _interopRequireDefault(_useBasename2);
 
 	exports.useBasename = _useBasename3['default'];
 
-	var _useBeforeUnload2 = __webpack_require__(261);
+	var _useBeforeUnload2 = __webpack_require__(262);
 
 	var _useBeforeUnload3 = _interopRequireDefault(_useBeforeUnload2);
 
 	exports.useBeforeUnload = _useBeforeUnload3['default'];
 
-	var _useQueries2 = __webpack_require__(262);
+	var _useQueries2 = __webpack_require__(263);
 
 	var _useQueries3 = _interopRequireDefault(_useQueries2);
 
 	exports.useQueries = _useQueries3['default'];
 
-	var _Actions2 = __webpack_require__(243);
+	var _Actions2 = __webpack_require__(244);
 
 	var _Actions3 = _interopRequireDefault(_Actions2);
 
@@ -26116,20 +26141,20 @@
 
 	// deprecated
 
-	var _enableBeforeUnload2 = __webpack_require__(267);
+	var _enableBeforeUnload2 = __webpack_require__(268);
 
 	var _enableBeforeUnload3 = _interopRequireDefault(_enableBeforeUnload2);
 
 	exports.enableBeforeUnload = _enableBeforeUnload3['default'];
 
-	var _enableQueries2 = __webpack_require__(268);
+	var _enableQueries2 = __webpack_require__(269);
 
 	var _enableQueries3 = _interopRequireDefault(_enableQueries2);
 
 	exports.enableQueries = _enableQueries3['default'];
 
 /***/ },
-/* 241 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26140,19 +26165,19 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _invariant = __webpack_require__(242);
+	var _invariant = __webpack_require__(243);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _Actions = __webpack_require__(243);
+	var _Actions = __webpack_require__(244);
 
-	var _ExecutionEnvironment = __webpack_require__(244);
+	var _ExecutionEnvironment = __webpack_require__(245);
 
-	var _DOMUtils = __webpack_require__(245);
+	var _DOMUtils = __webpack_require__(246);
 
-	var _DOMStateStorage = __webpack_require__(246);
+	var _DOMStateStorage = __webpack_require__(247);
 
-	var _createDOMHistory = __webpack_require__(248);
+	var _createDOMHistory = __webpack_require__(249);
 
 	var _createDOMHistory2 = _interopRequireDefault(_createDOMHistory);
 
@@ -26306,7 +26331,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 242 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26366,7 +26391,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 243 */
+/* 244 */
 /***/ function(module, exports) {
 
 	/**
@@ -26402,7 +26427,7 @@
 	};
 
 /***/ },
-/* 244 */
+/* 245 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -26412,7 +26437,7 @@
 	exports.canUseDOM = canUseDOM;
 
 /***/ },
-/* 245 */
+/* 246 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -26492,7 +26517,7 @@
 	}
 
 /***/ },
-/* 246 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*eslint-disable no-empty */
@@ -26504,7 +26529,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(247);
+	var _warning = __webpack_require__(248);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -26545,7 +26570,7 @@
 	}
 
 /***/ },
-/* 247 */
+/* 248 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26612,7 +26637,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 248 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26623,15 +26648,15 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _invariant = __webpack_require__(242);
+	var _invariant = __webpack_require__(243);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _ExecutionEnvironment = __webpack_require__(244);
+	var _ExecutionEnvironment = __webpack_require__(245);
 
-	var _DOMUtils = __webpack_require__(245);
+	var _DOMUtils = __webpack_require__(246);
 
-	var _createHistory = __webpack_require__(249);
+	var _createHistory = __webpack_require__(250);
 
 	var _createHistory2 = _interopRequireDefault(_createHistory);
 
@@ -26657,7 +26682,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 249 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -26668,23 +26693,23 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _deepEqual = __webpack_require__(250);
+	var _deepEqual = __webpack_require__(251);
 
 	var _deepEqual2 = _interopRequireDefault(_deepEqual);
 
-	var _AsyncUtils = __webpack_require__(253);
+	var _AsyncUtils = __webpack_require__(254);
 
-	var _Actions = __webpack_require__(243);
+	var _Actions = __webpack_require__(244);
 
-	var _createLocation2 = __webpack_require__(254);
+	var _createLocation2 = __webpack_require__(255);
 
 	var _createLocation3 = _interopRequireDefault(_createLocation2);
 
-	var _runTransitionHook = __webpack_require__(256);
+	var _runTransitionHook = __webpack_require__(257);
 
 	var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
-	var _deprecate = __webpack_require__(257);
+	var _deprecate = __webpack_require__(258);
 
 	var _deprecate2 = _interopRequireDefault(_deprecate);
 
@@ -26909,12 +26934,12 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 250 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var pSlice = Array.prototype.slice;
-	var objectKeys = __webpack_require__(251);
-	var isArguments = __webpack_require__(252);
+	var objectKeys = __webpack_require__(252);
+	var isArguments = __webpack_require__(253);
 
 	var deepEqual = module.exports = function (actual, expected, opts) {
 	  if (!opts) opts = {};
@@ -27009,7 +27034,7 @@
 
 
 /***/ },
-/* 251 */
+/* 252 */
 /***/ function(module, exports) {
 
 	exports = module.exports = typeof Object.keys === 'function'
@@ -27024,7 +27049,7 @@
 
 
 /***/ },
-/* 252 */
+/* 253 */
 /***/ function(module, exports) {
 
 	var supportsArgumentsClass = (function(){
@@ -27050,7 +27075,7 @@
 
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -27081,7 +27106,7 @@
 	}
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27090,9 +27115,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _Actions = __webpack_require__(243);
+	var _Actions = __webpack_require__(244);
 
-	var _parsePath = __webpack_require__(255);
+	var _parsePath = __webpack_require__(256);
 
 	var _parsePath2 = _interopRequireDefault(_parsePath);
 
@@ -27122,7 +27147,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 255 */
+/* 256 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27131,7 +27156,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(247);
+	var _warning = __webpack_require__(248);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -27175,7 +27200,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 256 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27184,7 +27209,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(247);
+	var _warning = __webpack_require__(248);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -27204,7 +27229,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 257 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27213,7 +27238,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(247);
+	var _warning = __webpack_require__(248);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
@@ -27228,7 +27253,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 258 */
+/* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27239,23 +27264,23 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(247);
+	var _warning = __webpack_require__(248);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _invariant = __webpack_require__(242);
+	var _invariant = __webpack_require__(243);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _Actions = __webpack_require__(243);
+	var _Actions = __webpack_require__(244);
 
-	var _ExecutionEnvironment = __webpack_require__(244);
+	var _ExecutionEnvironment = __webpack_require__(245);
 
-	var _DOMUtils = __webpack_require__(245);
+	var _DOMUtils = __webpack_require__(246);
 
-	var _DOMStateStorage = __webpack_require__(246);
+	var _DOMStateStorage = __webpack_require__(247);
 
-	var _createDOMHistory = __webpack_require__(248);
+	var _createDOMHistory = __webpack_require__(249);
 
 	var _createDOMHistory2 = _interopRequireDefault(_createDOMHistory);
 
@@ -27457,7 +27482,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 259 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27468,13 +27493,13 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _invariant = __webpack_require__(242);
+	var _invariant = __webpack_require__(243);
 
 	var _invariant2 = _interopRequireDefault(_invariant);
 
-	var _Actions = __webpack_require__(243);
+	var _Actions = __webpack_require__(244);
 
-	var _createHistory = __webpack_require__(249);
+	var _createHistory = __webpack_require__(250);
 
 	var _createHistory2 = _interopRequireDefault(_createHistory);
 
@@ -27604,7 +27629,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 260 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27617,13 +27642,13 @@
 
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-	var _ExecutionEnvironment = __webpack_require__(244);
+	var _ExecutionEnvironment = __webpack_require__(245);
 
-	var _runTransitionHook = __webpack_require__(256);
+	var _runTransitionHook = __webpack_require__(257);
 
 	var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
-	var _parsePath = __webpack_require__(255);
+	var _parsePath = __webpack_require__(256);
 
 	var _parsePath2 = _interopRequireDefault(_parsePath);
 
@@ -27724,7 +27749,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 261 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27735,15 +27760,15 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _warning = __webpack_require__(247);
+	var _warning = __webpack_require__(248);
 
 	var _warning2 = _interopRequireDefault(_warning);
 
-	var _ExecutionEnvironment = __webpack_require__(244);
+	var _ExecutionEnvironment = __webpack_require__(245);
 
-	var _DOMUtils = __webpack_require__(245);
+	var _DOMUtils = __webpack_require__(246);
 
-	var _deprecate = __webpack_require__(257);
+	var _deprecate = __webpack_require__(258);
 
 	var _deprecate2 = _interopRequireDefault(_deprecate);
 
@@ -27840,7 +27865,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 262 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27853,15 +27878,15 @@
 
 	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
-	var _qs = __webpack_require__(263);
+	var _qs = __webpack_require__(264);
 
 	var _qs2 = _interopRequireDefault(_qs);
 
-	var _runTransitionHook = __webpack_require__(256);
+	var _runTransitionHook = __webpack_require__(257);
 
 	var _runTransitionHook2 = _interopRequireDefault(_runTransitionHook);
 
-	var _parsePath = __webpack_require__(255);
+	var _parsePath = __webpack_require__(256);
 
 	var _parsePath2 = _interopRequireDefault(_parsePath);
 
@@ -27960,13 +27985,13 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 263 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Load modules
 
-	var Stringify = __webpack_require__(264);
-	var Parse = __webpack_require__(266);
+	var Stringify = __webpack_require__(265);
+	var Parse = __webpack_require__(267);
 
 
 	// Declare internals
@@ -27981,12 +28006,12 @@
 
 
 /***/ },
-/* 264 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Load modules
 
-	var Utils = __webpack_require__(265);
+	var Utils = __webpack_require__(266);
 
 
 	// Declare internals
@@ -28108,7 +28133,7 @@
 
 
 /***/ },
-/* 265 */
+/* 266 */
 /***/ function(module, exports) {
 
 	// Load modules
@@ -28304,12 +28329,12 @@
 
 
 /***/ },
-/* 266 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// Load modules
 
-	var Utils = __webpack_require__(265);
+	var Utils = __webpack_require__(266);
 
 
 	// Declare internals
@@ -28496,27 +28521,6 @@
 
 
 /***/ },
-/* 267 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _deprecate = __webpack_require__(257);
-
-	var _deprecate2 = _interopRequireDefault(_deprecate);
-
-	var _useBeforeUnload = __webpack_require__(261);
-
-	var _useBeforeUnload2 = _interopRequireDefault(_useBeforeUnload);
-
-	exports['default'] = _deprecate2['default'](_useBeforeUnload2['default'], 'enableBeforeUnload is deprecated, use useBeforeUnload instead');
-	module.exports = exports['default'];
-
-/***/ },
 /* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -28526,11 +28530,32 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _deprecate = __webpack_require__(257);
+	var _deprecate = __webpack_require__(258);
 
 	var _deprecate2 = _interopRequireDefault(_deprecate);
 
-	var _useQueries = __webpack_require__(262);
+	var _useBeforeUnload = __webpack_require__(262);
+
+	var _useBeforeUnload2 = _interopRequireDefault(_useBeforeUnload);
+
+	exports['default'] = _deprecate2['default'](_useBeforeUnload2['default'], 'enableBeforeUnload is deprecated, use useBeforeUnload instead');
+	module.exports = exports['default'];
+
+/***/ },
+/* 269 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _deprecate = __webpack_require__(258);
+
+	var _deprecate2 = _interopRequireDefault(_deprecate);
+
+	var _useQueries = __webpack_require__(263);
 
 	var _useQueries2 = _interopRequireDefault(_useQueries);
 
@@ -28538,1953 +28563,24 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 269 */,
 /* 270 */,
 /* 271 */,
 /* 272 */,
 /* 273 */,
 /* 274 */,
-/* 275 */,
-/* 276 */,
-/* 277 */,
-/* 278 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _createAll2 = __webpack_require__(279);
-
-	var _createAll3 = _interopRequireDefault(_createAll2);
-
-	var _createAll = _createAll3['default'](false, _react2['default']);
-
-	var actionTypes = _createAll.actionTypes;
-	var blur = _createAll.blur;
-	var change = _createAll.change;
-	var destroy = _createAll.destroy;
-	var focus = _createAll.focus;
-	var reducer = _createAll.reducer;
-	var reduxForm = _createAll.reduxForm;
-	var initialize = _createAll.initialize;
-	var initializeWithKey = _createAll.initializeWithKey;
-	var reset = _createAll.reset;
-	var startAsyncValidation = _createAll.startAsyncValidation;
-	var startSubmit = _createAll.startSubmit;
-	var stopAsyncValidation = _createAll.stopAsyncValidation;
-	var stopSubmit = _createAll.stopSubmit;
-	var touch = _createAll.touch;
-	var untouch = _createAll.untouch;
-	exports.actionTypes = actionTypes;
-	exports.blur = blur;
-	exports.change = change;
-	exports.destroy = destroy;
-	exports.focus = focus;
-	exports.reducer = reducer;
-	exports.reduxForm = reduxForm;
-	exports.initialize = initialize;
-	exports.initializeWithKey = initializeWithKey;
-	exports.reset = reset;
-	exports.startAsyncValidation = startAsyncValidation;
-	exports.startSubmit = startSubmit;
-	exports.stopAsyncValidation = stopAsyncValidation;
-	exports.stopSubmit = stopSubmit;
-	exports.touch = touch;
-	exports.untouch = untouch;
-
-/***/ },
-/* 279 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	exports['default'] = createAll;
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _reducer = __webpack_require__(280);
-
-	var _reducer2 = _interopRequireDefault(_reducer);
-
-	var _createReduxForm = __webpack_require__(283);
-
-	var _createReduxForm2 = _interopRequireDefault(_createReduxForm);
-
-	var _mapValues = __webpack_require__(282);
-
-	var _mapValues2 = _interopRequireDefault(_mapValues);
-
-	var _bindActionData = __webpack_require__(293);
-
-	var _bindActionData2 = _interopRequireDefault(_bindActionData);
-
-	var _actions = __webpack_require__(292);
-
-	var actions = _interopRequireWildcard(_actions);
-
-	var _actionTypes = __webpack_require__(281);
-
-	var actionTypes = _interopRequireWildcard(_actionTypes);
-
-	// bind form as first parameter of action creators
-	var boundActions = _extends({}, _mapValues2['default'](_extends({}, actions, {
-	  initializeWithKey: function initializeWithKey(key, data) {
-	    return _bindActionData2['default'](actions.initialize, { key: key })(data);
-	  },
-	  destroy: function destroy(key) {
-	    return _bindActionData2['default'](actions.destroy, { key: key })();
-	  }
-	}), function (action) {
-	  return function (form) {
-	    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-	      args[_key - 1] = arguments[_key];
-	    }
-
-	    return _bindActionData2['default'](action, { form: form }).apply(undefined, args);
-	  };
-	}));
-
-	var blur = boundActions.blur;
-	var change = boundActions.change;
-	var destroy = boundActions.destroy;
-	var focus = boundActions.focus;
-	var initialize = boundActions.initialize;
-	var initializeWithKey = boundActions.initializeWithKey;
-	var reset = boundActions.reset;
-	var startAsyncValidation = boundActions.startAsyncValidation;
-	var startSubmit = boundActions.startSubmit;
-	var stopAsyncValidation = boundActions.stopAsyncValidation;
-	var stopSubmit = boundActions.stopSubmit;
-	var touch = boundActions.touch;
-	var untouch = boundActions.untouch;
-
-	function createAll(isReactNative, React) {
-	  return {
-	    actionTypes: actionTypes,
-	    blur: blur,
-	    change: change,
-	    destroy: destroy,
-	    focus: focus,
-	    reducer: _reducer2['default'],
-	    initialize: initialize,
-	    initializeWithKey: initializeWithKey,
-	    reduxForm: _createReduxForm2['default'](isReactNative, React),
-	    reset: reset,
-	    startAsyncValidation: startAsyncValidation,
-	    startSubmit: startSubmit,
-	    stopAsyncValidation: stopAsyncValidation,
-	    stopSubmit: stopSubmit,
-	    touch: touch,
-	    untouch: untouch
-	  };
-	}
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 280 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-	var _actionTypes = __webpack_require__(281);
-
-	var _mapValues = __webpack_require__(282);
-
-	var _mapValues2 = _interopRequireDefault(_mapValues);
-
-	var initialState = {
-	  _active: undefined,
-	  _asyncValidating: false,
-	  _error: undefined,
-	  _submitting: false
-	};
-
-	exports.initialState = initialState;
-	var getValues = function getValues(state) {
-	  return Object.keys(state).reduce(function (accumulator, name) {
-	    var _extends2;
-
-	    return name[0] === '_' ? accumulator : _extends({}, accumulator, (_extends2 = {}, _extends2[name] = state[name].value, _extends2));
-	  }, {});
-	};
-
-	var reducer = function reducer() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
-
-	  var _extends3, _extends4, _extends5;
-
-	  var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-
-	  switch (action.type) {
-	    case _actionTypes.BLUR:
-	      return _extends({}, state, (_extends3 = {}, _extends3[action.field] = _extends({}, state[action.field], {
-	        value: action.value === undefined ? (state[action.field] || {}).value : action.value,
-	        touched: !!(action.touch || (state[action.field] || {}).touched)
-	      }), _extends3._active = undefined, _extends3));
-	    case _actionTypes.CHANGE:
-	      return _extends({}, state, (_extends4 = {}, _extends4[action.field] = _extends({}, state[action.field], {
-	        value: action.value,
-	        touched: !!(action.touch || (state[action.field] || {}).touched),
-	        asyncError: undefined,
-	        submitError: undefined
-	      }), _extends4._error = undefined, _extends4));
-	    case _actionTypes.DESTROY:
-	      return undefined;
-	    case _actionTypes.FOCUS:
-	      return _extends({}, state, (_extends5 = {}, _extends5[action.field] = _extends({}, state[action.field], {
-	        visited: true
-	      }), _extends5._active = action.field, _extends5));
-	    case _actionTypes.INITIALIZE:
-	      return _extends({}, _mapValues2['default'](action.data, function (value) {
-	        return {
-	          initial: value,
-	          value: value
-	        };
-	      }), {
-	        _asyncValidating: false,
-	        _active: undefined,
-	        _error: undefined,
-	        _submitting: false
-	      });
-	    case _actionTypes.RESET:
-	      return _extends({}, _mapValues2['default'](state, function (field, name) {
-	        return name[0] === '_' ? field : {
-	          initial: field.initial,
-	          value: field.initial
-	        };
-	      }), {
-	        _active: undefined,
-	        _asyncValidating: false,
-	        _error: undefined,
-	        _submitting: false
-	      });
-	    case _actionTypes.START_ASYNC_VALIDATION:
-	      return _extends({}, state, {
-	        _asyncValidating: true
-	      });
-	    case _actionTypes.START_SUBMIT:
-	      return _extends({}, state, {
-	        _submitting: true
-	      });
-	    case _actionTypes.STOP_ASYNC_VALIDATION:
-	      return _extends({}, state, _mapValues2['default'](action.errors, function (error, key) {
-	        return _extends({}, state[key], {
-	          asyncError: error
-	        });
-	      }), {
-	        _asyncValidating: false,
-	        _error: action.errors && action.errors._error
-	      });
-	    case _actionTypes.STOP_SUBMIT:
-	      return _extends({}, state, action.errors ? _mapValues2['default'](action.errors, function (error, key) {
-	        return _extends({}, state[key], {
-	          submitError: error
-	        });
-	      }) : {}, {
-	        _error: action.errors && action.errors._error,
-	        _submitting: false
-	      });
-	    case _actionTypes.TOUCH:
-	      return _extends({}, state, action.fields.reduce(function (accumulator, field) {
-	        var _extends6;
-
-	        return _extends({}, accumulator, (_extends6 = {}, _extends6[field] = _extends({}, state[field], {
-	          touched: true
-	        }), _extends6));
-	      }, {}));
-	    case _actionTypes.UNTOUCH:
-	      return _extends({}, state, action.fields.reduce(function (accumulator, field) {
-	        var _extends7;
-
-	        return _extends({}, accumulator, (_extends7 = {}, _extends7[field] = _extends({}, state[field], {
-	          touched: false
-	        }), _extends7));
-	      }, {}));
-	    default:
-	      return state;
-	  }
-	};
-
-	function formReducer() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-
-	  var _extends13;
-
-	  var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-	  var form = action.form;
-	  var key = action.key;
-
-	  var rest = _objectWithoutProperties(action, ['form', 'key']);
-
-	  if (!form) {
-	    return state;
-	  }
-	  if (key) {
-	    var _extends10, _extends11;
-
-	    if (action.type === _actionTypes.DESTROY) {
-	      var _extends9;
-
-	      return _extends({}, state, (_extends9 = {}, _extends9[form] = state[form] && Object.keys(state[form]).reduce(function (accumulator, stateKey) {
-	        var _extends8;
-
-	        return stateKey === key ? accumulator : _extends({}, accumulator, (_extends8 = {}, _extends8[stateKey] = state[form][stateKey], _extends8));
-	      }, {}), _extends9));
-	    }
-	    return _extends({}, state, (_extends11 = {}, _extends11[form] = _extends({}, state[form], (_extends10 = {}, _extends10[key] = reducer((state[form] || {})[key], rest), _extends10)), _extends11));
-	  }
-	  if (action.type === _actionTypes.DESTROY) {
-	    return Object.keys(state).reduce(function (accumulator, formName) {
-	      var _extends12;
-
-	      return formName === form ? accumulator : _extends({}, accumulator, (_extends12 = {}, _extends12[formName] = state[formName], _extends12));
-	    }, {});
-	  }
-	  return _extends({}, state, (_extends13 = {}, _extends13[form] = reducer(state[form], rest), _extends13));
-	}
-
-	/**
-	 * Adds additional functionality to the reducer
-	 */
-	function decorate(target) {
-	  target.plugin = function plugin(reducers) {
-	    var _this = this;
-
-	    return decorate(function () {
-	      var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-	      var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-
-	      var result = _this(state, action);
-	      return _extends({}, result, _mapValues2['default'](reducers, function (pluginReducer, key) {
-	        return pluginReducer(result[key] || initialState, action);
-	      }));
-	    });
-	  };
-
-	  target.normalize = function normalize(normalizers) {
-	    var _this2 = this;
-
-	    return decorate(function () {
-	      var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
-	      var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
-
-	      var result = _this2(state, action);
-	      return _extends({}, result, _mapValues2['default'](normalizers, function (formNormalizers, form) {
-	        var formResult = _extends({}, initialState, result[form]);
-	        return _extends({}, formResult, _mapValues2['default'](formNormalizers, function (fieldNormalizer, field) {
-	          return _extends({}, formResult[field], {
-	            value: fieldNormalizer(formResult[field] ? formResult[field].value : undefined, // value
-	            state[form] && state[form][field] ? state[form][field].value : undefined, // previous value
-	            getValues(formResult)) // all field values
-	          });
-	        }));
-	      }));
-	    });
-	  };
-
-	  return target;
-	}
-
-	exports['default'] = decorate(formReducer);
-
-/***/ },
-/* 281 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	var BLUR = 'redux-form/BLUR';
-	exports.BLUR = BLUR;
-	var CHANGE = 'redux-form/CHANGE';
-	exports.CHANGE = CHANGE;
-	var DESTROY = 'redux-form/DESTROY';
-	exports.DESTROY = DESTROY;
-	var FOCUS = 'redux-form/FOCUS';
-	exports.FOCUS = FOCUS;
-	var INITIALIZE = 'redux-form/INITIALIZE';
-	exports.INITIALIZE = INITIALIZE;
-	var RESET = 'redux-form/RESET';
-	exports.RESET = RESET;
-	var START_ASYNC_VALIDATION = 'redux-form/START_ASYNC_VALIDATION';
-	exports.START_ASYNC_VALIDATION = START_ASYNC_VALIDATION;
-	var START_SUBMIT = 'redux-form/START_SUBMIT';
-	exports.START_SUBMIT = START_SUBMIT;
-	var STOP_ASYNC_VALIDATION = 'redux-form/STOP_ASYNC_VALIDATION';
-	exports.STOP_ASYNC_VALIDATION = STOP_ASYNC_VALIDATION;
-	var STOP_SUBMIT = 'redux-form/STOP_SUBMIT';
-	exports.STOP_SUBMIT = STOP_SUBMIT;
-	var TOUCH = 'redux-form/TOUCH';
-	exports.TOUCH = TOUCH;
-	var UNTOUCH = 'redux-form/UNTOUCH';
-	exports.UNTOUCH = UNTOUCH;
-
-/***/ },
-/* 282 */
-/***/ function(module, exports) {
-
-	/**
-	 * Maps all the values in the given object through the given function and saves them, by key, to a result object
-	 */
-	"use strict";
-
-	exports.__esModule = true;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	exports["default"] = mapValues;
-
-	function mapValues(obj, fn) {
-	  return obj ? Object.keys(obj).reduce(function (accumulator, key) {
-	    var _extends2;
-
-	    return _extends({}, accumulator, (_extends2 = {}, _extends2[key] = fn(obj[key], key), _extends2));
-	  }, {}) : obj;
-	}
-
-	module.exports = exports["default"];
-
-/***/ },
-/* 283 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _createReduxFormConnector = __webpack_require__(284);
-
-	var _createReduxFormConnector2 = _interopRequireDefault(_createReduxFormConnector);
-
-	var _hoistNonReactStatics = __webpack_require__(311);
-
-	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
-
-	/**
-	 * The decorator that is the main API to redux-form
-	 */
-	var createReduxForm = function createReduxForm(isReactNative, React) {
-	  var Component = React.Component;
-
-	  var reduxFormConnector = _createReduxFormConnector2['default'](isReactNative, React);
-	  return function (config, mapDispatchToProps) {
-	    return function (WrappedComponent) {
-	      var ReduxFormConnector = reduxFormConnector(WrappedComponent, mapDispatchToProps);
-	      var configWithDefaults = _extends({
-	        touchOnBlur: true,
-	        touchOnChange: false,
-	        destroyOnUnmount: true
-	      }, config);
-
-	      var ConnectedForm = (function (_Component) {
-	        _inherits(ConnectedForm, _Component);
-
-	        function ConnectedForm() {
-	          _classCallCheck(this, ConnectedForm);
-
-	          _Component.apply(this, arguments);
-	        }
-
-	        ConnectedForm.prototype.render = function render() {
-	          return React.createElement(ReduxFormConnector, _extends({}, configWithDefaults, this.props));
-	        };
-
-	        return ConnectedForm;
-	      })(Component);
-
-	      return _hoistNonReactStatics2['default'](ConnectedForm, WrappedComponent);
-	    };
-	  };
-	};
-
-	exports['default'] = createReduxForm;
-	module.exports = exports['default'];
-
-/***/ },
-/* 284 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _reactLazyCache = __webpack_require__(285);
-
-	var _reactLazyCache2 = _interopRequireDefault(_reactLazyCache);
-
-	var _getDisplayName = __webpack_require__(290);
-
-	var _getDisplayName2 = _interopRequireDefault(_getDisplayName);
-
-	var _createHigherOrderComponent = __webpack_require__(291);
-
-	var _createHigherOrderComponent2 = _interopRequireDefault(_createHigherOrderComponent);
-
-	/**
-	 * This component tracks props that affect how the form is mounted to the store. Normally these should not change,
-	 * but if they do, the connected components below it need to be redefined.
-	 */
-	var createReduxFormConnector = function createReduxFormConnector(isReactNative, React) {
-	  return function (WrappedComponent, mapDispatchToProps) {
-	    var Component = React.Component;
-	    var PropTypes = React.PropTypes;
-
-	    return (function (_Component) {
-	      _inherits(ReduxFormConnector, _Component);
-
-	      _createClass(ReduxFormConnector, null, [{
-	        key: 'displayName',
-	        value: 'ReduxFormConnector(' + _getDisplayName2['default'](WrappedComponent) + ')',
-	        enumerable: true
-	      }, {
-	        key: 'WrappedComponent',
-	        value: WrappedComponent,
-	        enumerable: true
-	      }, {
-	        key: 'propTypes',
-	        value: {
-	          reduxMountPoint: PropTypes.string,
-	          form: PropTypes.string.isRequired,
-	          formKey: PropTypes.string
-	        },
-	        enumerable: true
-	      }, {
-	        key: 'defaultProps',
-	        value: {
-	          reduxMountPoint: 'form'
-	        },
-	        enumerable: true
-	      }]);
-
-	      function ReduxFormConnector(props) {
-	        _classCallCheck(this, ReduxFormConnector);
-
-	        _Component.call(this, props);
-	        this.cache = _reactLazyCache2['default'](this, {
-	          ReduxForm: {
-	            params: [
-	            // props that effect how redux-form connects to the redux store
-	            'reduxMountPoint', 'form', 'formKey', 'initialValues'],
-	            fn: _createHigherOrderComponent2['default'](props, isReactNative, React, WrappedComponent, mapDispatchToProps)
-	          }
-	        });
-	      }
-
-	      ReduxFormConnector.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	        this.cache.componentWillReceiveProps(nextProps);
-	      };
-
-	      ReduxFormConnector.prototype.render = function render() {
-	        var ReduxForm = this.cache.ReduxForm;
-
-	        // remove some redux-form config-only props
-	        var _props = this.props;
-	        var reduxMountPoint = _props.reduxMountPoint;
-	        var destroyOnUnmount = _props.destroyOnUnmount;
-	        var form = _props.form;
-	        var touchOnBlur = _props.touchOnBlur;
-	        var touchOnChange = _props.touchOnChange;
-
-	        var passableProps = _objectWithoutProperties(_props, ['reduxMountPoint', 'destroyOnUnmount', 'form', 'touchOnBlur', 'touchOnChange']);
-
-	        return React.createElement(ReduxForm, passableProps);
-	      };
-
-	      return ReduxFormConnector;
-	    })(Component);
-	  };
-	};
-
-	exports['default'] = createReduxFormConnector;
-	module.exports = exports['default'];
-
-/***/ },
-/* 285 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _lazyCache = __webpack_require__(286);
-
-	var _lazyCache2 = _interopRequireDefault(_lazyCache);
-
-	exports['default'] = _lazyCache2['default'];
-	module.exports = exports['default'];
-
-/***/ },
-/* 286 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports['default'] = lazyCache;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _deepEqual = __webpack_require__(287);
-
-	var _deepEqual2 = _interopRequireDefault(_deepEqual);
-
-	function lazyCache(component, calculators) {
-	  var allProps = [];
-	  var cache = {};
-	  var api = {};
-	  var uncache = function uncache(changedProp) {
-	    Object.keys(cache).forEach(function (key) {
-	      if (~cache[key].props.indexOf(changedProp)) {
-	        delete cache[key].value;
-	        uncache(key);
-	      }
-	    });
-	  };
-
-	  Object.keys(calculators).forEach(function (key) {
-	    var fn = calculators[key].fn;
-	    var props = calculators[key].params;
-	    props.forEach(function (param) {
-	      if (! ~allProps.indexOf(param)) {
-	        allProps.push(param);
-	      }
-	    });
-	    cache[key] = { props: props };
-	    Object.defineProperty(api, key, {
-	      get: function get() {
-	        var cached = cache[key];
-	        if (cached && cached.value !== undefined) {
-	          return cached.value;
-	        }
-	        var params = props.map(function (prop) {
-	          return component.props[prop] || api[prop];
-	        });
-	        var value = fn.apply(undefined, params);
-	        cache[key] = { props: props, value: value };
-	        return value;
-	      }
-	    });
-	  });
-	  api.componentWillReceiveProps = function (nextProps) {
-	    var diffProps = [];
-	    allProps.forEach(function (prop) {
-	      if (!_deepEqual2['default'](component.props[prop], nextProps[prop])) {
-	        diffProps.push(prop);
-	      }
-	    });
-	    diffProps.forEach(uncache);
-	  };
-	  return api;
-	}
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 287 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var pSlice = Array.prototype.slice;
-	var objectKeys = __webpack_require__(288);
-	var isArguments = __webpack_require__(289);
-
-	var deepEqual = module.exports = function (actual, expected, opts) {
-	  if (!opts) opts = {};
-	  // 7.1. All identical values are equivalent, as determined by ===.
-	  if (actual === expected) {
-	    return true;
-
-	  } else if (actual instanceof Date && expected instanceof Date) {
-	    return actual.getTime() === expected.getTime();
-
-	  // 7.3. Other pairs that do not both pass typeof value == 'object',
-	  // equivalence is determined by ==.
-	  } else if (!actual || !expected || typeof actual != 'object' && typeof expected != 'object') {
-	    return opts.strict ? actual === expected : actual == expected;
-
-	  // 7.4. For all other Object pairs, including Array objects, equivalence is
-	  // determined by having the same number of owned properties (as verified
-	  // with Object.prototype.hasOwnProperty.call), the same set of keys
-	  // (although not necessarily the same order), equivalent values for every
-	  // corresponding key, and an identical 'prototype' property. Note: this
-	  // accounts for both named and indexed properties on Arrays.
-	  } else {
-	    return objEquiv(actual, expected, opts);
-	  }
-	}
-
-	function isUndefinedOrNull(value) {
-	  return value === null || value === undefined;
-	}
-
-	function isBuffer (x) {
-	  if (!x || typeof x !== 'object' || typeof x.length !== 'number') return false;
-	  if (typeof x.copy !== 'function' || typeof x.slice !== 'function') {
-	    return false;
-	  }
-	  if (x.length > 0 && typeof x[0] !== 'number') return false;
-	  return true;
-	}
-
-	function objEquiv(a, b, opts) {
-	  var i, key;
-	  if (isUndefinedOrNull(a) || isUndefinedOrNull(b))
-	    return false;
-	  // an identical 'prototype' property.
-	  if (a.prototype !== b.prototype) return false;
-	  //~~~I've managed to break Object.keys through screwy arguments passing.
-	  //   Converting to array solves the problem.
-	  if (isArguments(a)) {
-	    if (!isArguments(b)) {
-	      return false;
-	    }
-	    a = pSlice.call(a);
-	    b = pSlice.call(b);
-	    return deepEqual(a, b, opts);
-	  }
-	  if (isBuffer(a)) {
-	    if (!isBuffer(b)) {
-	      return false;
-	    }
-	    if (a.length !== b.length) return false;
-	    for (i = 0; i < a.length; i++) {
-	      if (a[i] !== b[i]) return false;
-	    }
-	    return true;
-	  }
-	  try {
-	    var ka = objectKeys(a),
-	        kb = objectKeys(b);
-	  } catch (e) {//happens when one is a string literal and the other isn't
-	    return false;
-	  }
-	  // having the same number of owned properties (keys incorporates
-	  // hasOwnProperty)
-	  if (ka.length != kb.length)
-	    return false;
-	  //the same set of keys (although not necessarily the same order),
-	  ka.sort();
-	  kb.sort();
-	  //~~~cheap key test
-	  for (i = ka.length - 1; i >= 0; i--) {
-	    if (ka[i] != kb[i])
-	      return false;
-	  }
-	  //equivalent values for every corresponding key, and
-	  //~~~possibly expensive deep test
-	  for (i = ka.length - 1; i >= 0; i--) {
-	    key = ka[i];
-	    if (!deepEqual(a[key], b[key], opts)) return false;
-	  }
-	  return typeof a === typeof b;
-	}
-
-
-/***/ },
-/* 288 */
-/***/ function(module, exports) {
-
-	exports = module.exports = typeof Object.keys === 'function'
-	  ? Object.keys : shim;
-
-	exports.shim = shim;
-	function shim (obj) {
-	  var keys = [];
-	  for (var key in obj) keys.push(key);
-	  return keys;
-	}
-
-
-/***/ },
-/* 289 */
-/***/ function(module, exports) {
-
-	var supportsArgumentsClass = (function(){
-	  return Object.prototype.toString.call(arguments)
-	})() == '[object Arguments]';
-
-	exports = module.exports = supportsArgumentsClass ? supported : unsupported;
-
-	exports.supported = supported;
-	function supported(object) {
-	  return Object.prototype.toString.call(object) == '[object Arguments]';
-	};
-
-	exports.unsupported = unsupported;
-	function unsupported(object){
-	  return object &&
-	    typeof object == 'object' &&
-	    typeof object.length == 'number' &&
-	    Object.prototype.hasOwnProperty.call(object, 'callee') &&
-	    !Object.prototype.propertyIsEnumerable.call(object, 'callee') ||
-	    false;
-	};
-
-
-/***/ },
-/* 290 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports['default'] = getDisplayName;
-
-	function getDisplayName(Comp) {
-	  return Comp.displayName || Comp.name || 'Component';
-	}
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 291 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
-
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _reactRedux = __webpack_require__(159);
-
-	var _redux = __webpack_require__(166);
-
-	var _actions = __webpack_require__(292);
-
-	var importedActions = _interopRequireWildcard(_actions);
-
-	var _getDisplayName = __webpack_require__(290);
-
-	var _getDisplayName2 = _interopRequireDefault(_getDisplayName);
-
-	var _reducer = __webpack_require__(280);
-
-	var _deepEqual = __webpack_require__(287);
-
-	var _deepEqual2 = _interopRequireDefault(_deepEqual);
-
-	var _bindActionData = __webpack_require__(293);
-
-	var _bindActionData2 = _interopRequireDefault(_bindActionData);
-
-	var _getValues = __webpack_require__(294);
-
-	var _getValues2 = _interopRequireDefault(_getValues);
-
-	var _isValid = __webpack_require__(295);
-
-	var _isValid2 = _interopRequireDefault(_isValid);
-
-	var _readFields = __webpack_require__(296);
-
-	var _readFields2 = _interopRequireDefault(_readFields);
-
-	var _handleSubmit2 = __webpack_require__(307);
-
-	var _handleSubmit3 = _interopRequireDefault(_handleSubmit2);
-
-	var _asyncValidation = __webpack_require__(308);
-
-	var _asyncValidation2 = _interopRequireDefault(_asyncValidation);
-
-	var _eventsSilenceEvents = __webpack_require__(309);
-
-	var _eventsSilenceEvents2 = _interopRequireDefault(_eventsSilenceEvents);
-
-	var _eventsSilenceEvent = __webpack_require__(310);
-
-	var _eventsSilenceEvent2 = _interopRequireDefault(_eventsSilenceEvent);
-
-	/**
-	 * Creates a HOC that knows how to create redux-connected sub-components.
-	 */
-	var createHigherOrderComponent = function createHigherOrderComponent(config, isReactNative, React, WrappedComponent) {
-	  var Component = React.Component;
-	  var PropTypes = React.PropTypes;
-
-	  return function (reduxMountPoint, formName, formKey) {
-	    var ReduxForm = (function (_Component) {
-	      _inherits(ReduxForm, _Component);
-
-	      _createClass(ReduxForm, null, [{
-	        key: 'displayName',
-	        value: 'ReduxForm(' + _getDisplayName2['default'](WrappedComponent) + ')',
-	        enumerable: true
-	      }, {
-	        key: 'propTypes',
-	        value: {
-	          // props:
-	          asyncBlurFields: PropTypes.arrayOf(PropTypes.string),
-	          asyncValidate: PropTypes.func,
-	          dispatch: PropTypes.func.isRequired,
-	          fields: PropTypes.arrayOf(PropTypes.string).isRequired,
-	          form: PropTypes.object,
-	          initialValues: PropTypes.object,
-	          onSubmit: PropTypes.func,
-	          validate: PropTypes.func,
-	          readonly: PropTypes.bool,
-	          returnRejectedSubmitPromise: PropTypes.bool,
-
-	          // actions:
-	          blur: PropTypes.func.isRequired,
-	          change: PropTypes.func.isRequired,
-	          destroy: PropTypes.func.isRequired,
-	          focus: PropTypes.func.isRequired,
-	          initialize: PropTypes.func.isRequired,
-	          reset: PropTypes.func.isRequired,
-	          startAsyncValidation: PropTypes.func.isRequired,
-	          startSubmit: PropTypes.func.isRequired,
-	          stopAsyncValidation: PropTypes.func.isRequired,
-	          stopSubmit: PropTypes.func.isRequired,
-	          touch: PropTypes.func.isRequired,
-	          untouch: PropTypes.func.isRequired
-	        },
-	        enumerable: true
-	      }, {
-	        key: 'defaultProps',
-	        value: {
-	          asyncBlurFields: [],
-	          form: _reducer.initialState,
-	          readonly: false,
-	          returnRejectedSubmitPromise: false,
-	          validate: function validate() {
-	            return {};
-	          }
-	        },
-	        enumerable: true
-	      }]);
-
-	      function ReduxForm(props) {
-	        _classCallCheck(this, ReduxForm);
-
-	        _Component.call(this, props);
-	        // bind functions
-	        this.asyncValidate = this.asyncValidate.bind(this);
-	        this.handleSubmit = this.handleSubmit.bind(this);
-	        this.fields = _readFields2['default'](props, {}, this.asyncValidate, isReactNative);
-	      }
-
-	      // bind touch flags to blur and change
-
-	      ReduxForm.prototype.componentWillMount = function componentWillMount() {
-	        var _props = this.props;
-	        var initialize = _props.initialize;
-	        var initialValues = _props.initialValues;
-
-	        if (initialValues) {
-	          initialize(initialValues);
-	        }
-	      };
-
-	      ReduxForm.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
-	        if (!_deepEqual2['default'](this.props.fields, nextProps.fields) || !_deepEqual2['default'](this.props.form, nextProps.form)) {
-	          this.fields = _readFields2['default'](nextProps, this.fields, this.asyncValidate, isReactNative);
-	        }
-	      };
-
-	      ReduxForm.prototype.componentWillUnmount = function componentWillUnmount() {
-	        if (config.destroyOnUnmount) {
-	          this.props.destroy();
-	        }
-	      };
-
-	      ReduxForm.prototype.asyncValidate = function asyncValidate(name, value) {
-	        var _this = this;
-
-	        var _props2 = this.props;
-	        var asyncValidate = _props2.asyncValidate;
-	        var dispatch = _props2.dispatch;
-	        var fields = _props2.fields;
-	        var form = _props2.form;
-	        var startAsyncValidation = _props2.startAsyncValidation;
-	        var stopAsyncValidation = _props2.stopAsyncValidation;
-	        var validate = _props2.validate;
-
-	        if (asyncValidate) {
-	          var _ret = (function () {
-	            var values = _getValues2['default'](fields, form);
-	            if (name) {
-	              values[name] = value;
-	            }
-	            var syncErrors = validate(values, _this.props);
-
-	            // if blur validating, only run async validate if sync validation passes
-	            if (!name || _isValid2['default'](syncErrors[name])) {
-	              return {
-	                v: _asyncValidation2['default'](function () {
-	                  return asyncValidate(values, dispatch);
-	                }, startAsyncValidation, stopAsyncValidation)
-	              };
-	            }
-	          })();
-
-	          if (typeof _ret === 'object') return _ret.v;
-	        }
-	      };
-
-	      ReduxForm.prototype.handleSubmit = function handleSubmit(submitOrEvent) {
-	        var _this2 = this;
-
-	        var _props3 = this.props;
-	        var onSubmit = _props3.onSubmit;
-	        var fields = _props3.fields;
-	        var form = _props3.form;
-
-	        var check = function check(submit) {
-	          if (!submit || typeof submit !== 'function') {
-	            throw new Error('You must either pass handleSubmit() an onSubmit function or pass onSubmit as a prop');
-	          }
-	          return submit;
-	        };
-	        var values = _getValues2['default'](fields, form);
-	        return _eventsSilenceEvent2['default'](submitOrEvent) ?
-	        // submitOrEvent is an event: fire submit
-	        _handleSubmit3['default'](check(onSubmit), values, this.props, this.asyncValidate) :
-	        // submitOrEvent is the submit function: return deferred submit thunk
-	        _eventsSilenceEvents2['default'](function () {
-	          return _handleSubmit3['default'](check(submitOrEvent), values, _this2.props, _this2.asyncValidate);
-	        });
-	      };
-
-	      ReduxForm.prototype.render = function render() {
-	        var _this3 = this;
-
-	        var allFields = this.fields;
-	        var _props4 = this.props;
-	        var asyncBlurFields = _props4.asyncBlurFields;
-	        var blur = _props4.blur;
-	        var change = _props4.change;
-	        var destroy = _props4.destroy;
-	        var focus = _props4.focus;
-	        var fields = _props4.fields;
-	        var form = _props4.form;
-	        var initialValues = _props4.initialValues;
-	        var initialize = _props4.initialize;
-	        var onSubmit = _props4.onSubmit;
-	        var reset = _props4.reset;
-	        var startAsyncValidation = _props4.startAsyncValidation;
-	        var startSubmit = _props4.startSubmit;
-	        var stopAsyncValidation = _props4.stopAsyncValidation;
-	        var stopSubmit = _props4.stopSubmit;
-	        var touch = _props4.touch;
-	        var untouch = _props4.untouch;
-	        var validate = _props4.validate;
-
-	        var passableProps = _objectWithoutProperties(_props4, ['asyncBlurFields', 'blur', 'change', 'destroy', 'focus', 'fields', 'form', 'initialValues', 'initialize', 'onSubmit', 'reset', 'startAsyncValidation', 'startSubmit', 'stopAsyncValidation', 'stopSubmit', 'touch', 'untouch', 'validate']);
-
-	        var _allFields$_meta = allFields._meta;
-	        var allPristine = _allFields$_meta.allPristine;
-	        var allValid = _allFields$_meta.allValid;
-	        var errors = _allFields$_meta.errors;
-	        var formError = _allFields$_meta.formError;
-	        var values = _allFields$_meta.values;
-
-	        return React.createElement(WrappedComponent, _extends({}, passableProps, { // contains dispatch
-
-	          // State:
-	          active: form._active,
-	          asyncValidating: form._asyncValidating,
-	          dirty: !allPristine,
-	          error: formError,
-	          errors: errors,
-	          fields: allFields,
-	          formKey: formKey,
-	          invalid: !allValid,
-	          pristine: allPristine,
-	          submitting: form._submitting,
-	          valid: allValid,
-	          values: values,
-
-	          // Actions:
-	          asyncValidate: _eventsSilenceEvents2['default'](function () {
-	            return _this3.asyncValidate();
-	          }),
-	          // ^ doesn't just pass this.asyncValidate to disallow values passing
-	          destroyForm: _eventsSilenceEvents2['default'](destroy),
-	          handleSubmit: this.handleSubmit,
-	          initializeForm: _eventsSilenceEvents2['default'](initialize),
-	          resetForm: _eventsSilenceEvents2['default'](reset),
-	          touch: _eventsSilenceEvents2['default'](function () {
-	            return touch.apply(undefined, arguments);
-	          }),
-	          touchAll: _eventsSilenceEvents2['default'](function () {
-	            return touch.apply(undefined, fields);
-	          }),
-	          untouch: _eventsSilenceEvents2['default'](function () {
-	            return untouch.apply(undefined, arguments);
-	          }),
-	          untouchAll: _eventsSilenceEvents2['default'](function () {
-	            return untouch.apply(undefined, fields);
-	          })
-	        }));
-	      };
-
-	      _createClass(ReduxForm, null, [{
-	        key: 'WrappedComponent',
-	        value: WrappedComponent,
-	        enumerable: true
-	      }]);
-
-	      return ReduxForm;
-	    })(Component);
-
-	    var unboundActions = _extends({}, importedActions, {
-	      blur: _bindActionData2['default'](importedActions.blur, {
-	        touch: !!config.touchOnBlur
-	      }),
-	      change: _bindActionData2['default'](importedActions.change, {
-	        touch: !!config.touchOnChange
-	      })
-	    });
-
-	    // make redux connector with or without form key
-	    var decorate = formKey !== undefined && formKey !== null ? _reactRedux.connect(function (state) {
-	      if (!state[reduxMountPoint]) {
-	        throw new Error('You need to mount the redux-form reducer at "' + reduxMountPoint + '"');
-	      }
-	      return {
-	        form: state[reduxMountPoint] && state[reduxMountPoint][formName] && state[reduxMountPoint][formName][formKey]
-	      };
-	    }, function (dispatch) {
-	      return _extends({}, _redux.bindActionCreators(_bindActionData2['default'](unboundActions, { form: formName, key: formKey }), dispatch), {
-	        dispatch: dispatch
-	      });
-	    }) : _reactRedux.connect(function (state) {
-	      if (!state[reduxMountPoint]) {
-	        throw new Error('You need to mount the redux-form reducer at "' + reduxMountPoint + '"');
-	      }
-	      return { form: state[reduxMountPoint] && state[reduxMountPoint][formName] };
-	    }, function (dispatch) {
-	      return _extends({}, _redux.bindActionCreators(_bindActionData2['default'](unboundActions, { form: formName }), dispatch), {
-	        dispatch: dispatch
-	      });
-	    });
-
-	    return decorate(ReduxForm);
-	  };
-	};
-
-	exports['default'] = createHigherOrderComponent;
-	module.exports = exports['default'];
-
-/***/ },
-/* 292 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports.blur = blur;
-	exports.change = change;
-	exports.destroy = destroy;
-	exports.focus = focus;
-	exports.initialize = initialize;
-	exports.reset = reset;
-	exports.startAsyncValidation = startAsyncValidation;
-	exports.startSubmit = startSubmit;
-	exports.stopAsyncValidation = stopAsyncValidation;
-	exports.stopSubmit = stopSubmit;
-	exports.touch = touch;
-	exports.untouch = untouch;
-
-	var _actionTypes = __webpack_require__(281);
-
-	function blur(field, value) {
-	  return { type: _actionTypes.BLUR, field: field, value: value };
-	}
-
-	function change(field, value) {
-	  return { type: _actionTypes.CHANGE, field: field, value: value };
-	}
-
-	function destroy() {
-	  return { type: _actionTypes.DESTROY };
-	}
-
-	function focus(field) {
-	  return { type: _actionTypes.FOCUS, field: field };
-	}
-
-	function initialize(data) {
-	  return { type: _actionTypes.INITIALIZE, data: data };
-	}
-
-	function reset() {
-	  return { type: _actionTypes.RESET };
-	}
-
-	function startAsyncValidation() {
-	  return { type: _actionTypes.START_ASYNC_VALIDATION };
-	}
-
-	function startSubmit() {
-	  return { type: _actionTypes.START_SUBMIT };
-	}
-
-	function stopAsyncValidation(errors) {
-	  return { type: _actionTypes.STOP_ASYNC_VALIDATION, errors: errors };
-	}
-
-	function stopSubmit(errors) {
-	  return { type: _actionTypes.STOP_SUBMIT, errors: errors };
-	}
-
-	function touch() {
-	  for (var _len = arguments.length, fields = Array(_len), _key = 0; _key < _len; _key++) {
-	    fields[_key] = arguments[_key];
-	  }
-
-	  return { type: _actionTypes.TOUCH, fields: fields };
-	}
-
-	function untouch() {
-	  for (var _len2 = arguments.length, fields = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-	    fields[_key2] = arguments[_key2];
-	  }
-
-	  return { type: _actionTypes.UNTOUCH, fields: fields };
-	}
-
-/***/ },
-/* 293 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	exports['default'] = bindActionData;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _mapValues = __webpack_require__(282);
-
-	var _mapValues2 = _interopRequireDefault(_mapValues);
-
-	/**
-	 * Adds additional properties to the results of the function or map of functions passed
-	 */
-
-	function bindActionData(action, data) {
-	  if (typeof action === 'function') {
-	    return function () {
-	      return _extends({}, action.apply(undefined, arguments), data);
-	    };
-	  }
-	  if (typeof action === 'object') {
-	    return _mapValues2['default'](action, function (value) {
-	      return bindActionData(value, data);
-	    });
-	  }
-	  return action;
-	}
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 294 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	exports.__esModule = true;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var getValues = function getValues(fields, form) {
-	  return fields.reduce(function (accumulator, field) {
-	    var _extends2;
-
-	    return _extends({}, accumulator, (_extends2 = {}, _extends2[field] = form[field] ? form[field].value : undefined, _extends2));
-	  }, {});
-	};
-
-	exports["default"] = getValues;
-	module.exports = exports["default"];
-
-/***/ },
-/* 295 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports['default'] = isValid;
-
-	function isValid(error) {
-	  if (Array.isArray(error)) {
-	    return error.reduce(function (valid, errorValue) {
-	      return valid && isValid(errorValue);
-	    }, true);
-	  }
-	  if (error && typeof error === 'object') {
-	    return Object.keys(error).reduce(function (valid, key) {
-	      return valid && isValid(error[key]);
-	    }, true);
-	  }
-	  return !error;
-	}
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 296 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _eventsCreateOnBlur = __webpack_require__(297);
-
-	var _eventsCreateOnBlur2 = _interopRequireDefault(_eventsCreateOnBlur);
-
-	var _eventsCreateOnChange = __webpack_require__(300);
-
-	var _eventsCreateOnChange2 = _interopRequireDefault(_eventsCreateOnChange);
-
-	var _eventsCreateOnDragStart = __webpack_require__(301);
-
-	var _eventsCreateOnDragStart2 = _interopRequireDefault(_eventsCreateOnDragStart);
-
-	var _eventsCreateOnDrop = __webpack_require__(302);
-
-	var _eventsCreateOnDrop2 = _interopRequireDefault(_eventsCreateOnDrop);
-
-	var _eventsCreateOnFocus = __webpack_require__(303);
-
-	var _eventsCreateOnFocus2 = _interopRequireDefault(_eventsCreateOnFocus);
-
-	var _isPristine = __webpack_require__(304);
-
-	var _isPristine2 = _interopRequireDefault(_isPristine);
-
-	var _isValid = __webpack_require__(295);
-
-	var _isValid2 = _interopRequireDefault(_isValid);
-
-	var _getValues = __webpack_require__(294);
-
-	var _getValues2 = _interopRequireDefault(_getValues);
-
-	var _silencePromise = __webpack_require__(305);
-
-	var _silencePromise2 = _interopRequireDefault(_silencePromise);
-
-	/**
-	 * Reads props and generates (or updates) field structure
-	 */
-	var readFields = function readFields(props, myFields, asyncValidate, isReactNative) {
-	  var asyncBlurFields = props.asyncBlurFields;
-	  var blur = props.blur;
-	  var change = props.change;
-	  var fields = props.fields;
-	  var focus = props.focus;
-	  var form = props.form;
-	  var initialValues = props.initialValues;
-	  var readonly = props.readonly;
-	  var validate = props.validate;
-
-	  var values = _getValues2['default'](fields, form);
-	  var syncErrors = validate(values, props);
-	  var errors = {};
-	  var formError = syncErrors._error || form._error;
-	  var allValid = !formError;
-	  var allPristine = true;
-	  return _extends({}, fields.reduce(function (accumulator, name) {
-	    var _extends2;
-
-	    var field = myFields[name] || {};
-	    var diff = {};
-
-	    // create field if it does not exist
-	    if (field.name !== name) {
-	      var onChange = _eventsCreateOnChange2['default'](name, change, isReactNative);
-	      var initialValue = initialValues && initialValues[name];
-	      field.name = name;
-	      field.defaultChecked = initialValue;
-	      field.defaultValue = initialValue;
-	      if (!readonly) {
-	        field.onBlur = _eventsCreateOnBlur2['default'](name, blur, isReactNative, ~asyncBlurFields.indexOf(name) && function (blurName, blurValue) {
-	          return _silencePromise2['default'](asyncValidate(blurName, blurValue));
-	        });
-	        field.onChange = onChange;
-	        field.onDragStart = _eventsCreateOnDragStart2['default'](name, function () {
-	          return field.value;
-	        });
-	        field.onDrop = _eventsCreateOnDrop2['default'](name, change);
-	        field.onFocus = _eventsCreateOnFocus2['default'](name, focus);
-	        field.onUpdate = onChange; // alias to support belle. https://github.com/nikgraf/belle/issues/58
-	      }
-	      field.valid = true;
-	      field.invalid = false;
-	    }
-
-	    // update field value
-	    var formField = form[name] || {};
-	    if (field.value !== formField.value) {
-	      diff.value = formField.value;
-	      diff.checked = typeof formField.value === 'boolean' ? formField.value : undefined;
-	    }
-
-	    // update dirty/pristine
-	    var pristine = _isPristine2['default'](formField.value, formField.initial);
-	    if (field.pristine !== pristine) {
-	      diff.dirty = !pristine;
-	      diff.pristine = pristine;
-	    }
-
-	    // update field error
-	    var error = syncErrors[name] || formField.submitError || formField.asyncError;
-	    if (error !== field.error) {
-	      diff.error = error;
-	    }
-	    var valid = _isValid2['default'](error);
-	    if (field.valid !== valid) {
-	      diff.invalid = !valid;
-	      diff.valid = valid;
-	    }
-	    if (error) {
-	      errors[name] = error;
-	    }
-
-	    var active = form._active === name;
-	    if (active !== field.active) {
-	      diff.active = active;
-	    }
-	    var touched = !!formField.touched;
-	    if (touched !== field.touched) {
-	      diff.touched = touched;
-	    }
-	    var visited = !!formField.visited;
-	    if (visited !== field.visited) {
-	      diff.visited = visited;
-	    }
-
-	    var result = Object.keys(diff).length ? _extends({}, field, diff) : field;
-
-	    if (result.invalid) {
-	      allValid = false;
-	    }
-	    if (result.dirty) {
-	      allPristine = false;
-	    }
-	    return _extends({}, accumulator, (_extends2 = {}, _extends2[name] = result, _extends2));
-	  }, {}), {
-	    _meta: {
-	      allPristine: allPristine,
-	      allValid: allValid,
-	      values: values,
-	      errors: errors,
-	      formError: formError
-	    }
-	  });
-	};
-	exports['default'] = readFields;
-	module.exports = exports['default'];
-
-/***/ },
-/* 297 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _getValue = __webpack_require__(298);
-
-	var _getValue2 = _interopRequireDefault(_getValue);
-
-	var createOnBlur = function createOnBlur(name, blur, isReactNative, afterBlur) {
-	  return function (event) {
-	    var value = _getValue2['default'](event, isReactNative);
-	    blur(name, value);
-	    if (afterBlur) {
-	      afterBlur(name, value);
-	    }
-	  };
-	};
-	exports['default'] = createOnBlur;
-	module.exports = exports['default'];
-
-/***/ },
-/* 298 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _isEvent = __webpack_require__(299);
-
-	var _isEvent2 = _interopRequireDefault(_isEvent);
-
-	var getValue = function getValue(event, isReactNative) {
-	  if (_isEvent2['default'](event)) {
-	    if (!isReactNative && event.nativeEvent !== undefined && event.nativeEvent.text !== undefined) {
-	      return event.nativeEvent.text;
-	    }
-	    if (isReactNative && event.nativeEvent !== undefined) {
-	      return event.nativeEvent.text;
-	    }
-	    var _event$target = event.target;
-	    var type = _event$target.type;
-	    var value = _event$target.value;
-	    var checked = _event$target.checked;
-	    var files = _event$target.files;
-	    var dataTransfer = event.dataTransfer;
-
-	    if (type === 'checkbox') {
-	      return checked;
-	    }
-	    if (type === 'file') {
-	      return files || dataTransfer && dataTransfer.files;
-	    }
-	    return value;
-	  }
-	  // not an event, so must be either our value or an object containing our value in the 'value' key
-	  return event && typeof event === 'object' && event.value !== undefined ? event.value : // extract value from { value: value } structure. https://github.com/nikgraf/belle/issues/58
-	  event;
-	};
-
-	exports['default'] = getValue;
-	module.exports = exports['default'];
-
-/***/ },
-/* 299 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	exports.__esModule = true;
-	var isEvent = function isEvent(candidate) {
-	  return !!(candidate && candidate.stopPropagation && candidate.preventDefault);
-	};
-
-	exports["default"] = isEvent;
-	module.exports = exports["default"];
-
-/***/ },
-/* 300 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _getValue = __webpack_require__(298);
-
-	var _getValue2 = _interopRequireDefault(_getValue);
-
-	var createOnChange = function createOnChange(name, change, isReactNative) {
-	  return function (event) {
-	    return change(name, _getValue2['default'](event, isReactNative));
-	  };
-	};
-	exports['default'] = createOnChange;
-	module.exports = exports['default'];
-
-/***/ },
-/* 301 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	var dataKey = 'value';
-	exports.dataKey = dataKey;
-	var createOnDragStart = function createOnDragStart(name, getValue) {
-	  return function (event) {
-	    event.dataTransfer.setData(dataKey, getValue());
-	  };
-	};
-
-	exports['default'] = createOnDragStart;
-
-/***/ },
-/* 302 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	var _createOnDragStart = __webpack_require__(301);
-
-	var createOnDrop = function createOnDrop(name, change) {
-	  return function (event) {
-	    change(name, event.dataTransfer.getData(_createOnDragStart.dataKey));
-	  };
-	};
-	exports['default'] = createOnDrop;
-	module.exports = exports['default'];
-
-/***/ },
-/* 303 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	exports.__esModule = true;
-	var createOnFocus = function createOnFocus(name, focus) {
-	  return function () {
-	    return focus(name);
-	  };
-	};
-	exports["default"] = createOnFocus;
-	module.exports = exports["default"];
-
-/***/ },
-/* 304 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	exports.__esModule = true;
-	exports['default'] = isPristine;
-
-	function isPristine(initial, data) {
-	  if (initial === data) {
-	    return true;
-	  }
-	  if (typeof initial === 'boolean' || typeof data === 'boolean') {
-	    return initial === data;
-	  } else if (initial && typeof initial === 'object') {
-	    if (!data || typeof data !== 'object') {
-	      return false;
-	    }
-	    var initialKeys = Object.keys(initial);
-	    var dataKeys = Object.keys(data);
-	    if (initialKeys.length !== dataKeys.length) {
-	      return false;
-	    }
-	    for (var index = 0; index < dataKeys.length; index++) {
-	      var key = dataKeys[index];
-	      if (!isPristine(initial[key], data[key])) {
-	        return false;
-	      }
-	    }
-	  } else if (initial || data) {
-	    // allow '' to equate to undefined or null
-	    return initial === data;
-	  }
-	  return true;
-	}
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 305 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _isPromise = __webpack_require__(306);
-
-	var _isPromise2 = _interopRequireDefault(_isPromise);
-
-	var noop = function noop() {
-	  return undefined;
-	};
-
-	var silencePromise = function silencePromise(promise) {
-	  return _isPromise2['default'](promise) ? promise.then(noop, noop) : promise;
-	};
-
-	exports['default'] = silencePromise;
-	module.exports = exports['default'];
-
-/***/ },
-/* 306 */
-/***/ function(module, exports) {
-
-	module.exports = isPromise;
-
-	function isPromise(obj) {
-	  return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
-	}
-
-
-/***/ },
-/* 307 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _isPromise = __webpack_require__(306);
-
-	var _isPromise2 = _interopRequireDefault(_isPromise);
-
-	var _isValid = __webpack_require__(295);
-
-	var _isValid2 = _interopRequireDefault(_isValid);
-
-	var handleSubmit = function handleSubmit(submit, values, props, asyncValidate) {
-	  var dispatch = props.dispatch;
-	  var fields = props.fields;
-	  var startSubmit = props.startSubmit;
-	  var stopSubmit = props.stopSubmit;
-	  var returnRejectedSubmitPromise = props.returnRejectedSubmitPromise;
-	  var touch = props.touch;
-	  var validate = props.validate;
-
-	  var syncErrors = validate(values, props);
-	  touch.apply(undefined, fields); // touch all fields
-	  if (_isValid2['default'](syncErrors)) {
-	    var doSubmit = function doSubmit() {
-	      var result = submit(values, dispatch);
-	      if (_isPromise2['default'](result)) {
-	        startSubmit();
-	        return result.then(function (submitResult) {
-	          stopSubmit();
-	          return submitResult;
-	        }, function (submitError) {
-	          stopSubmit(submitError);
-	          if (returnRejectedSubmitPromise) {
-	            return Promise.reject(submitError);
-	          }
-	        });
-	      }
-	      return result;
-	    };
-	    var asyncValidateResult = asyncValidate();
-	    return _isPromise2['default'](asyncValidateResult) ?
-	    // asyncValidateResult will be rejected if async validation failed
-	    asyncValidateResult.then(doSubmit, function () {
-	      return returnRejectedSubmitPromise ? Promise.reject() : Promise.resolve();
-	    }) : doSubmit(); // no async validation, so submit
-	  }
-	};
-
-	exports['default'] = handleSubmit;
-	module.exports = exports['default'];
-
-/***/ },
-/* 308 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _isPromise = __webpack_require__(306);
-
-	var _isPromise2 = _interopRequireDefault(_isPromise);
-
-	var _isValid = __webpack_require__(295);
-
-	var _isValid2 = _interopRequireDefault(_isValid);
-
-	var asyncValidation = function asyncValidation(fn, start, stop) {
-	  start();
-	  var promise = fn();
-	  if (!_isPromise2['default'](promise)) {
-	    throw new Error('asyncValidate function passed to reduxForm must return a promise');
-	  }
-	  var handleErrors = function handleErrors(rejected) {
-	    return function (errors) {
-	      if (!_isValid2['default'](errors)) {
-	        stop(errors);
-	        return Promise.reject();
-	      } else if (rejected) {
-	        stop();
-	        throw new Error('Asynchronous validation promise was rejected without errors.');
-	      }
-	      stop();
-	      return Promise.resolve();
-	    };
-	  };
-	  return promise.then(handleErrors(false), handleErrors(true));
-	};
-
-	exports['default'] = asyncValidation;
-	module.exports = exports['default'];
-
-/***/ },
-/* 309 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _silenceEvent = __webpack_require__(310);
-
-	var _silenceEvent2 = _interopRequireDefault(_silenceEvent);
-
-	var silenceEvents = function silenceEvents(fn) {
-	  return function (event) {
-	    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-	      args[_key - 1] = arguments[_key];
-	    }
-
-	    return _silenceEvent2['default'](event) ? fn.apply(undefined, args) : fn.apply(undefined, [event].concat(args));
-	  };
-	};
-
-	exports['default'] = silenceEvents;
-	module.exports = exports['default'];
-
-/***/ },
-/* 310 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	exports.__esModule = true;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	var _isEvent = __webpack_require__(299);
-
-	var _isEvent2 = _interopRequireDefault(_isEvent);
-
-	var silenceEvent = function silenceEvent(event) {
-	  var is = _isEvent2['default'](event);
-	  if (is) {
-	    event.preventDefault();
-	  }
-	  return is;
-	};
-
-	exports['default'] = silenceEvent;
-	module.exports = exports['default'];
-
-/***/ },
-/* 311 */
-/***/ function(module, exports) {
-
-	/**
-	 * Copyright 2015, Yahoo! Inc.
-	 * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
-	 */
-	'use strict';
-
-	var REACT_STATICS = {
-	    childContextTypes: true,
-	    contextTypes: true,
-	    defaultProps: true,
-	    displayName: true,
-	    getDefaultProps: true,
-	    mixins: true,
-	    propTypes: true,
-	    type: true
-	};
-
-	var KNOWN_STATICS = {
-	    name: true,
-	    length: true,
-	    prototype: true,
-	    caller: true,
-	    arguments: true,
-	    arity: true
-	};
-
-	module.exports = function hoistNonReactStatics(targetComponent, sourceComponent) {
-	    var keys = Object.getOwnPropertyNames(sourceComponent);
-	    for (var i=0; i<keys.length; ++i) {
-	        if (!REACT_STATICS[keys[i]] && !KNOWN_STATICS[keys[i]]) {
-	            targetComponent[keys[i]] = sourceComponent[keys[i]];
-	        }
-	    }
-
-	    return targetComponent;
-	};
-
-
-/***/ },
-/* 312 */,
-/* 313 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// the whatwg-fetch polyfill installs the fetch() function
 	// on the global object (window or self)
 	//
 	// Return that as the export for use in Webpack, Browserify etc.
-	__webpack_require__(314);
+	__webpack_require__(276);
 	module.exports = self.fetch.bind(self);
 
 
 /***/ },
-/* 314 */
+/* 276 */
 /***/ function(module, exports) {
 
 	(function() {
@@ -30864,6 +28960,3118 @@
 	  }
 	  self.fetch.polyfill = true
 	})();
+
+
+/***/ },
+/* 277 */,
+/* 278 */,
+/* 279 */,
+/* 280 */,
+/* 281 */,
+/* 282 */,
+/* 283 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _createAll2 = __webpack_require__(284);
+
+	var _createAll3 = _interopRequireDefault(_createAll2);
+
+	var _createAll = _createAll3['default'](false, _react2['default']);
+
+	var actionTypes = _createAll.actionTypes;
+	var blur = _createAll.blur;
+	var change = _createAll.change;
+	var destroy = _createAll.destroy;
+	var focus = _createAll.focus;
+	var reducer = _createAll.reducer;
+	var reduxForm = _createAll.reduxForm;
+	var initialize = _createAll.initialize;
+	var initializeWithKey = _createAll.initializeWithKey;
+	var reset = _createAll.reset;
+	var startAsyncValidation = _createAll.startAsyncValidation;
+	var startSubmit = _createAll.startSubmit;
+	var stopAsyncValidation = _createAll.stopAsyncValidation;
+	var stopSubmit = _createAll.stopSubmit;
+	var touch = _createAll.touch;
+	var untouch = _createAll.untouch;
+	exports.actionTypes = actionTypes;
+	exports.blur = blur;
+	exports.change = change;
+	exports.destroy = destroy;
+	exports.focus = focus;
+	exports.reducer = reducer;
+	exports.reduxForm = reduxForm;
+	exports.initialize = initialize;
+	exports.initializeWithKey = initializeWithKey;
+	exports.reset = reset;
+	exports.startAsyncValidation = startAsyncValidation;
+	exports.startSubmit = startSubmit;
+	exports.stopAsyncValidation = stopAsyncValidation;
+	exports.stopSubmit = stopSubmit;
+	exports.touch = touch;
+	exports.untouch = untouch;
+
+/***/ },
+/* 284 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports['default'] = createAll;
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _reducer = __webpack_require__(285);
+
+	var _reducer2 = _interopRequireDefault(_reducer);
+
+	var _createReduxForm = __webpack_require__(288);
+
+	var _createReduxForm2 = _interopRequireDefault(_createReduxForm);
+
+	var _mapValues = __webpack_require__(287);
+
+	var _mapValues2 = _interopRequireDefault(_mapValues);
+
+	var _bindActionData = __webpack_require__(298);
+
+	var _bindActionData2 = _interopRequireDefault(_bindActionData);
+
+	var _actions = __webpack_require__(297);
+
+	var actions = _interopRequireWildcard(_actions);
+
+	var _actionTypes = __webpack_require__(286);
+
+	var actionTypes = _interopRequireWildcard(_actionTypes);
+
+	// bind form as first parameter of action creators
+	var boundActions = _extends({}, _mapValues2['default'](_extends({}, actions, {
+	  initializeWithKey: function initializeWithKey(key, data) {
+	    return _bindActionData2['default'](actions.initialize, { key: key })(data);
+	  },
+	  destroy: function destroy(key) {
+	    return _bindActionData2['default'](actions.destroy, { key: key })();
+	  }
+	}), function (action) {
+	  return function (form) {
+	    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+	      args[_key - 1] = arguments[_key];
+	    }
+
+	    return _bindActionData2['default'](action, { form: form }).apply(undefined, args);
+	  };
+	}));
+
+	var blur = boundActions.blur;
+	var change = boundActions.change;
+	var destroy = boundActions.destroy;
+	var focus = boundActions.focus;
+	var initialize = boundActions.initialize;
+	var initializeWithKey = boundActions.initializeWithKey;
+	var reset = boundActions.reset;
+	var startAsyncValidation = boundActions.startAsyncValidation;
+	var startSubmit = boundActions.startSubmit;
+	var stopAsyncValidation = boundActions.stopAsyncValidation;
+	var stopSubmit = boundActions.stopSubmit;
+	var touch = boundActions.touch;
+	var untouch = boundActions.untouch;
+
+	function createAll(isReactNative, React) {
+	  return {
+	    actionTypes: actionTypes,
+	    blur: blur,
+	    change: change,
+	    destroy: destroy,
+	    focus: focus,
+	    reducer: _reducer2['default'],
+	    initialize: initialize,
+	    initializeWithKey: initializeWithKey,
+	    reduxForm: _createReduxForm2['default'](isReactNative, React),
+	    reset: reset,
+	    startAsyncValidation: startAsyncValidation,
+	    startSubmit: startSubmit,
+	    stopAsyncValidation: stopAsyncValidation,
+	    stopSubmit: stopSubmit,
+	    touch: touch,
+	    untouch: untouch
+	  };
+	}
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 285 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	var _actionTypes = __webpack_require__(286);
+
+	var _mapValues = __webpack_require__(287);
+
+	var _mapValues2 = _interopRequireDefault(_mapValues);
+
+	var initialState = {
+	  _active: undefined,
+	  _asyncValidating: false,
+	  _error: undefined,
+	  _submitting: false
+	};
+
+	exports.initialState = initialState;
+	var getValues = function getValues(state) {
+	  return Object.keys(state).reduce(function (accumulator, name) {
+	    var _extends2;
+
+	    return name[0] === '_' ? accumulator : _extends({}, accumulator, (_extends2 = {}, _extends2[name] = state[name].value, _extends2));
+	  }, {});
+	};
+
+	var reducer = function reducer() {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+
+	  var _extends3, _extends4, _extends5;
+
+	  var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+
+	  switch (action.type) {
+	    case _actionTypes.BLUR:
+	      return _extends({}, state, (_extends3 = {}, _extends3[action.field] = _extends({}, state[action.field], {
+	        value: action.value === undefined ? (state[action.field] || {}).value : action.value,
+	        touched: !!(action.touch || (state[action.field] || {}).touched)
+	      }), _extends3._active = undefined, _extends3));
+	    case _actionTypes.CHANGE:
+	      return _extends({}, state, (_extends4 = {}, _extends4[action.field] = _extends({}, state[action.field], {
+	        value: action.value,
+	        touched: !!(action.touch || (state[action.field] || {}).touched),
+	        asyncError: undefined,
+	        submitError: undefined
+	      }), _extends4._error = undefined, _extends4));
+	    case _actionTypes.DESTROY:
+	      return undefined;
+	    case _actionTypes.FOCUS:
+	      return _extends({}, state, (_extends5 = {}, _extends5[action.field] = _extends({}, state[action.field], {
+	        visited: true
+	      }), _extends5._active = action.field, _extends5));
+	    case _actionTypes.INITIALIZE:
+	      return _extends({}, _mapValues2['default'](action.data, function (value) {
+	        return {
+	          initial: value,
+	          value: value
+	        };
+	      }), {
+	        _asyncValidating: false,
+	        _active: undefined,
+	        _error: undefined,
+	        _submitting: false
+	      });
+	    case _actionTypes.RESET:
+	      return _extends({}, _mapValues2['default'](state, function (field, name) {
+	        return name[0] === '_' ? field : {
+	          initial: field.initial,
+	          value: field.initial
+	        };
+	      }), {
+	        _active: undefined,
+	        _asyncValidating: false,
+	        _error: undefined,
+	        _submitting: false
+	      });
+	    case _actionTypes.START_ASYNC_VALIDATION:
+	      return _extends({}, state, {
+	        _asyncValidating: true
+	      });
+	    case _actionTypes.START_SUBMIT:
+	      return _extends({}, state, {
+	        _submitting: true
+	      });
+	    case _actionTypes.STOP_ASYNC_VALIDATION:
+	      return _extends({}, state, _mapValues2['default'](action.errors, function (error, key) {
+	        return _extends({}, state[key], {
+	          asyncError: error
+	        });
+	      }), {
+	        _asyncValidating: false,
+	        _error: action.errors && action.errors._error
+	      });
+	    case _actionTypes.STOP_SUBMIT:
+	      return _extends({}, state, action.errors ? _mapValues2['default'](action.errors, function (error, key) {
+	        return _extends({}, state[key], {
+	          submitError: error
+	        });
+	      }) : {}, {
+	        _error: action.errors && action.errors._error,
+	        _submitting: false
+	      });
+	    case _actionTypes.TOUCH:
+	      return _extends({}, state, action.fields.reduce(function (accumulator, field) {
+	        var _extends6;
+
+	        return _extends({}, accumulator, (_extends6 = {}, _extends6[field] = _extends({}, state[field], {
+	          touched: true
+	        }), _extends6));
+	      }, {}));
+	    case _actionTypes.UNTOUCH:
+	      return _extends({}, state, action.fields.reduce(function (accumulator, field) {
+	        var _extends7;
+
+	        return _extends({}, accumulator, (_extends7 = {}, _extends7[field] = _extends({}, state[field], {
+	          touched: false
+	        }), _extends7));
+	      }, {}));
+	    default:
+	      return state;
+	  }
+	};
+
+	function formReducer() {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+	  var _extends13;
+
+	  var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+	  var form = action.form;
+	  var key = action.key;
+
+	  var rest = _objectWithoutProperties(action, ['form', 'key']);
+
+	  if (!form) {
+	    return state;
+	  }
+	  if (key) {
+	    var _extends10, _extends11;
+
+	    if (action.type === _actionTypes.DESTROY) {
+	      var _extends9;
+
+	      return _extends({}, state, (_extends9 = {}, _extends9[form] = state[form] && Object.keys(state[form]).reduce(function (accumulator, stateKey) {
+	        var _extends8;
+
+	        return stateKey === key ? accumulator : _extends({}, accumulator, (_extends8 = {}, _extends8[stateKey] = state[form][stateKey], _extends8));
+	      }, {}), _extends9));
+	    }
+	    return _extends({}, state, (_extends11 = {}, _extends11[form] = _extends({}, state[form], (_extends10 = {}, _extends10[key] = reducer((state[form] || {})[key], rest), _extends10)), _extends11));
+	  }
+	  if (action.type === _actionTypes.DESTROY) {
+	    return Object.keys(state).reduce(function (accumulator, formName) {
+	      var _extends12;
+
+	      return formName === form ? accumulator : _extends({}, accumulator, (_extends12 = {}, _extends12[formName] = state[formName], _extends12));
+	    }, {});
+	  }
+	  return _extends({}, state, (_extends13 = {}, _extends13[form] = reducer(state[form], rest), _extends13));
+	}
+
+	/**
+	 * Adds additional functionality to the reducer
+	 */
+	function decorate(target) {
+	  target.plugin = function plugin(reducers) {
+	    var _this = this;
+
+	    return decorate(function () {
+	      var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	      var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+
+	      var result = _this(state, action);
+	      return _extends({}, result, _mapValues2['default'](reducers, function (pluginReducer, key) {
+	        return pluginReducer(result[key] || initialState, action);
+	      }));
+	    });
+	  };
+
+	  target.normalize = function normalize(normalizers) {
+	    var _this2 = this;
+
+	    return decorate(function () {
+	      var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	      var action = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
+
+	      var result = _this2(state, action);
+	      return _extends({}, result, _mapValues2['default'](normalizers, function (formNormalizers, form) {
+	        var formResult = _extends({}, initialState, result[form]);
+	        return _extends({}, formResult, _mapValues2['default'](formNormalizers, function (fieldNormalizer, field) {
+	          return _extends({}, formResult[field], {
+	            value: fieldNormalizer(formResult[field] ? formResult[field].value : undefined, // value
+	            state[form] && state[form][field] ? state[form][field].value : undefined, // previous value
+	            getValues(formResult)) // all field values
+	          });
+	        }));
+	      }));
+	    });
+	  };
+
+	  return target;
+	}
+
+	exports['default'] = decorate(formReducer);
+
+/***/ },
+/* 286 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	var BLUR = 'redux-form/BLUR';
+	exports.BLUR = BLUR;
+	var CHANGE = 'redux-form/CHANGE';
+	exports.CHANGE = CHANGE;
+	var DESTROY = 'redux-form/DESTROY';
+	exports.DESTROY = DESTROY;
+	var FOCUS = 'redux-form/FOCUS';
+	exports.FOCUS = FOCUS;
+	var INITIALIZE = 'redux-form/INITIALIZE';
+	exports.INITIALIZE = INITIALIZE;
+	var RESET = 'redux-form/RESET';
+	exports.RESET = RESET;
+	var START_ASYNC_VALIDATION = 'redux-form/START_ASYNC_VALIDATION';
+	exports.START_ASYNC_VALIDATION = START_ASYNC_VALIDATION;
+	var START_SUBMIT = 'redux-form/START_SUBMIT';
+	exports.START_SUBMIT = START_SUBMIT;
+	var STOP_ASYNC_VALIDATION = 'redux-form/STOP_ASYNC_VALIDATION';
+	exports.STOP_ASYNC_VALIDATION = STOP_ASYNC_VALIDATION;
+	var STOP_SUBMIT = 'redux-form/STOP_SUBMIT';
+	exports.STOP_SUBMIT = STOP_SUBMIT;
+	var TOUCH = 'redux-form/TOUCH';
+	exports.TOUCH = TOUCH;
+	var UNTOUCH = 'redux-form/UNTOUCH';
+	exports.UNTOUCH = UNTOUCH;
+
+/***/ },
+/* 287 */
+/***/ function(module, exports) {
+
+	/**
+	 * Maps all the values in the given object through the given function and saves them, by key, to a result object
+	 */
+	"use strict";
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports["default"] = mapValues;
+
+	function mapValues(obj, fn) {
+	  return obj ? Object.keys(obj).reduce(function (accumulator, key) {
+	    var _extends2;
+
+	    return _extends({}, accumulator, (_extends2 = {}, _extends2[key] = fn(obj[key], key), _extends2));
+	  }, {}) : obj;
+	}
+
+	module.exports = exports["default"];
+
+/***/ },
+/* 288 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _createReduxFormConnector = __webpack_require__(289);
+
+	var _createReduxFormConnector2 = _interopRequireDefault(_createReduxFormConnector);
+
+	var _hoistNonReactStatics = __webpack_require__(316);
+
+	var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
+
+	/**
+	 * The decorator that is the main API to redux-form
+	 */
+	var createReduxForm = function createReduxForm(isReactNative, React) {
+	  var Component = React.Component;
+
+	  var reduxFormConnector = _createReduxFormConnector2['default'](isReactNative, React);
+	  return function (config, mapDispatchToProps) {
+	    return function (WrappedComponent) {
+	      var ReduxFormConnector = reduxFormConnector(WrappedComponent, mapDispatchToProps);
+	      var configWithDefaults = _extends({
+	        touchOnBlur: true,
+	        touchOnChange: false,
+	        destroyOnUnmount: true
+	      }, config);
+
+	      var ConnectedForm = (function (_Component) {
+	        _inherits(ConnectedForm, _Component);
+
+	        function ConnectedForm() {
+	          _classCallCheck(this, ConnectedForm);
+
+	          _Component.apply(this, arguments);
+	        }
+
+	        ConnectedForm.prototype.render = function render() {
+	          return React.createElement(ReduxFormConnector, _extends({}, configWithDefaults, this.props));
+	        };
+
+	        return ConnectedForm;
+	      })(Component);
+
+	      return _hoistNonReactStatics2['default'](ConnectedForm, WrappedComponent);
+	    };
+	  };
+	};
+
+	exports['default'] = createReduxForm;
+	module.exports = exports['default'];
+
+/***/ },
+/* 289 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _reactLazyCache = __webpack_require__(290);
+
+	var _reactLazyCache2 = _interopRequireDefault(_reactLazyCache);
+
+	var _getDisplayName = __webpack_require__(295);
+
+	var _getDisplayName2 = _interopRequireDefault(_getDisplayName);
+
+	var _createHigherOrderComponent = __webpack_require__(296);
+
+	var _createHigherOrderComponent2 = _interopRequireDefault(_createHigherOrderComponent);
+
+	/**
+	 * This component tracks props that affect how the form is mounted to the store. Normally these should not change,
+	 * but if they do, the connected components below it need to be redefined.
+	 */
+	var createReduxFormConnector = function createReduxFormConnector(isReactNative, React) {
+	  return function (WrappedComponent, mapDispatchToProps) {
+	    var Component = React.Component;
+	    var PropTypes = React.PropTypes;
+
+	    return (function (_Component) {
+	      _inherits(ReduxFormConnector, _Component);
+
+	      _createClass(ReduxFormConnector, null, [{
+	        key: 'displayName',
+	        value: 'ReduxFormConnector(' + _getDisplayName2['default'](WrappedComponent) + ')',
+	        enumerable: true
+	      }, {
+	        key: 'WrappedComponent',
+	        value: WrappedComponent,
+	        enumerable: true
+	      }, {
+	        key: 'propTypes',
+	        value: {
+	          reduxMountPoint: PropTypes.string,
+	          form: PropTypes.string.isRequired,
+	          formKey: PropTypes.string
+	        },
+	        enumerable: true
+	      }, {
+	        key: 'defaultProps',
+	        value: {
+	          reduxMountPoint: 'form'
+	        },
+	        enumerable: true
+	      }]);
+
+	      function ReduxFormConnector(props) {
+	        _classCallCheck(this, ReduxFormConnector);
+
+	        _Component.call(this, props);
+	        this.cache = _reactLazyCache2['default'](this, {
+	          ReduxForm: {
+	            params: [
+	            // props that effect how redux-form connects to the redux store
+	            'reduxMountPoint', 'form', 'formKey', 'initialValues'],
+	            fn: _createHigherOrderComponent2['default'](props, isReactNative, React, WrappedComponent, mapDispatchToProps)
+	          }
+	        });
+	      }
+
+	      ReduxFormConnector.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	        this.cache.componentWillReceiveProps(nextProps);
+	      };
+
+	      ReduxFormConnector.prototype.render = function render() {
+	        var ReduxForm = this.cache.ReduxForm;
+
+	        // remove some redux-form config-only props
+	        var _props = this.props;
+	        var reduxMountPoint = _props.reduxMountPoint;
+	        var destroyOnUnmount = _props.destroyOnUnmount;
+	        var form = _props.form;
+	        var touchOnBlur = _props.touchOnBlur;
+	        var touchOnChange = _props.touchOnChange;
+
+	        var passableProps = _objectWithoutProperties(_props, ['reduxMountPoint', 'destroyOnUnmount', 'form', 'touchOnBlur', 'touchOnChange']);
+
+	        return React.createElement(ReduxForm, passableProps);
+	      };
+
+	      return ReduxFormConnector;
+	    })(Component);
+	  };
+	};
+
+	exports['default'] = createReduxFormConnector;
+	module.exports = exports['default'];
+
+/***/ },
+/* 290 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _lazyCache = __webpack_require__(291);
+
+	var _lazyCache2 = _interopRequireDefault(_lazyCache);
+
+	exports['default'] = _lazyCache2['default'];
+	module.exports = exports['default'];
+
+/***/ },
+/* 291 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports['default'] = lazyCache;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _deepEqual = __webpack_require__(292);
+
+	var _deepEqual2 = _interopRequireDefault(_deepEqual);
+
+	function lazyCache(component, calculators) {
+	  var allProps = [];
+	  var cache = {};
+	  var api = {};
+	  var uncache = function uncache(changedProp) {
+	    Object.keys(cache).forEach(function (key) {
+	      if (~cache[key].props.indexOf(changedProp)) {
+	        delete cache[key].value;
+	        uncache(key);
+	      }
+	    });
+	  };
+
+	  Object.keys(calculators).forEach(function (key) {
+	    var fn = calculators[key].fn;
+	    var props = calculators[key].params;
+	    props.forEach(function (param) {
+	      if (! ~allProps.indexOf(param)) {
+	        allProps.push(param);
+	      }
+	    });
+	    cache[key] = { props: props };
+	    Object.defineProperty(api, key, {
+	      get: function get() {
+	        var cached = cache[key];
+	        if (cached && cached.value !== undefined) {
+	          return cached.value;
+	        }
+	        var params = props.map(function (prop) {
+	          return component.props[prop] || api[prop];
+	        });
+	        var value = fn.apply(undefined, params);
+	        cache[key] = { props: props, value: value };
+	        return value;
+	      }
+	    });
+	  });
+	  api.componentWillReceiveProps = function (nextProps) {
+	    var diffProps = [];
+	    allProps.forEach(function (prop) {
+	      if (!_deepEqual2['default'](component.props[prop], nextProps[prop])) {
+	        diffProps.push(prop);
+	      }
+	    });
+	    diffProps.forEach(uncache);
+	  };
+	  return api;
+	}
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 292 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var pSlice = Array.prototype.slice;
+	var objectKeys = __webpack_require__(293);
+	var isArguments = __webpack_require__(294);
+
+	var deepEqual = module.exports = function (actual, expected, opts) {
+	  if (!opts) opts = {};
+	  // 7.1. All identical values are equivalent, as determined by ===.
+	  if (actual === expected) {
+	    return true;
+
+	  } else if (actual instanceof Date && expected instanceof Date) {
+	    return actual.getTime() === expected.getTime();
+
+	  // 7.3. Other pairs that do not both pass typeof value == 'object',
+	  // equivalence is determined by ==.
+	  } else if (!actual || !expected || typeof actual != 'object' && typeof expected != 'object') {
+	    return opts.strict ? actual === expected : actual == expected;
+
+	  // 7.4. For all other Object pairs, including Array objects, equivalence is
+	  // determined by having the same number of owned properties (as verified
+	  // with Object.prototype.hasOwnProperty.call), the same set of keys
+	  // (although not necessarily the same order), equivalent values for every
+	  // corresponding key, and an identical 'prototype' property. Note: this
+	  // accounts for both named and indexed properties on Arrays.
+	  } else {
+	    return objEquiv(actual, expected, opts);
+	  }
+	}
+
+	function isUndefinedOrNull(value) {
+	  return value === null || value === undefined;
+	}
+
+	function isBuffer (x) {
+	  if (!x || typeof x !== 'object' || typeof x.length !== 'number') return false;
+	  if (typeof x.copy !== 'function' || typeof x.slice !== 'function') {
+	    return false;
+	  }
+	  if (x.length > 0 && typeof x[0] !== 'number') return false;
+	  return true;
+	}
+
+	function objEquiv(a, b, opts) {
+	  var i, key;
+	  if (isUndefinedOrNull(a) || isUndefinedOrNull(b))
+	    return false;
+	  // an identical 'prototype' property.
+	  if (a.prototype !== b.prototype) return false;
+	  //~~~I've managed to break Object.keys through screwy arguments passing.
+	  //   Converting to array solves the problem.
+	  if (isArguments(a)) {
+	    if (!isArguments(b)) {
+	      return false;
+	    }
+	    a = pSlice.call(a);
+	    b = pSlice.call(b);
+	    return deepEqual(a, b, opts);
+	  }
+	  if (isBuffer(a)) {
+	    if (!isBuffer(b)) {
+	      return false;
+	    }
+	    if (a.length !== b.length) return false;
+	    for (i = 0; i < a.length; i++) {
+	      if (a[i] !== b[i]) return false;
+	    }
+	    return true;
+	  }
+	  try {
+	    var ka = objectKeys(a),
+	        kb = objectKeys(b);
+	  } catch (e) {//happens when one is a string literal and the other isn't
+	    return false;
+	  }
+	  // having the same number of owned properties (keys incorporates
+	  // hasOwnProperty)
+	  if (ka.length != kb.length)
+	    return false;
+	  //the same set of keys (although not necessarily the same order),
+	  ka.sort();
+	  kb.sort();
+	  //~~~cheap key test
+	  for (i = ka.length - 1; i >= 0; i--) {
+	    if (ka[i] != kb[i])
+	      return false;
+	  }
+	  //equivalent values for every corresponding key, and
+	  //~~~possibly expensive deep test
+	  for (i = ka.length - 1; i >= 0; i--) {
+	    key = ka[i];
+	    if (!deepEqual(a[key], b[key], opts)) return false;
+	  }
+	  return typeof a === typeof b;
+	}
+
+
+/***/ },
+/* 293 */
+/***/ function(module, exports) {
+
+	exports = module.exports = typeof Object.keys === 'function'
+	  ? Object.keys : shim;
+
+	exports.shim = shim;
+	function shim (obj) {
+	  var keys = [];
+	  for (var key in obj) keys.push(key);
+	  return keys;
+	}
+
+
+/***/ },
+/* 294 */
+/***/ function(module, exports) {
+
+	var supportsArgumentsClass = (function(){
+	  return Object.prototype.toString.call(arguments)
+	})() == '[object Arguments]';
+
+	exports = module.exports = supportsArgumentsClass ? supported : unsupported;
+
+	exports.supported = supported;
+	function supported(object) {
+	  return Object.prototype.toString.call(object) == '[object Arguments]';
+	};
+
+	exports.unsupported = unsupported;
+	function unsupported(object){
+	  return object &&
+	    typeof object == 'object' &&
+	    typeof object.length == 'number' &&
+	    Object.prototype.hasOwnProperty.call(object, 'callee') &&
+	    !Object.prototype.propertyIsEnumerable.call(object, 'callee') ||
+	    false;
+	};
+
+
+/***/ },
+/* 295 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports['default'] = getDisplayName;
+
+	function getDisplayName(Comp) {
+	  return Comp.displayName || Comp.name || 'Component';
+	}
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 296 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj['default'] = obj; return newObj; } }
+
+	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _reactRedux = __webpack_require__(159);
+
+	var _redux = __webpack_require__(166);
+
+	var _actions = __webpack_require__(297);
+
+	var importedActions = _interopRequireWildcard(_actions);
+
+	var _getDisplayName = __webpack_require__(295);
+
+	var _getDisplayName2 = _interopRequireDefault(_getDisplayName);
+
+	var _reducer = __webpack_require__(285);
+
+	var _deepEqual = __webpack_require__(292);
+
+	var _deepEqual2 = _interopRequireDefault(_deepEqual);
+
+	var _bindActionData = __webpack_require__(298);
+
+	var _bindActionData2 = _interopRequireDefault(_bindActionData);
+
+	var _getValues = __webpack_require__(299);
+
+	var _getValues2 = _interopRequireDefault(_getValues);
+
+	var _isValid = __webpack_require__(300);
+
+	var _isValid2 = _interopRequireDefault(_isValid);
+
+	var _readFields = __webpack_require__(301);
+
+	var _readFields2 = _interopRequireDefault(_readFields);
+
+	var _handleSubmit2 = __webpack_require__(312);
+
+	var _handleSubmit3 = _interopRequireDefault(_handleSubmit2);
+
+	var _asyncValidation = __webpack_require__(313);
+
+	var _asyncValidation2 = _interopRequireDefault(_asyncValidation);
+
+	var _eventsSilenceEvents = __webpack_require__(314);
+
+	var _eventsSilenceEvents2 = _interopRequireDefault(_eventsSilenceEvents);
+
+	var _eventsSilenceEvent = __webpack_require__(315);
+
+	var _eventsSilenceEvent2 = _interopRequireDefault(_eventsSilenceEvent);
+
+	/**
+	 * Creates a HOC that knows how to create redux-connected sub-components.
+	 */
+	var createHigherOrderComponent = function createHigherOrderComponent(config, isReactNative, React, WrappedComponent) {
+	  var Component = React.Component;
+	  var PropTypes = React.PropTypes;
+
+	  return function (reduxMountPoint, formName, formKey) {
+	    var ReduxForm = (function (_Component) {
+	      _inherits(ReduxForm, _Component);
+
+	      _createClass(ReduxForm, null, [{
+	        key: 'displayName',
+	        value: 'ReduxForm(' + _getDisplayName2['default'](WrappedComponent) + ')',
+	        enumerable: true
+	      }, {
+	        key: 'propTypes',
+	        value: {
+	          // props:
+	          asyncBlurFields: PropTypes.arrayOf(PropTypes.string),
+	          asyncValidate: PropTypes.func,
+	          dispatch: PropTypes.func.isRequired,
+	          fields: PropTypes.arrayOf(PropTypes.string).isRequired,
+	          form: PropTypes.object,
+	          initialValues: PropTypes.object,
+	          onSubmit: PropTypes.func,
+	          validate: PropTypes.func,
+	          readonly: PropTypes.bool,
+	          returnRejectedSubmitPromise: PropTypes.bool,
+
+	          // actions:
+	          blur: PropTypes.func.isRequired,
+	          change: PropTypes.func.isRequired,
+	          destroy: PropTypes.func.isRequired,
+	          focus: PropTypes.func.isRequired,
+	          initialize: PropTypes.func.isRequired,
+	          reset: PropTypes.func.isRequired,
+	          startAsyncValidation: PropTypes.func.isRequired,
+	          startSubmit: PropTypes.func.isRequired,
+	          stopAsyncValidation: PropTypes.func.isRequired,
+	          stopSubmit: PropTypes.func.isRequired,
+	          touch: PropTypes.func.isRequired,
+	          untouch: PropTypes.func.isRequired
+	        },
+	        enumerable: true
+	      }, {
+	        key: 'defaultProps',
+	        value: {
+	          asyncBlurFields: [],
+	          form: _reducer.initialState,
+	          readonly: false,
+	          returnRejectedSubmitPromise: false,
+	          validate: function validate() {
+	            return {};
+	          }
+	        },
+	        enumerable: true
+	      }]);
+
+	      function ReduxForm(props) {
+	        _classCallCheck(this, ReduxForm);
+
+	        _Component.call(this, props);
+	        // bind functions
+	        this.asyncValidate = this.asyncValidate.bind(this);
+	        this.handleSubmit = this.handleSubmit.bind(this);
+	        this.fields = _readFields2['default'](props, {}, this.asyncValidate, isReactNative);
+	      }
+
+	      // bind touch flags to blur and change
+
+	      ReduxForm.prototype.componentWillMount = function componentWillMount() {
+	        var _props = this.props;
+	        var initialize = _props.initialize;
+	        var initialValues = _props.initialValues;
+
+	        if (initialValues) {
+	          initialize(initialValues);
+	        }
+	      };
+
+	      ReduxForm.prototype.componentWillReceiveProps = function componentWillReceiveProps(nextProps) {
+	        if (!_deepEqual2['default'](this.props.fields, nextProps.fields) || !_deepEqual2['default'](this.props.form, nextProps.form)) {
+	          this.fields = _readFields2['default'](nextProps, this.fields, this.asyncValidate, isReactNative);
+	        }
+	      };
+
+	      ReduxForm.prototype.componentWillUnmount = function componentWillUnmount() {
+	        if (config.destroyOnUnmount) {
+	          this.props.destroy();
+	        }
+	      };
+
+	      ReduxForm.prototype.asyncValidate = function asyncValidate(name, value) {
+	        var _this = this;
+
+	        var _props2 = this.props;
+	        var asyncValidate = _props2.asyncValidate;
+	        var dispatch = _props2.dispatch;
+	        var fields = _props2.fields;
+	        var form = _props2.form;
+	        var startAsyncValidation = _props2.startAsyncValidation;
+	        var stopAsyncValidation = _props2.stopAsyncValidation;
+	        var validate = _props2.validate;
+
+	        if (asyncValidate) {
+	          var _ret = (function () {
+	            var values = _getValues2['default'](fields, form);
+	            if (name) {
+	              values[name] = value;
+	            }
+	            var syncErrors = validate(values, _this.props);
+
+	            // if blur validating, only run async validate if sync validation passes
+	            if (!name || _isValid2['default'](syncErrors[name])) {
+	              return {
+	                v: _asyncValidation2['default'](function () {
+	                  return asyncValidate(values, dispatch);
+	                }, startAsyncValidation, stopAsyncValidation)
+	              };
+	            }
+	          })();
+
+	          if (typeof _ret === 'object') return _ret.v;
+	        }
+	      };
+
+	      ReduxForm.prototype.handleSubmit = function handleSubmit(submitOrEvent) {
+	        var _this2 = this;
+
+	        var _props3 = this.props;
+	        var onSubmit = _props3.onSubmit;
+	        var fields = _props3.fields;
+	        var form = _props3.form;
+
+	        var check = function check(submit) {
+	          if (!submit || typeof submit !== 'function') {
+	            throw new Error('You must either pass handleSubmit() an onSubmit function or pass onSubmit as a prop');
+	          }
+	          return submit;
+	        };
+	        var values = _getValues2['default'](fields, form);
+	        return _eventsSilenceEvent2['default'](submitOrEvent) ?
+	        // submitOrEvent is an event: fire submit
+	        _handleSubmit3['default'](check(onSubmit), values, this.props, this.asyncValidate) :
+	        // submitOrEvent is the submit function: return deferred submit thunk
+	        _eventsSilenceEvents2['default'](function () {
+	          return _handleSubmit3['default'](check(submitOrEvent), values, _this2.props, _this2.asyncValidate);
+	        });
+	      };
+
+	      ReduxForm.prototype.render = function render() {
+	        var _this3 = this;
+
+	        var allFields = this.fields;
+	        var _props4 = this.props;
+	        var asyncBlurFields = _props4.asyncBlurFields;
+	        var blur = _props4.blur;
+	        var change = _props4.change;
+	        var destroy = _props4.destroy;
+	        var focus = _props4.focus;
+	        var fields = _props4.fields;
+	        var form = _props4.form;
+	        var initialValues = _props4.initialValues;
+	        var initialize = _props4.initialize;
+	        var onSubmit = _props4.onSubmit;
+	        var reset = _props4.reset;
+	        var startAsyncValidation = _props4.startAsyncValidation;
+	        var startSubmit = _props4.startSubmit;
+	        var stopAsyncValidation = _props4.stopAsyncValidation;
+	        var stopSubmit = _props4.stopSubmit;
+	        var touch = _props4.touch;
+	        var untouch = _props4.untouch;
+	        var validate = _props4.validate;
+
+	        var passableProps = _objectWithoutProperties(_props4, ['asyncBlurFields', 'blur', 'change', 'destroy', 'focus', 'fields', 'form', 'initialValues', 'initialize', 'onSubmit', 'reset', 'startAsyncValidation', 'startSubmit', 'stopAsyncValidation', 'stopSubmit', 'touch', 'untouch', 'validate']);
+
+	        var _allFields$_meta = allFields._meta;
+	        var allPristine = _allFields$_meta.allPristine;
+	        var allValid = _allFields$_meta.allValid;
+	        var errors = _allFields$_meta.errors;
+	        var formError = _allFields$_meta.formError;
+	        var values = _allFields$_meta.values;
+
+	        return React.createElement(WrappedComponent, _extends({}, passableProps, { // contains dispatch
+
+	          // State:
+	          active: form._active,
+	          asyncValidating: form._asyncValidating,
+	          dirty: !allPristine,
+	          error: formError,
+	          errors: errors,
+	          fields: allFields,
+	          formKey: formKey,
+	          invalid: !allValid,
+	          pristine: allPristine,
+	          submitting: form._submitting,
+	          valid: allValid,
+	          values: values,
+
+	          // Actions:
+	          asyncValidate: _eventsSilenceEvents2['default'](function () {
+	            return _this3.asyncValidate();
+	          }),
+	          // ^ doesn't just pass this.asyncValidate to disallow values passing
+	          destroyForm: _eventsSilenceEvents2['default'](destroy),
+	          handleSubmit: this.handleSubmit,
+	          initializeForm: _eventsSilenceEvents2['default'](initialize),
+	          resetForm: _eventsSilenceEvents2['default'](reset),
+	          touch: _eventsSilenceEvents2['default'](function () {
+	            return touch.apply(undefined, arguments);
+	          }),
+	          touchAll: _eventsSilenceEvents2['default'](function () {
+	            return touch.apply(undefined, fields);
+	          }),
+	          untouch: _eventsSilenceEvents2['default'](function () {
+	            return untouch.apply(undefined, arguments);
+	          }),
+	          untouchAll: _eventsSilenceEvents2['default'](function () {
+	            return untouch.apply(undefined, fields);
+	          })
+	        }));
+	      };
+
+	      _createClass(ReduxForm, null, [{
+	        key: 'WrappedComponent',
+	        value: WrappedComponent,
+	        enumerable: true
+	      }]);
+
+	      return ReduxForm;
+	    })(Component);
+
+	    var unboundActions = _extends({}, importedActions, {
+	      blur: _bindActionData2['default'](importedActions.blur, {
+	        touch: !!config.touchOnBlur
+	      }),
+	      change: _bindActionData2['default'](importedActions.change, {
+	        touch: !!config.touchOnChange
+	      })
+	    });
+
+	    // make redux connector with or without form key
+	    var decorate = formKey !== undefined && formKey !== null ? _reactRedux.connect(function (state) {
+	      if (!state[reduxMountPoint]) {
+	        throw new Error('You need to mount the redux-form reducer at "' + reduxMountPoint + '"');
+	      }
+	      return {
+	        form: state[reduxMountPoint] && state[reduxMountPoint][formName] && state[reduxMountPoint][formName][formKey]
+	      };
+	    }, function (dispatch) {
+	      return _extends({}, _redux.bindActionCreators(_bindActionData2['default'](unboundActions, { form: formName, key: formKey }), dispatch), {
+	        dispatch: dispatch
+	      });
+	    }) : _reactRedux.connect(function (state) {
+	      if (!state[reduxMountPoint]) {
+	        throw new Error('You need to mount the redux-form reducer at "' + reduxMountPoint + '"');
+	      }
+	      return { form: state[reduxMountPoint] && state[reduxMountPoint][formName] };
+	    }, function (dispatch) {
+	      return _extends({}, _redux.bindActionCreators(_bindActionData2['default'](unboundActions, { form: formName }), dispatch), {
+	        dispatch: dispatch
+	      });
+	    });
+
+	    return decorate(ReduxForm);
+	  };
+	};
+
+	exports['default'] = createHigherOrderComponent;
+	module.exports = exports['default'];
+
+/***/ },
+/* 297 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports.blur = blur;
+	exports.change = change;
+	exports.destroy = destroy;
+	exports.focus = focus;
+	exports.initialize = initialize;
+	exports.reset = reset;
+	exports.startAsyncValidation = startAsyncValidation;
+	exports.startSubmit = startSubmit;
+	exports.stopAsyncValidation = stopAsyncValidation;
+	exports.stopSubmit = stopSubmit;
+	exports.touch = touch;
+	exports.untouch = untouch;
+
+	var _actionTypes = __webpack_require__(286);
+
+	function blur(field, value) {
+	  return { type: _actionTypes.BLUR, field: field, value: value };
+	}
+
+	function change(field, value) {
+	  return { type: _actionTypes.CHANGE, field: field, value: value };
+	}
+
+	function destroy() {
+	  return { type: _actionTypes.DESTROY };
+	}
+
+	function focus(field) {
+	  return { type: _actionTypes.FOCUS, field: field };
+	}
+
+	function initialize(data) {
+	  return { type: _actionTypes.INITIALIZE, data: data };
+	}
+
+	function reset() {
+	  return { type: _actionTypes.RESET };
+	}
+
+	function startAsyncValidation() {
+	  return { type: _actionTypes.START_ASYNC_VALIDATION };
+	}
+
+	function startSubmit() {
+	  return { type: _actionTypes.START_SUBMIT };
+	}
+
+	function stopAsyncValidation(errors) {
+	  return { type: _actionTypes.STOP_ASYNC_VALIDATION, errors: errors };
+	}
+
+	function stopSubmit(errors) {
+	  return { type: _actionTypes.STOP_SUBMIT, errors: errors };
+	}
+
+	function touch() {
+	  for (var _len = arguments.length, fields = Array(_len), _key = 0; _key < _len; _key++) {
+	    fields[_key] = arguments[_key];
+	  }
+
+	  return { type: _actionTypes.TOUCH, fields: fields };
+	}
+
+	function untouch() {
+	  for (var _len2 = arguments.length, fields = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+	    fields[_key2] = arguments[_key2];
+	  }
+
+	  return { type: _actionTypes.UNTOUCH, fields: fields };
+	}
+
+/***/ },
+/* 298 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	exports['default'] = bindActionData;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _mapValues = __webpack_require__(287);
+
+	var _mapValues2 = _interopRequireDefault(_mapValues);
+
+	/**
+	 * Adds additional properties to the results of the function or map of functions passed
+	 */
+
+	function bindActionData(action, data) {
+	  if (typeof action === 'function') {
+	    return function () {
+	      return _extends({}, action.apply(undefined, arguments), data);
+	    };
+	  }
+	  if (typeof action === 'object') {
+	    return _mapValues2['default'](action, function (value) {
+	      return bindActionData(value, data);
+	    });
+	  }
+	  return action;
+	}
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 299 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var getValues = function getValues(fields, form) {
+	  return fields.reduce(function (accumulator, field) {
+	    var _extends2;
+
+	    return _extends({}, accumulator, (_extends2 = {}, _extends2[field] = form[field] ? form[field].value : undefined, _extends2));
+	  }, {});
+	};
+
+	exports["default"] = getValues;
+	module.exports = exports["default"];
+
+/***/ },
+/* 300 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports['default'] = isValid;
+
+	function isValid(error) {
+	  if (Array.isArray(error)) {
+	    return error.reduce(function (valid, errorValue) {
+	      return valid && isValid(errorValue);
+	    }, true);
+	  }
+	  if (error && typeof error === 'object') {
+	    return Object.keys(error).reduce(function (valid, key) {
+	      return valid && isValid(error[key]);
+	    }, true);
+	  }
+	  return !error;
+	}
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 301 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _eventsCreateOnBlur = __webpack_require__(302);
+
+	var _eventsCreateOnBlur2 = _interopRequireDefault(_eventsCreateOnBlur);
+
+	var _eventsCreateOnChange = __webpack_require__(305);
+
+	var _eventsCreateOnChange2 = _interopRequireDefault(_eventsCreateOnChange);
+
+	var _eventsCreateOnDragStart = __webpack_require__(306);
+
+	var _eventsCreateOnDragStart2 = _interopRequireDefault(_eventsCreateOnDragStart);
+
+	var _eventsCreateOnDrop = __webpack_require__(307);
+
+	var _eventsCreateOnDrop2 = _interopRequireDefault(_eventsCreateOnDrop);
+
+	var _eventsCreateOnFocus = __webpack_require__(308);
+
+	var _eventsCreateOnFocus2 = _interopRequireDefault(_eventsCreateOnFocus);
+
+	var _isPristine = __webpack_require__(309);
+
+	var _isPristine2 = _interopRequireDefault(_isPristine);
+
+	var _isValid = __webpack_require__(300);
+
+	var _isValid2 = _interopRequireDefault(_isValid);
+
+	var _getValues = __webpack_require__(299);
+
+	var _getValues2 = _interopRequireDefault(_getValues);
+
+	var _silencePromise = __webpack_require__(310);
+
+	var _silencePromise2 = _interopRequireDefault(_silencePromise);
+
+	/**
+	 * Reads props and generates (or updates) field structure
+	 */
+	var readFields = function readFields(props, myFields, asyncValidate, isReactNative) {
+	  var asyncBlurFields = props.asyncBlurFields;
+	  var blur = props.blur;
+	  var change = props.change;
+	  var fields = props.fields;
+	  var focus = props.focus;
+	  var form = props.form;
+	  var initialValues = props.initialValues;
+	  var readonly = props.readonly;
+	  var validate = props.validate;
+
+	  var values = _getValues2['default'](fields, form);
+	  var syncErrors = validate(values, props);
+	  var errors = {};
+	  var formError = syncErrors._error || form._error;
+	  var allValid = !formError;
+	  var allPristine = true;
+	  return _extends({}, fields.reduce(function (accumulator, name) {
+	    var _extends2;
+
+	    var field = myFields[name] || {};
+	    var diff = {};
+
+	    // create field if it does not exist
+	    if (field.name !== name) {
+	      var onChange = _eventsCreateOnChange2['default'](name, change, isReactNative);
+	      var initialValue = initialValues && initialValues[name];
+	      field.name = name;
+	      field.defaultChecked = initialValue;
+	      field.defaultValue = initialValue;
+	      if (!readonly) {
+	        field.onBlur = _eventsCreateOnBlur2['default'](name, blur, isReactNative, ~asyncBlurFields.indexOf(name) && function (blurName, blurValue) {
+	          return _silencePromise2['default'](asyncValidate(blurName, blurValue));
+	        });
+	        field.onChange = onChange;
+	        field.onDragStart = _eventsCreateOnDragStart2['default'](name, function () {
+	          return field.value;
+	        });
+	        field.onDrop = _eventsCreateOnDrop2['default'](name, change);
+	        field.onFocus = _eventsCreateOnFocus2['default'](name, focus);
+	        field.onUpdate = onChange; // alias to support belle. https://github.com/nikgraf/belle/issues/58
+	      }
+	      field.valid = true;
+	      field.invalid = false;
+	    }
+
+	    // update field value
+	    var formField = form[name] || {};
+	    if (field.value !== formField.value) {
+	      diff.value = formField.value;
+	      diff.checked = typeof formField.value === 'boolean' ? formField.value : undefined;
+	    }
+
+	    // update dirty/pristine
+	    var pristine = _isPristine2['default'](formField.value, formField.initial);
+	    if (field.pristine !== pristine) {
+	      diff.dirty = !pristine;
+	      diff.pristine = pristine;
+	    }
+
+	    // update field error
+	    var error = syncErrors[name] || formField.submitError || formField.asyncError;
+	    if (error !== field.error) {
+	      diff.error = error;
+	    }
+	    var valid = _isValid2['default'](error);
+	    if (field.valid !== valid) {
+	      diff.invalid = !valid;
+	      diff.valid = valid;
+	    }
+	    if (error) {
+	      errors[name] = error;
+	    }
+
+	    var active = form._active === name;
+	    if (active !== field.active) {
+	      diff.active = active;
+	    }
+	    var touched = !!formField.touched;
+	    if (touched !== field.touched) {
+	      diff.touched = touched;
+	    }
+	    var visited = !!formField.visited;
+	    if (visited !== field.visited) {
+	      diff.visited = visited;
+	    }
+
+	    var result = Object.keys(diff).length ? _extends({}, field, diff) : field;
+
+	    if (result.invalid) {
+	      allValid = false;
+	    }
+	    if (result.dirty) {
+	      allPristine = false;
+	    }
+	    return _extends({}, accumulator, (_extends2 = {}, _extends2[name] = result, _extends2));
+	  }, {}), {
+	    _meta: {
+	      allPristine: allPristine,
+	      allValid: allValid,
+	      values: values,
+	      errors: errors,
+	      formError: formError
+	    }
+	  });
+	};
+	exports['default'] = readFields;
+	module.exports = exports['default'];
+
+/***/ },
+/* 302 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _getValue = __webpack_require__(303);
+
+	var _getValue2 = _interopRequireDefault(_getValue);
+
+	var createOnBlur = function createOnBlur(name, blur, isReactNative, afterBlur) {
+	  return function (event) {
+	    var value = _getValue2['default'](event, isReactNative);
+	    blur(name, value);
+	    if (afterBlur) {
+	      afterBlur(name, value);
+	    }
+	  };
+	};
+	exports['default'] = createOnBlur;
+	module.exports = exports['default'];
+
+/***/ },
+/* 303 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _isEvent = __webpack_require__(304);
+
+	var _isEvent2 = _interopRequireDefault(_isEvent);
+
+	var getValue = function getValue(event, isReactNative) {
+	  if (_isEvent2['default'](event)) {
+	    if (!isReactNative && event.nativeEvent !== undefined && event.nativeEvent.text !== undefined) {
+	      return event.nativeEvent.text;
+	    }
+	    if (isReactNative && event.nativeEvent !== undefined) {
+	      return event.nativeEvent.text;
+	    }
+	    var _event$target = event.target;
+	    var type = _event$target.type;
+	    var value = _event$target.value;
+	    var checked = _event$target.checked;
+	    var files = _event$target.files;
+	    var dataTransfer = event.dataTransfer;
+
+	    if (type === 'checkbox') {
+	      return checked;
+	    }
+	    if (type === 'file') {
+	      return files || dataTransfer && dataTransfer.files;
+	    }
+	    return value;
+	  }
+	  // not an event, so must be either our value or an object containing our value in the 'value' key
+	  return event && typeof event === 'object' && event.value !== undefined ? event.value : // extract value from { value: value } structure. https://github.com/nikgraf/belle/issues/58
+	  event;
+	};
+
+	exports['default'] = getValue;
+	module.exports = exports['default'];
+
+/***/ },
+/* 304 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	exports.__esModule = true;
+	var isEvent = function isEvent(candidate) {
+	  return !!(candidate && candidate.stopPropagation && candidate.preventDefault);
+	};
+
+	exports["default"] = isEvent;
+	module.exports = exports["default"];
+
+/***/ },
+/* 305 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _getValue = __webpack_require__(303);
+
+	var _getValue2 = _interopRequireDefault(_getValue);
+
+	var createOnChange = function createOnChange(name, change, isReactNative) {
+	  return function (event) {
+	    return change(name, _getValue2['default'](event, isReactNative));
+	  };
+	};
+	exports['default'] = createOnChange;
+	module.exports = exports['default'];
+
+/***/ },
+/* 306 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	var dataKey = 'value';
+	exports.dataKey = dataKey;
+	var createOnDragStart = function createOnDragStart(name, getValue) {
+	  return function (event) {
+	    event.dataTransfer.setData(dataKey, getValue());
+	  };
+	};
+
+	exports['default'] = createOnDragStart;
+
+/***/ },
+/* 307 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	var _createOnDragStart = __webpack_require__(306);
+
+	var createOnDrop = function createOnDrop(name, change) {
+	  return function (event) {
+	    change(name, event.dataTransfer.getData(_createOnDragStart.dataKey));
+	  };
+	};
+	exports['default'] = createOnDrop;
+	module.exports = exports['default'];
+
+/***/ },
+/* 308 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	exports.__esModule = true;
+	var createOnFocus = function createOnFocus(name, focus) {
+	  return function () {
+	    return focus(name);
+	  };
+	};
+	exports["default"] = createOnFocus;
+	module.exports = exports["default"];
+
+/***/ },
+/* 309 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	exports.__esModule = true;
+	exports['default'] = isPristine;
+
+	function isPristine(initial, data) {
+	  if (initial === data) {
+	    return true;
+	  }
+	  if (typeof initial === 'boolean' || typeof data === 'boolean') {
+	    return initial === data;
+	  } else if (initial && typeof initial === 'object') {
+	    if (!data || typeof data !== 'object') {
+	      return false;
+	    }
+	    var initialKeys = Object.keys(initial);
+	    var dataKeys = Object.keys(data);
+	    if (initialKeys.length !== dataKeys.length) {
+	      return false;
+	    }
+	    for (var index = 0; index < dataKeys.length; index++) {
+	      var key = dataKeys[index];
+	      if (!isPristine(initial[key], data[key])) {
+	        return false;
+	      }
+	    }
+	  } else if (initial || data) {
+	    // allow '' to equate to undefined or null
+	    return initial === data;
+	  }
+	  return true;
+	}
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 310 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _isPromise = __webpack_require__(311);
+
+	var _isPromise2 = _interopRequireDefault(_isPromise);
+
+	var noop = function noop() {
+	  return undefined;
+	};
+
+	var silencePromise = function silencePromise(promise) {
+	  return _isPromise2['default'](promise) ? promise.then(noop, noop) : promise;
+	};
+
+	exports['default'] = silencePromise;
+	module.exports = exports['default'];
+
+/***/ },
+/* 311 */
+/***/ function(module, exports) {
+
+	module.exports = isPromise;
+
+	function isPromise(obj) {
+	  return !!obj && (typeof obj === 'object' || typeof obj === 'function') && typeof obj.then === 'function';
+	}
+
+
+/***/ },
+/* 312 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _isPromise = __webpack_require__(311);
+
+	var _isPromise2 = _interopRequireDefault(_isPromise);
+
+	var _isValid = __webpack_require__(300);
+
+	var _isValid2 = _interopRequireDefault(_isValid);
+
+	var handleSubmit = function handleSubmit(submit, values, props, asyncValidate) {
+	  var dispatch = props.dispatch;
+	  var fields = props.fields;
+	  var startSubmit = props.startSubmit;
+	  var stopSubmit = props.stopSubmit;
+	  var returnRejectedSubmitPromise = props.returnRejectedSubmitPromise;
+	  var touch = props.touch;
+	  var validate = props.validate;
+
+	  var syncErrors = validate(values, props);
+	  touch.apply(undefined, fields); // touch all fields
+	  if (_isValid2['default'](syncErrors)) {
+	    var doSubmit = function doSubmit() {
+	      var result = submit(values, dispatch);
+	      if (_isPromise2['default'](result)) {
+	        startSubmit();
+	        return result.then(function (submitResult) {
+	          stopSubmit();
+	          return submitResult;
+	        }, function (submitError) {
+	          stopSubmit(submitError);
+	          if (returnRejectedSubmitPromise) {
+	            return Promise.reject(submitError);
+	          }
+	        });
+	      }
+	      return result;
+	    };
+	    var asyncValidateResult = asyncValidate();
+	    return _isPromise2['default'](asyncValidateResult) ?
+	    // asyncValidateResult will be rejected if async validation failed
+	    asyncValidateResult.then(doSubmit, function () {
+	      return returnRejectedSubmitPromise ? Promise.reject() : Promise.resolve();
+	    }) : doSubmit(); // no async validation, so submit
+	  }
+	};
+
+	exports['default'] = handleSubmit;
+	module.exports = exports['default'];
+
+/***/ },
+/* 313 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _isPromise = __webpack_require__(311);
+
+	var _isPromise2 = _interopRequireDefault(_isPromise);
+
+	var _isValid = __webpack_require__(300);
+
+	var _isValid2 = _interopRequireDefault(_isValid);
+
+	var asyncValidation = function asyncValidation(fn, start, stop) {
+	  start();
+	  var promise = fn();
+	  if (!_isPromise2['default'](promise)) {
+	    throw new Error('asyncValidate function passed to reduxForm must return a promise');
+	  }
+	  var handleErrors = function handleErrors(rejected) {
+	    return function (errors) {
+	      if (!_isValid2['default'](errors)) {
+	        stop(errors);
+	        return Promise.reject();
+	      } else if (rejected) {
+	        stop();
+	        throw new Error('Asynchronous validation promise was rejected without errors.');
+	      }
+	      stop();
+	      return Promise.resolve();
+	    };
+	  };
+	  return promise.then(handleErrors(false), handleErrors(true));
+	};
+
+	exports['default'] = asyncValidation;
+	module.exports = exports['default'];
+
+/***/ },
+/* 314 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _silenceEvent = __webpack_require__(315);
+
+	var _silenceEvent2 = _interopRequireDefault(_silenceEvent);
+
+	var silenceEvents = function silenceEvents(fn) {
+	  return function (event) {
+	    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+	      args[_key - 1] = arguments[_key];
+	    }
+
+	    return _silenceEvent2['default'](event) ? fn.apply(undefined, args) : fn.apply(undefined, [event].concat(args));
+	  };
+	};
+
+	exports['default'] = silenceEvents;
+	module.exports = exports['default'];
+
+/***/ },
+/* 315 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	exports.__esModule = true;
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _isEvent = __webpack_require__(304);
+
+	var _isEvent2 = _interopRequireDefault(_isEvent);
+
+	var silenceEvent = function silenceEvent(event) {
+	  var is = _isEvent2['default'](event);
+	  if (is) {
+	    event.preventDefault();
+	  }
+	  return is;
+	};
+
+	exports['default'] = silenceEvent;
+	module.exports = exports['default'];
+
+/***/ },
+/* 316 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2015, Yahoo! Inc.
+	 * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+	 */
+	'use strict';
+
+	var REACT_STATICS = {
+	    childContextTypes: true,
+	    contextTypes: true,
+	    defaultProps: true,
+	    displayName: true,
+	    getDefaultProps: true,
+	    mixins: true,
+	    propTypes: true,
+	    type: true
+	};
+
+	var KNOWN_STATICS = {
+	    name: true,
+	    length: true,
+	    prototype: true,
+	    caller: true,
+	    arguments: true,
+	    arity: true
+	};
+
+	module.exports = function hoistNonReactStatics(targetComponent, sourceComponent) {
+	    var keys = Object.getOwnPropertyNames(sourceComponent);
+	    for (var i=0; i<keys.length; ++i) {
+	        if (!REACT_STATICS[keys[i]] && !KNOWN_STATICS[keys[i]]) {
+	            targetComponent[keys[i]] = sourceComponent[keys[i]];
+	        }
+	    }
+
+	    return targetComponent;
+	};
+
+
+/***/ },
+/* 317 */,
+/* 318 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2015 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+
+	(function () {
+		'use strict';
+
+		var hasOwn = {}.hasOwnProperty;
+
+		function classNames () {
+			var classes = '';
+
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+
+				var argType = typeof arg;
+
+				if (argType === 'string' || argType === 'number') {
+					classes += ' ' + arg;
+				} else if (Array.isArray(arg)) {
+					classes += ' ' + classNames.apply(null, arg);
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes += ' ' + key;
+						}
+					}
+				}
+			}
+
+			return classes.substr(1);
+		}
+
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+
+
+/***/ },
+/* 319 */,
+/* 320 */,
+/* 321 */,
+/* 322 */,
+/* 323 */,
+/* 324 */,
+/* 325 */,
+/* 326 */,
+/* 327 */,
+/* 328 */,
+/* 329 */,
+/* 330 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(module) {/*!
+	 * validate.js 0.9.0
+	 *
+	 * (c) 2013-2015 Nicklas Ansman, 2013 Wrapp
+	 * Validate.js may be freely distributed under the MIT license.
+	 * For all details and documentation:
+	 * http://validatejs.org/
+	 */
+
+	(function(exports, module, define) {
+	  "use strict";
+
+	  // The main function that calls the validators specified by the constraints.
+	  // The options are the following:
+	  //   - format (string) - An option that controls how the returned value is formatted
+	  //     * flat - Returns a flat array of just the error messages
+	  //     * grouped - Returns the messages grouped by attribute (default)
+	  //     * detailed - Returns an array of the raw validation data
+	  //   - fullMessages (boolean) - If `true` (default) the attribute name is prepended to the error.
+	  //
+	  // Please note that the options are also passed to each validator.
+	  var validate = function(attributes, constraints, options) {
+	    options = v.extend({}, v.options, options);
+
+	    var results = v.runValidations(attributes, constraints, options)
+	      , attr
+	      , validator;
+
+	    for (attr in results) {
+	      for (validator in results[attr]) {
+	        if (v.isPromise(results[attr][validator])) {
+	          throw new Error("Use validate.async if you want support for promises");
+	        }
+	      }
+	    }
+	    return validate.processValidationResults(results, options);
+	  };
+
+	  var v = validate;
+
+	  // Copies over attributes from one or more sources to a single destination.
+	  // Very much similar to underscore's extend.
+	  // The first argument is the target object and the remaining arguments will be
+	  // used as sources.
+	  v.extend = function(obj) {
+	    [].slice.call(arguments, 1).forEach(function(source) {
+	      for (var attr in source) {
+	        obj[attr] = source[attr];
+	      }
+	    });
+	    return obj;
+	  };
+
+	  v.extend(validate, {
+	    // This is the version of the library as a semver.
+	    // The toString function will allow it to be coerced into a string
+	    version: {
+	      major: 0,
+	      minor: 9,
+	      patch: 0,
+	      metadata: null,
+	      toString: function() {
+	        var version = v.format("%{major}.%{minor}.%{patch}", v.version);
+	        if (!v.isEmpty(v.version.metadata)) {
+	          version += "+" + v.version.metadata;
+	        }
+	        return version;
+	      }
+	    },
+
+	    // Below is the dependencies that are used in validate.js
+
+	    // The constructor of the Promise implementation.
+	    // If you are using Q.js, RSVP or any other A+ compatible implementation
+	    // override this attribute to be the constructor of that promise.
+	    // Since jQuery promises aren't A+ compatible they won't work.
+	    Promise: typeof Promise !== "undefined" ? Promise : /* istanbul ignore next */ null,
+
+	    EMPTY_STRING_REGEXP: /^\s*$/,
+
+	    // Runs the validators specified by the constraints object.
+	    // Will return an array of the format:
+	    //     [{attribute: "<attribute name>", error: "<validation result>"}, ...]
+	    runValidations: function(attributes, constraints, options) {
+	      var results = []
+	        , attr
+	        , validatorName
+	        , value
+	        , validators
+	        , validator
+	        , validatorOptions
+	        , error;
+
+	      if (v.isDomElement(attributes) || v.isJqueryElement(attributes)) {
+	        attributes = v.collectFormValues(attributes);
+	      }
+
+	      // Loops through each constraints, finds the correct validator and run it.
+	      for (attr in constraints) {
+	        value = v.getDeepObjectValue(attributes, attr);
+	        // This allows the constraints for an attribute to be a function.
+	        // The function will be called with the value, attribute name, the complete dict of
+	        // attributes as well as the options and constraints passed in.
+	        // This is useful when you want to have different
+	        // validations depending on the attribute value.
+	        validators = v.result(constraints[attr], value, attributes, attr, options, constraints);
+
+	        for (validatorName in validators) {
+	          validator = v.validators[validatorName];
+
+	          if (!validator) {
+	            error = v.format("Unknown validator %{name}", {name: validatorName});
+	            throw new Error(error);
+	          }
+
+	          validatorOptions = validators[validatorName];
+	          // This allows the options to be a function. The function will be
+	          // called with the value, attribute name, the complete dict of
+	          // attributes as well as the options and constraints passed in.
+	          // This is useful when you want to have different
+	          // validations depending on the attribute value.
+	          validatorOptions = v.result(validatorOptions, value, attributes, attr, options, constraints);
+	          if (!validatorOptions) {
+	            continue;
+	          }
+	          results.push({
+	            attribute: attr,
+	            value: value,
+	            validator: validatorName,
+	            globalOptions: options,
+	            attributes: attributes,
+	            options: validatorOptions,
+	            error: validator.call(validator,
+	                value,
+	                validatorOptions,
+	                attr,
+	                attributes,
+	                options)
+	          });
+	        }
+	      }
+
+	      return results;
+	    },
+
+	    // Takes the output from runValidations and converts it to the correct
+	    // output format.
+	    processValidationResults: function(errors, options) {
+	      var attr;
+
+	      errors = v.pruneEmptyErrors(errors, options);
+	      errors = v.expandMultipleErrors(errors, options);
+	      errors = v.convertErrorMessages(errors, options);
+
+	      switch (options.format || "grouped") {
+	        case "detailed":
+	          // Do nothing more to the errors
+	          break;
+
+	        case "flat":
+	          errors = v.flattenErrorsToArray(errors);
+	          break;
+
+	        case "grouped":
+	          errors = v.groupErrorsByAttribute(errors);
+	          for (attr in errors) {
+	            errors[attr] = v.flattenErrorsToArray(errors[attr]);
+	          }
+	          break;
+
+	        default:
+	          throw new Error(v.format("Unknown format %{format}", options));
+	      }
+
+	      return v.isEmpty(errors) ? undefined : errors;
+	    },
+
+	    // Runs the validations with support for promises.
+	    // This function will return a promise that is settled when all the
+	    // validation promises have been completed.
+	    // It can be called even if no validations returned a promise.
+	    async: function(attributes, constraints, options) {
+	      options = v.extend({}, v.async.options, options);
+
+	      var WrapErrors = options.wrapErrors || function(errors) {
+	        return errors;
+	      };
+
+	      // Removes unknown attributes
+	      if (options.cleanAttributes !== false) {
+	        attributes = v.cleanAttributes(attributes, constraints);
+	      }
+
+	      var results = v.runValidations(attributes, constraints, options);
+
+	      return new v.Promise(function(resolve, reject) {
+	        v.waitForResults(results).then(function() {
+	          var errors = v.processValidationResults(results, options);
+	          if (errors) {
+	            reject(new WrapErrors(errors, options, attributes, constraints));
+	          } else {
+	            resolve(attributes);
+	          }
+	        }, function(err) {
+	          reject(err);
+	        });
+	      });
+	    },
+
+	    single: function(value, constraints, options) {
+	      options = v.extend({}, v.single.options, options, {
+	        format: "flat",
+	        fullMessages: false
+	      });
+	      return v({single: value}, {single: constraints}, options);
+	    },
+
+	    // Returns a promise that is resolved when all promises in the results array
+	    // are settled. The promise returned from this function is always resolved,
+	    // never rejected.
+	    // This function modifies the input argument, it replaces the promises
+	    // with the value returned from the promise.
+	    waitForResults: function(results) {
+	      // Create a sequence of all the results starting with a resolved promise.
+	      return results.reduce(function(memo, result) {
+	        // If this result isn't a promise skip it in the sequence.
+	        if (!v.isPromise(result.error)) {
+	          return memo;
+	        }
+
+	        return memo.then(function() {
+	          return result.error.then(
+	            function(error) {
+	              result.error = error || null;
+	            },
+	            function(error) {
+	              if (error instanceof Error) {
+	                throw error;
+	              }
+	              v.error("Rejecting promises with the result is deprecated. Please use the resolve callback instead.");
+	              result.error = error;
+	            }
+	          );
+	        });
+	      }, new v.Promise(function(r) { r(); })); // A resolved promise
+	    },
+
+	    // If the given argument is a call: function the and: function return the value
+	    // otherwise just return the value. Additional arguments will be passed as
+	    // arguments to the function.
+	    // Example:
+	    // ```
+	    // result('foo') // 'foo'
+	    // result(Math.max, 1, 2) // 2
+	    // ```
+	    result: function(value) {
+	      var args = [].slice.call(arguments, 1);
+	      if (typeof value === 'function') {
+	        value = value.apply(null, args);
+	      }
+	      return value;
+	    },
+
+	    // Checks if the value is a number. This function does not consider NaN a
+	    // number like many other `isNumber` functions do.
+	    isNumber: function(value) {
+	      return typeof value === 'number' && !isNaN(value);
+	    },
+
+	    // Returns false if the object is not a function
+	    isFunction: function(value) {
+	      return typeof value === 'function';
+	    },
+
+	    // A simple check to verify that the value is an integer. Uses `isNumber`
+	    // and a simple modulo check.
+	    isInteger: function(value) {
+	      return v.isNumber(value) && value % 1 === 0;
+	    },
+
+	    // Uses the `Object` function to check if the given argument is an object.
+	    isObject: function(obj) {
+	      return obj === Object(obj);
+	    },
+
+	    // Simply checks if the object is an instance of a date
+	    isDate: function(obj) {
+	      return obj instanceof Date;
+	    },
+
+	    // Returns false if the object is `null` of `undefined`
+	    isDefined: function(obj) {
+	      return obj !== null && obj !== undefined;
+	    },
+
+	    // Checks if the given argument is a promise. Anything with a `then`
+	    // function is considered a promise.
+	    isPromise: function(p) {
+	      return !!p && v.isFunction(p.then);
+	    },
+
+	    isJqueryElement: function(o) {
+	      return o && v.isString(o.jquery);
+	    },
+
+	    isDomElement: function(o) {
+	      if (!o) {
+	        return false;
+	      }
+
+	      if (!v.isFunction(o.querySelectorAll) || !v.isFunction(o.querySelector)) {
+	        return false;
+	      }
+
+	      if (v.isObject(document) && o === document) {
+	        return true;
+	      }
+
+	      // http://stackoverflow.com/a/384380/699304
+	      /* istanbul ignore else */
+	      if (typeof HTMLElement === "object") {
+	        return o instanceof HTMLElement;
+	      } else {
+	        return o &&
+	          typeof o === "object" &&
+	          o !== null &&
+	          o.nodeType === 1 &&
+	          typeof o.nodeName === "string";
+	      }
+	    },
+
+	    isEmpty: function(value) {
+	      var attr;
+
+	      // Null and undefined are empty
+	      if (!v.isDefined(value)) {
+	        return true;
+	      }
+
+	      // functions are non empty
+	      if (v.isFunction(value)) {
+	        return false;
+	      }
+
+	      // Whitespace only strings are empty
+	      if (v.isString(value)) {
+	        return v.EMPTY_STRING_REGEXP.test(value);
+	      }
+
+	      // For arrays we use the length property
+	      if (v.isArray(value)) {
+	        return value.length === 0;
+	      }
+
+	      // Dates have no attributes but aren't empty
+	      if (v.isDate(value)) {
+	        return false;
+	      }
+
+	      // If we find at least one property we consider it non empty
+	      if (v.isObject(value)) {
+	        for (attr in value) {
+	          return false;
+	        }
+	        return true;
+	      }
+
+	      return false;
+	    },
+
+	    // Formats the specified strings with the given values like so:
+	    // ```
+	    // format("Foo: %{foo}", {foo: "bar"}) // "Foo bar"
+	    // ```
+	    // If you want to write %{...} without having it replaced simply
+	    // prefix it with % like this `Foo: %%{foo}` and it will be returned
+	    // as `"Foo: %{foo}"`
+	    format: v.extend(function(str, vals) {
+	      if (!v.isString(str)) {
+	        return str;
+	      }
+	      return str.replace(v.format.FORMAT_REGEXP, function(m0, m1, m2) {
+	        if (m1 === '%') {
+	          return "%{" + m2 + "}";
+	        } else {
+	          return String(vals[m2]);
+	        }
+	      });
+	    }, {
+	      // Finds %{key} style patterns in the given string
+	      FORMAT_REGEXP: /(%?)%\{([^\}]+)\}/g
+	    }),
+
+	    // "Prettifies" the given string.
+	    // Prettifying means replacing [.\_-] with spaces as well as splitting
+	    // camel case words.
+	    prettify: function(str) {
+	      if (v.isNumber(str)) {
+	        // If there are more than 2 decimals round it to two
+	        if ((str * 100) % 1 === 0) {
+	          return "" + str;
+	        } else {
+	          return parseFloat(Math.round(str * 100) / 100).toFixed(2);
+	        }
+	      }
+
+	      if (v.isArray(str)) {
+	        return str.map(function(s) { return v.prettify(s); }).join(", ");
+	      }
+
+	      if (v.isObject(str)) {
+	        return str.toString();
+	      }
+
+	      // Ensure the string is actually a string
+	      str = "" + str;
+
+	      return str
+	        // Splits keys separated by periods
+	        .replace(/([^\s])\.([^\s])/g, '$1 $2')
+	        // Removes backslashes
+	        .replace(/\\+/g, '')
+	        // Replaces - and - with space
+	        .replace(/[_-]/g, ' ')
+	        // Splits camel cased words
+	        .replace(/([a-z])([A-Z])/g, function(m0, m1, m2) {
+	          return "" + m1 + " " + m2.toLowerCase();
+	        })
+	        .toLowerCase();
+	    },
+
+	    stringifyValue: function(value) {
+	      return v.prettify(value);
+	    },
+
+	    isString: function(value) {
+	      return typeof value === 'string';
+	    },
+
+	    isArray: function(value) {
+	      return {}.toString.call(value) === '[object Array]';
+	    },
+
+	    contains: function(obj, value) {
+	      if (!v.isDefined(obj)) {
+	        return false;
+	      }
+	      if (v.isArray(obj)) {
+	        return obj.indexOf(value) !== -1;
+	      }
+	      return value in obj;
+	    },
+
+	    forEachKeyInKeypath: function(object, keypath, callback) {
+	      if (!v.isString(keypath)) {
+	        return undefined;
+	      }
+
+	      var key = ""
+	        , i
+	        , escape = false;
+
+	      for (i = 0; i < keypath.length; ++i) {
+	        switch (keypath[i]) {
+	          case '.':
+	            if (escape) {
+	              escape = false;
+	              key += '.';
+	            } else {
+	              object = callback(object, key, false);
+	              key = "";
+	            }
+	            break;
+
+	          case '\\':
+	            if (escape) {
+	              escape = false;
+	              key += '\\';
+	            } else {
+	              escape = true;
+	            }
+	            break;
+
+	          default:
+	            escape = false;
+	            key += keypath[i];
+	            break;
+	        }
+	      }
+
+	      return callback(object, key, true);
+	    },
+
+	    getDeepObjectValue: function(obj, keypath) {
+	      if (!v.isObject(obj)) {
+	        return undefined;
+	      }
+
+	      return v.forEachKeyInKeypath(obj, keypath, function(obj, key) {
+	        if (v.isObject(obj)) {
+	          return obj[key];
+	        }
+	      });
+	    },
+
+	    // This returns an object with all the values of the form.
+	    // It uses the input name as key and the value as value
+	    // So for example this:
+	    // <input type="text" name="email" value="foo@bar.com" />
+	    // would return:
+	    // {email: "foo@bar.com"}
+	    collectFormValues: function(form, options) {
+	      var values = {}
+	        , i
+	        , input
+	        , inputs
+	        , value;
+
+	      if (v.isJqueryElement(form)) {
+	        form = form[0];
+	      }
+
+	      if (!form) {
+	        return values;
+	      }
+
+	      options = options || {};
+
+	      inputs = form.querySelectorAll("input[name], textarea[name]");
+	      for (i = 0; i < inputs.length; ++i) {
+	        input = inputs.item(i);
+
+	        if (v.isDefined(input.getAttribute("data-ignored"))) {
+	          continue;
+	        }
+
+	        value = v.sanitizeFormValue(input.value, options);
+	        if (input.type === "number") {
+	          value = value ? +value : null;
+	        } else if (input.type === "checkbox") {
+	          if (input.attributes.value) {
+	            if (!input.checked) {
+	              value = values[input.name] || null;
+	            }
+	          } else {
+	            value = input.checked;
+	          }
+	        } else if (input.type === "radio") {
+	          if (!input.checked) {
+	            value = values[input.name] || null;
+	          }
+	        }
+	        values[input.name] = value;
+	      }
+
+	      inputs = form.querySelectorAll("select[name]");
+	      for (i = 0; i < inputs.length; ++i) {
+	        input = inputs.item(i);
+	        value = v.sanitizeFormValue(input.options[input.selectedIndex].value, options);
+	        values[input.name] = value;
+	      }
+
+	      return values;
+	    },
+
+	    sanitizeFormValue: function(value, options) {
+	      if (options.trim && v.isString(value)) {
+	        value = value.trim();
+	      }
+
+	      if (options.nullify !== false && value === "") {
+	        return null;
+	      }
+	      return value;
+	    },
+
+	    capitalize: function(str) {
+	      if (!v.isString(str)) {
+	        return str;
+	      }
+	      return str[0].toUpperCase() + str.slice(1);
+	    },
+
+	    // Remove all errors who's error attribute is empty (null or undefined)
+	    pruneEmptyErrors: function(errors) {
+	      return errors.filter(function(error) {
+	        return !v.isEmpty(error.error);
+	      });
+	    },
+
+	    // In
+	    // [{error: ["err1", "err2"], ...}]
+	    // Out
+	    // [{error: "err1", ...}, {error: "err2", ...}]
+	    //
+	    // All attributes in an error with multiple messages are duplicated
+	    // when expanding the errors.
+	    expandMultipleErrors: function(errors) {
+	      var ret = [];
+	      errors.forEach(function(error) {
+	        // Removes errors without a message
+	        if (v.isArray(error.error)) {
+	          error.error.forEach(function(msg) {
+	            ret.push(v.extend({}, error, {error: msg}));
+	          });
+	        } else {
+	          ret.push(error);
+	        }
+	      });
+	      return ret;
+	    },
+
+	    // Converts the error mesages by prepending the attribute name unless the
+	    // message is prefixed by ^
+	    convertErrorMessages: function(errors, options) {
+	      options = options || {};
+
+	      var ret = [];
+	      errors.forEach(function(errorInfo) {
+	        var error = v.result(errorInfo.error,
+	            errorInfo.value,
+	            errorInfo.attribute,
+	            errorInfo.options,
+	            errorInfo.attributes,
+	            errorInfo.globalOptions);
+
+	        if (!v.isString(error)) {
+	          ret.push(errorInfo);
+	          return;
+	        }
+
+	        if (error[0] === '^') {
+	          error = error.slice(1);
+	        } else if (options.fullMessages !== false) {
+	          error = v.capitalize(v.prettify(errorInfo.attribute)) + " " + error;
+	        }
+	        error = error.replace(/\\\^/g, "^");
+	        error = v.format(error, {value: v.stringifyValue(errorInfo.value)});
+	        ret.push(v.extend({}, errorInfo, {error: error}));
+	      });
+	      return ret;
+	    },
+
+	    // In:
+	    // [{attribute: "<attributeName>", ...}]
+	    // Out:
+	    // {"<attributeName>": [{attribute: "<attributeName>", ...}]}
+	    groupErrorsByAttribute: function(errors) {
+	      var ret = {};
+	      errors.forEach(function(error) {
+	        var list = ret[error.attribute];
+	        if (list) {
+	          list.push(error);
+	        } else {
+	          ret[error.attribute] = [error];
+	        }
+	      });
+	      return ret;
+	    },
+
+	    // In:
+	    // [{error: "<message 1>", ...}, {error: "<message 2>", ...}]
+	    // Out:
+	    // ["<message 1>", "<message 2>"]
+	    flattenErrorsToArray: function(errors) {
+	      return errors.map(function(error) { return error.error; });
+	    },
+
+	    cleanAttributes: function(attributes, whitelist) {
+	      function whitelistCreator(obj, key, last) {
+	        if (v.isObject(obj[key])) {
+	          return obj[key];
+	        }
+	        return (obj[key] = last ? true : {});
+	      }
+
+	      function buildObjectWhitelist(whitelist) {
+	        var ow = {}
+	          , lastObject
+	          , attr;
+	        for (attr in whitelist) {
+	          if (!whitelist[attr]) {
+	            continue;
+	          }
+	          v.forEachKeyInKeypath(ow, attr, whitelistCreator);
+	        }
+	        return ow;
+	      }
+
+	      function cleanRecursive(attributes, whitelist) {
+	        if (!v.isObject(attributes)) {
+	          return attributes;
+	        }
+
+	        var ret = v.extend({}, attributes)
+	          , w
+	          , attribute;
+
+	        for (attribute in attributes) {
+	          w = whitelist[attribute];
+
+	          if (v.isObject(w)) {
+	            ret[attribute] = cleanRecursive(ret[attribute], w);
+	          } else if (!w) {
+	            delete ret[attribute];
+	          }
+	        }
+	        return ret;
+	      }
+
+	      if (!v.isObject(whitelist) || !v.isObject(attributes)) {
+	        return {};
+	      }
+
+	      whitelist = buildObjectWhitelist(whitelist);
+	      return cleanRecursive(attributes, whitelist);
+	    },
+
+	    exposeModule: function(validate, root, exports, module, define) {
+	      if (exports) {
+	        if (module && module.exports) {
+	          exports = module.exports = validate;
+	        }
+	        exports.validate = validate;
+	      } else {
+	        root.validate = validate;
+	        if (validate.isFunction(define) && define.amd) {
+	          define([], function () { return validate; });
+	        }
+	      }
+	    },
+
+	    warn: function(msg) {
+	      if (typeof console !== "undefined" && console.warn) {
+	        console.warn("[validate.js] " + msg);
+	      }
+	    },
+
+	    error: function(msg) {
+	      if (typeof console !== "undefined" && console.error) {
+	        console.error("[validate.js] " + msg);
+	      }
+	    }
+	  });
+
+	  validate.validators = {
+	    // Presence validates that the value isn't empty
+	    presence: function(value, options) {
+	      options = v.extend({}, this.options, options);
+	      if (v.isEmpty(value)) {
+	        return options.message || this.message || "can't be blank";
+	      }
+	    },
+	    length: function(value, options, attribute) {
+	      // Empty values are allowed
+	      if (v.isEmpty(value)) {
+	        return;
+	      }
+
+	      options = v.extend({}, this.options, options);
+
+	      var is = options.is
+	        , maximum = options.maximum
+	        , minimum = options.minimum
+	        , tokenizer = options.tokenizer || function(val) { return val; }
+	        , err
+	        , errors = [];
+
+	      value = tokenizer(value);
+	      var length = value.length;
+	      if(!v.isNumber(length)) {
+	        v.error(v.format("Attribute %{attr} has a non numeric value for `length`", {attr: attribute}));
+	        return options.message || this.notValid || "has an incorrect length";
+	      }
+
+	      // Is checks
+	      if (v.isNumber(is) && length !== is) {
+	        err = options.wrongLength ||
+	          this.wrongLength ||
+	          "is the wrong length (should be %{count} characters)";
+	        errors.push(v.format(err, {count: is}));
+	      }
+
+	      if (v.isNumber(minimum) && length < minimum) {
+	        err = options.tooShort ||
+	          this.tooShort ||
+	          "is too short (minimum is %{count} characters)";
+	        errors.push(v.format(err, {count: minimum}));
+	      }
+
+	      if (v.isNumber(maximum) && length > maximum) {
+	        err = options.tooLong ||
+	          this.tooLong ||
+	          "is too long (maximum is %{count} characters)";
+	        errors.push(v.format(err, {count: maximum}));
+	      }
+
+	      if (errors.length > 0) {
+	        return options.message || errors;
+	      }
+	    },
+	    numericality: function(value, options) {
+	      // Empty values are fine
+	      if (v.isEmpty(value)) {
+	        return;
+	      }
+
+	      options = v.extend({}, this.options, options);
+
+	      var errors = []
+	        , name
+	        , count
+	        , checks = {
+	            greaterThan:          function(v, c) { return v > c; },
+	            greaterThanOrEqualTo: function(v, c) { return v >= c; },
+	            equalTo:              function(v, c) { return v === c; },
+	            lessThan:             function(v, c) { return v < c; },
+	            lessThanOrEqualTo:    function(v, c) { return v <= c; }
+	          };
+
+	      // Coerce the value to a number unless we're being strict.
+	      if (options.noStrings !== true && v.isString(value)) {
+	        value = +value;
+	      }
+
+	      // If it's not a number we shouldn't continue since it will compare it.
+	      if (!v.isNumber(value)) {
+	        return options.message || options.notValid || this.notValid || "is not a number";
+	      }
+
+	      // Same logic as above, sort of. Don't bother with comparisons if this
+	      // doesn't pass.
+	      if (options.onlyInteger && !v.isInteger(value)) {
+	        return options.message || options.notInteger || this.notInteger  || "must be an integer";
+	      }
+
+	      for (name in checks) {
+	        count = options[name];
+	        if (v.isNumber(count) && !checks[name](value, count)) {
+	          // This picks the default message if specified
+	          // For example the greaterThan check uses the message from
+	          // this.notGreaterThan so we capitalize the name and prepend "not"
+	          var key = "not" + v.capitalize(name);
+	          var msg = options[key] || this[key] || "must be %{type} %{count}";
+
+	          errors.push(v.format(msg, {
+	            count: count,
+	            type: v.prettify(name)
+	          }));
+	        }
+	      }
+
+	      if (options.odd && value % 2 !== 1) {
+	        errors.push(options.notOdd || this.notOdd || "must be odd");
+	      }
+	      if (options.even && value % 2 !== 0) {
+	        errors.push(options.notEven || this.notEven || "must be even");
+	      }
+
+	      if (errors.length) {
+	        return options.message || errors;
+	      }
+	    },
+	    datetime: v.extend(function(value, options) {
+	      if (!v.isFunction(this.parse) || !v.isFunction(this.format)) {
+	        throw new Error("Both the parse and format functions needs to be set to use the datetime/date validator");
+	      }
+
+	      // Empty values are fine
+	      if (v.isEmpty(value)) {
+	        return;
+	      }
+
+	      options = v.extend({}, this.options, options);
+
+	      var err
+	        , errors = []
+	        , earliest = options.earliest ? this.parse(options.earliest, options) : NaN
+	        , latest = options.latest ? this.parse(options.latest, options) : NaN;
+
+	      value = this.parse(value, options);
+
+	      // 86400000 is the number of seconds in a day, this is used to remove
+	      // the time from the date
+	      if (isNaN(value) || options.dateOnly && value % 86400000 !== 0) {
+	        return options.message || this.notValid || "must be a valid date";
+	      }
+
+	      if (!isNaN(earliest) && value < earliest) {
+	        err = this.tooEarly || "must be no earlier than %{date}";
+	        err = v.format(err, {date: this.format(earliest, options)});
+	        errors.push(err);
+	      }
+
+	      if (!isNaN(latest) && value > latest) {
+	        err = this.tooLate || "must be no later than %{date}";
+	        err = v.format(err, {date: this.format(latest, options)});
+	        errors.push(err);
+	      }
+
+	      if (errors.length) {
+	        return options.message || errors;
+	      }
+	    }, {
+	      parse: null,
+	      format: null
+	    }),
+	    date: function(value, options) {
+	      options = v.extend({}, options, {dateOnly: true});
+	      return v.validators.datetime.call(v.validators.datetime, value, options);
+	    },
+	    format: function(value, options) {
+	      if (v.isString(options) || (options instanceof RegExp)) {
+	        options = {pattern: options};
+	      }
+
+	      options = v.extend({}, this.options, options);
+
+	      var message = options.message || this.message || "is invalid"
+	        , pattern = options.pattern
+	        , match;
+
+	      // Empty values are allowed
+	      if (v.isEmpty(value)) {
+	        return;
+	      }
+	      if (!v.isString(value)) {
+	        return message;
+	      }
+
+	      if (v.isString(pattern)) {
+	        pattern = new RegExp(options.pattern, options.flags);
+	      }
+	      match = pattern.exec(value);
+	      if (!match || match[0].length != value.length) {
+	        return message;
+	      }
+	    },
+	    inclusion: function(value, options) {
+	      // Empty values are fine
+	      if (v.isEmpty(value)) {
+	        return;
+	      }
+	      if (v.isArray(options)) {
+	        options = {within: options};
+	      }
+	      options = v.extend({}, this.options, options);
+	      if (v.contains(options.within, value)) {
+	        return;
+	      }
+	      var message = options.message ||
+	        this.message ||
+	        "^%{value} is not included in the list";
+	      return v.format(message, {value: value});
+	    },
+	    exclusion: function(value, options) {
+	      // Empty values are fine
+	      if (v.isEmpty(value)) {
+	        return;
+	      }
+	      if (v.isArray(options)) {
+	        options = {within: options};
+	      }
+	      options = v.extend({}, this.options, options);
+	      if (!v.contains(options.within, value)) {
+	        return;
+	      }
+	      var message = options.message || this.message || "^%{value} is restricted";
+	      return v.format(message, {value: value});
+	    },
+	    email: v.extend(function(value, options) {
+	      options = v.extend({}, this.options, options);
+	      var message = options.message || this.message || "is not a valid email";
+	      // Empty values are fine
+	      if (v.isEmpty(value)) {
+	        return;
+	      }
+	      if (!v.isString(value)) {
+	        return message;
+	      }
+	      if (!this.PATTERN.exec(value)) {
+	        return message;
+	      }
+	    }, {
+	      PATTERN: /^[a-z0-9\u007F-\uffff!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-z0-9\u007F-\uffff!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$/i
+	    }),
+	    equality: function(value, options, attribute, attributes) {
+	      if (v.isEmpty(value)) {
+	        return;
+	      }
+
+	      if (v.isString(options)) {
+	        options = {attribute: options};
+	      }
+	      options = v.extend({}, this.options, options);
+	      var message = options.message ||
+	        this.message ||
+	        "is not equal to %{attribute}";
+
+	      if (v.isEmpty(options.attribute) || !v.isString(options.attribute)) {
+	        throw new Error("The attribute must be a non empty string");
+	      }
+
+	      var otherValue = v.getDeepObjectValue(attributes, options.attribute)
+	        , comparator = options.comparator || function(v1, v2) {
+	          return v1 === v2;
+	        };
+
+	      if (!comparator(value, otherValue, options, attribute, attributes)) {
+	        return v.format(message, {attribute: v.prettify(options.attribute)});
+	      }
+	    },
+
+	    // A URL validator that is used to validate URLs with the ability to
+	    // restrict schemes and some domains.
+	    url: function(value, options) {
+	      if (v.isEmpty(value)) {
+	        return;
+	      }
+
+	      options = v.extend({}, this.options, options);
+
+	      var message = options.message || this.message || "is not a valid url"
+	        , schemes = options.schemes || this.schemes || ['http', 'https']
+	        , allowLocal = options.allowLocal || this.allowLocal || false;
+
+	      if (!v.isString(value)) {
+	        return message;
+	      }
+
+	      // https://gist.github.com/dperini/729294
+	      var regex =
+	        "^" +
+	          // schemes
+	          "(?:(?:" + schemes.join("|") + "):\\/\\/)" +
+	          // credentials
+	          "(?:\\S+(?::\\S*)?@)?";
+
+	      regex += "(?:";
+
+	      var hostname =
+	          "(?:(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)" +
+	          "(?:\\.(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)*" +
+	          "(?:\\.(?:[a-z\\u00a1-\\uffff]{2,})))";
+
+	      // This ia a special case for the localhost hostname
+	      if (allowLocal) {
+	        hostname = "(?:localhost|" + hostname + ")";
+	      } else {
+	          // private & local addresses
+	          regex +=
+	              "(?!10(?:\\.\\d{1,3}){3})" +
+	              "(?!127(?:\\.\\d{1,3}){3})" +
+	              "(?!169\\.254(?:\\.\\d{1,3}){2})" +
+	              "(?!192\\.168(?:\\.\\d{1,3}){2})" +
+	              "(?!172" +
+	                "\\.(?:1[6-9]|2\\d|3[0-1])" +
+	                "(?:\\.\\d{1,3})" +
+	              "{2})";
+	      }
+
+	      // reserved addresses
+	      regex +=
+	          "(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])" +
+	          "(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}" +
+	          "(?:\\.(?:[1-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))" +
+	        "|" +
+	          hostname +
+	          // port number
+	          "(?::\\d{2,5})?" +
+	          // path
+	          "(?:\\/[^\\s]*)?" +
+	        "$";
+
+	      var PATTERN = new RegExp(regex, 'i');
+	      if (!PATTERN.exec(value)) {
+	        return message;
+	      }
+	    }
+	  };
+
+	  validate.exposeModule(validate, this, exports, module, __webpack_require__(332));
+	}).call(this,
+	         true ? /* istanbul ignore next */ exports : null,
+	         true ? /* istanbul ignore next */ module : null,
+	        __webpack_require__(332));
+
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(331)(module)))
+
+/***/ },
+/* 331 */
+/***/ function(module, exports) {
+
+	module.exports = function(module) {
+		if(!module.webpackPolyfill) {
+			module.deprecate = function() {};
+			module.paths = [];
+			// module.parent = undefined by default
+			module.children = [];
+			module.webpackPolyfill = 1;
+		}
+		return module;
+	}
+
+
+/***/ },
+/* 332 */
+/***/ function(module, exports) {
+
+	module.exports = function() { throw new Error("define cannot be used indirect"); };
 
 
 /***/ }

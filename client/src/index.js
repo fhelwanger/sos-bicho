@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { ReduxRouter } from 'redux-router';
 import store from './store';
 import { fazerLogin } from './actions/login';
+
 const credentials = localStorage.getItem('credentials');
 
 if (credentials) {
