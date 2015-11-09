@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { carregarFeed, setFiltrosVisible } from '../actions/feed';
+import {
+  carregarFeed,
+  setFiltrosVisible,
+  likeAnimal,
+  dislikeAnimal
+} from '../actions/feed';
 import { carregarLista as carregarEspecies } from '../actions/especies';
 import AnimalCard from '../components/AnimalCard';
 import SearchBar from '../components/SearchBar';
@@ -12,7 +17,13 @@ import SearchBar from '../components/SearchBar';
     usuarioLogado: state.app.usuarioLogado,
     especies: state.especies.lista
   }),
-  { carregarFeed, carregarEspecies, setFiltrosVisible }
+  {
+    carregarEspecies,
+    carregarFeed,
+    setFiltrosVisible,
+    likeAnimal,
+    dislikeAnimal
+  }
 )
 class Feed extends Component {
   componentDidMount() {
@@ -36,7 +47,11 @@ class Feed extends Component {
   }
 
   handleLikeClick(animalId) {
-    alert(animalId);
+    this.props.likeAnimal(animalId);
+  }
+
+  handleDislikeClick(animalId) {
+    this.props.dislikeAnimal(animalId);
   }
 
   render() {
@@ -59,7 +74,8 @@ class Feed extends Component {
         key={animal.id}
         animal={animal}
         usuario={this.props.usuarioLogado}
-        onLikeClick={::this.handleLikeClick} />
+        onLikeClick={::this.handleLikeClick}
+        onDislikeClick={::this.handleDislikeClick} />
     );
   }
 }

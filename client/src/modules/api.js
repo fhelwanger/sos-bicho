@@ -3,14 +3,6 @@ import qs from 'qs/dist/qs';
 
 const basePath = '/api/';
 
-function includeAuthorization(headers) {
-  const credentials = localStorage.getItem('credentials');
-
-  if (credentials) {
-    headers['Authorization'] = 'Basic ' + credentials;
-  }
-}
-
 export function get(endpoint, params) {
   return new Promise((resolve, reject) => {
     const headers = {};
@@ -26,13 +18,7 @@ export function get(endpoint, params) {
 
     const url = basePath + endpoint + (query ? '?' + query : '');
 
-    fetch(url, options).then(response => {
-      if (response.ok) {
-        response.json().then(resolve);
-      } else {
-        response.text().then(reject);
-      }
-    });
+    fetch(url, options).then(handleResponse(resolve, reject));
   });
 }
 
@@ -51,20 +37,47 @@ export function post(endpoint, data) {
       body: JSON.stringify(data)
     };
 
-    fetch(basePath + endpoint, options).then(response => {
-      if (response.ok) {
-        if (response.status === 200) {
-          response.json().then(resolve);
-        } else {
-          resolve();
-        }
-      } else {
-        if (response.status === 400) {
-          response.json().then(reject);
-        } else {
-          response.text().then(error => reject({_error: error}));
-        }
-      }
-    });
+    fetch(basePath + endpoint, options).then(handleResponse(resolve, reject));
   });
+}
+
+export function del(endpoint) {
+  return new Promise((resolve, reject) => {
+    const headers = {};
+
+    includeAuthorization(headers);
+
+    const options = {
+      method: 'DELETE',
+      headers
+    };
+
+    fetch(basePath + endpoint, options).then(handleResponse(resolve, reject));
+  });
+}
+
+function includeAuthorization(headers) {
+  const credentials = localStorage.getItem('credentials');
+
+  if (credentials) {
+    headers['Authorization'] = 'Basic ' + credentials;
+  }
+}
+
+function handleResponse(resolve, reject) {
+  return response => {
+    if (response.ok) {
+      if (response.status === 200) {
+        response.json().then(resolve);
+      } else {
+        resolve();
+      }
+    } else {
+      if (response.status === 400) {
+        response.json().then(reject);
+      } else {
+        response.text().then(error => reject({ _error: error }));
+      }
+    }
+  }
 }
