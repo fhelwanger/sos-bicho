@@ -1,9 +1,19 @@
+@import '_variables.scss';
+
 .animal-card {
   background-color: #f4f4f4;
   border: solid 1px #333;
   padding: 10px;
   margin: 10px 0px;
   width: 100%;
+
+  .foto-nav {
+    vertical-align: top;
+    display: inline-block;
+    padding: 0px 5px;
+    margin-top: 60px;
+    color: $font-color;
+  }
 
   img {
     display: inline-block;

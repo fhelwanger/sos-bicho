@@ -9,6 +9,11 @@ class AnimalCard extends Component {
     onDislikeClick: PropTypes.func.isRequired
   }
 
+  constructor(props) {
+    super(props);
+    this.state = { currentFoto: 0 };
+  }
+
   handleLikeClick(e) {
     e.preventDefault();
     this.props.onLikeClick(this.props.animal.id);
@@ -19,10 +24,45 @@ class AnimalCard extends Component {
     this.props.onDislikeClick(this.props.animal.id);
   }
 
+  handlePreviousFoto(e) {
+    e.preventDefault();
+
+    let currentFoto = this.state.currentFoto - 1;
+
+    if (currentFoto < 0) {
+      currentFoto = 0;
+    }
+
+    this.setState({
+      currentFoto
+    });
+  }
+
+  handleNextFoto(e) {
+    e.preventDefault();
+
+    let currentFoto = this.state.currentFoto + 1;
+
+    if (currentFoto >= this.props.animal.fotos.length) {
+      currentFoto--;
+    }
+
+    this.setState({
+      currentFoto
+    });
+  }
+
   render() {
     return (
       <div className="animal-card">
-        <img src={this.props.animal.fotos[0]} />
+        <a className="foto-nav" href="#" onClick={::this.handlePreviousFoto}>
+          <i className="fa fa-arrow-left"></i>
+        </a>
+        <img src={this.props.animal.fotos[this.state.currentFoto]} />
+        <a className="foto-nav" href="#" onClick={::this.handleNextFoto}>
+          <i className="fa fa-arrow-right"></i>
+        </a>
+
         <div>
           <p><b>Nome: </b>{this.props.animal.nome}</p>
           <p><b>Espécie: </b>{this.props.animal.especie}</p>
@@ -35,11 +75,11 @@ class AnimalCard extends Component {
                 this.props.animal.interessado
                 ?
                 <a href="#" onClick={::this.handleDislikeClick}>
-                  <i className="fa fa-heart" ></i> Não quero
+                  <i className="fa fa-heart"></i> Não quero
                 </a>
                 :
                 <a href="#" onClick={::this.handleLikeClick}>
-                  <i className="fa fa-heart-o" ></i> Eu quero!
+                  <i className="fa fa-heart-o"></i> Eu quero!
                 </a>
               }
             </div>
