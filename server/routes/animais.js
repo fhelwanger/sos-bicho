@@ -85,7 +85,50 @@ function createSaveFoto(animalId) {
   };
 }
 
+function postInteresse(req, res) {
+  var query = 'SELECT * FROM animais_interesses ' +
+              'WHERE usuarioId = $1 AND animalId = $2';
+  var params = [req.user.id, req.params.id];
+
+  db.query(query, params, function (err, result) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+
+    if (result.rowCount > 0) {
+      return res.status(201).send();
+    }
+
+    query = 'INSERT INTO animais_interesses (usuarioId, animalId) ' +
+            'VALUES ($1, $2)';
+
+    db.query(query, params, function (err, result) {
+      if (err) {
+        return res.status(500).send(err);
+      }
+
+      return res.status(201).send();
+    });
+  });
+}
+
+function deleteInteresse(req, res) {
+  var query = 'DELETE FROM animais_interesses ' +
+              'WHERE usuarioId = $1 AND animalId = $2';
+  var params = [req.user.id, req.params.id];
+
+  db.query(query, params, function (err, result) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+
+    return res.status(204).send();
+  });
+}
+
 module.exports = function (app) {
   app.get('/animais', auth(), get);
   app.post('/animais', auth(), post);
+  app.post('/animais/interesse/:id', auth(), postInteresse);
+  app.delete('/animais/interesse/:id', auth(), deleteInteresse);
 };
