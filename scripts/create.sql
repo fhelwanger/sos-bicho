@@ -20,6 +20,7 @@ CREATE TABLE animais (
   porte SMALLINT NULL,
   idade SMALLINT NULL,
   usuarioId INT NOT NULL,
+  adotado BOOLEAN NOT NULL DEFAULT false,
   CONSTRAINT pk_animais PRIMARY KEY (id)
 );
 

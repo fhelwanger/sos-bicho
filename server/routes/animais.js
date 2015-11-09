@@ -126,9 +126,24 @@ function deleteInteresse(req, res) {
   });
 }
 
+function postAdotado(req, res) {
+  var query = 'UPDATE animais SET adotado = $1 ' +
+              'WHERE id = $2 and usuarioId = $3';
+  var params = [req.body.adotado, req.params.id, req.user.id];
+
+  db.query(query, params, function (err, result) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+
+    return res.status(204).send();
+  });
+}
+
 module.exports = function (app) {
   app.get('/animais', auth(), get);
   app.post('/animais', auth(), post);
   app.post('/animais/interesse/:id', auth(), postInteresse);
   app.delete('/animais/interesse/:id', auth(), deleteInteresse);
+  app.post('/animais/adotado/:id', auth(), postAdotado);
 };
