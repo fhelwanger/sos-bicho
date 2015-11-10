@@ -1,12 +1,14 @@
 import {
   ANIMAIS_SET_LISTA,
   ANIMAIS_CLEAR_FOTOS,
-  ANIMAIS_ADD_FOTO
+  ANIMAIS_ADD_FOTO,
+  ANIMAIS_SET_INTERESSADOS
 } from '../actions/animais';
 
 const initialState = {
   lista: [],
-  fotos: []
+  fotos: [],
+  interessados: []
 };
 
 export default function (state = initialState, action) {
@@ -22,6 +24,10 @@ export default function (state = initialState, action) {
     case ANIMAIS_ADD_FOTO:
       return Object.assign({}, state, {
         fotos: [...state.fotos, action.foto]
+      });
+    case ANIMAIS_SET_INTERESSADOS:
+      return Object.assign({}, state, {
+        interessados: action.interessados
       });
     default:
       return state;

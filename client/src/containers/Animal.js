@@ -20,7 +20,8 @@ import '../styles/Animal.scss';
 @connect(
   state => ({
     especies: state.especies.lista,
-    fotos: state.animais.fotos
+    fotos: state.animais.fotos,
+    interessados: state.animais.interessados
   }),
   {
     carregarEspecies,
@@ -116,7 +117,23 @@ class Animal extends Component {
           onAddFoto={::this.handleAddFoto}
         />
         <Button type="submit" submitting={submitting}>Salvar</Button>
+        {
+          this.props.params.id &&
+          this.props.interessados.length > 0 &&
+          this.renderInteressados()
+        }
       </form>
+    );
+  }
+
+  renderInteressados() {
+    return (
+      <div className="interessados">
+        <h3>Interessados</h3>
+        <ul>
+          {this.props.interessados.map(x => <li>{x}</li>)}
+        </ul>
+      </div>
     );
   }
 }

@@ -1,6 +1,7 @@
 export const ANIMAIS_SET_LISTA = 'ANIMAIS_SET_LISTA';
 export const ANIMAIS_CLEAR_FOTOS = 'ANIMAIS_CLEAR_FOTOS';
 export const ANIMAIS_ADD_FOTO = 'ANIMAIS_ADD_FOTO';
+export const ANIMAIS_SET_INTERESSADOS = 'ANIMAIS_SET_INTERESSADOS';
 
 import { pushState } from 'redux-router';
 import { initialize } from 'redux-form';
@@ -19,7 +20,10 @@ export function carregarAnimal(id) {
       dispatch(adicionarFoto(f));
     });
 
+    dispatch(setarInteressados(animal.interessados));
+
     delete animal.fotos;
+    delete animal.interessados;
 
     dispatch(initialize('animal', animal));
   });
@@ -41,6 +45,13 @@ function setarLista(lista) {
   return {
     type: ANIMAIS_SET_LISTA,
     lista
+  };
+}
+
+function setarInteressados(interessados) {
+  return {
+    type: ANIMAIS_SET_INTERESSADOS,
+    interessados
   };
 }
 

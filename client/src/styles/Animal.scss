@@ -1,3 +1,15 @@
 .animal {
   margin-top: 20px;
+
+  .interessados {
+    margin-top: 10px;
+
+    ul {
+      margin-top: 5px;
+
+      li {
+        list-style: none;
+      }
+    }
+  }
 }

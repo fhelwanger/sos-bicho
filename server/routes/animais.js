@@ -45,7 +45,24 @@ function getOne(req, res) {
         animal.fotos.push(result.rows[i].foto);
       }
 
-      return res.send(animal);
+      query = 'SELECT u.nome FROM animais_interesses ai ' +
+              'INNER JOIN usuarios u ON u.id = ai.usuarioId ' +
+              'WHERE ai.animalId = $1 ' +
+              'ORDER BY u.nome';
+
+      db.query(query, [req.params.id], function (err, result) {
+        if (err) {
+          return res.status(500).send(err);
+        }
+
+        animal.interessados = [];
+
+        for (var i = 0; i < result.rowCount; i++) {
+          animal.interessados.push(result.rows[i].nome);
+        }
+
+        return res.send(animal);
+      });
     });
   });
 }
