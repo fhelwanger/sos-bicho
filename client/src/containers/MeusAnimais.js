@@ -21,6 +21,10 @@ class MeusAnimais extends Component {
     this.props.pushState(null, '/animal')
   }
 
+  handleEditClick(id) {
+    this.props.pushState(null, `/animal/${id}`);
+  }
+
   handleAdotadoClick(id) {
     this.props.setAdotado(id);
   }
@@ -43,6 +47,7 @@ class MeusAnimais extends Component {
         <Table
           columns={columns}
           data={this.props.lista}
+          onEditClick={::this.handleEditClick}
           onAdotadoClick={::this.handleAdotadoClick}
           onDisponivelClick={::this.handleDisponivelClick}
         />

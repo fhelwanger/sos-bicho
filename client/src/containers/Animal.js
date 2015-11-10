@@ -4,7 +4,13 @@ import { reduxForm } from 'redux-form';
 import validate from '../modules/validate';
 import { portes } from '../modules/portes';
 import { carregarLista as carregarEspecies } from '../actions/especies';
-import { criarAnimal, limparFotos, adicionarFoto } from '../actions/animais';
+import {
+  carregarAnimal,
+  criarAnimal,
+  salvarAnimal,
+  limparFotos,
+  adicionarFoto
+} from '../actions/animais';
 import TextBox from '../components/TextBox';
 import Select from '../components/Select';
 import Button from '../components/Button';
@@ -16,7 +22,14 @@ import '../styles/Animal.scss';
     especies: state.especies.lista,
     fotos: state.animais.fotos
   }),
-  { carregarEspecies, criarAnimal, limparFotos, adicionarFoto }
+  {
+    carregarEspecies,
+    carregarAnimal,
+    criarAnimal,
+    salvarAnimal,
+    limparFotos,
+    adicionarFoto
+  }
 )
 @reduxForm({
   form: 'animal',
@@ -38,6 +51,10 @@ class Animal extends Component {
   componentDidMount() {
     this.props.carregarEspecies();
     this.props.limparFotos();
+
+    if (this.props.params.id) {
+      this.props.carregarAnimal(this.props.params.id);
+    }
   }
 
   handleSubmit(values, dispatch) {
@@ -45,7 +62,11 @@ class Animal extends Component {
       fotos: this.props.fotos.map(foto => foto.replace(/^data:image\/\w+\;base64\,/, ''))
     });
 
-    return this.props.criarAnimal(data);
+    if (this.props.params.id) {
+      return this.props.salvarAnimal(this.props.params.id, data);
+    } else {
+      return this.props.criarAnimal(data);
+    }
   }
 
   handleAddFoto(foto) {

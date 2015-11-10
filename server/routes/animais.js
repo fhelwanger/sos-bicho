@@ -15,17 +15,43 @@ function get(req, res) {
   });
 }
 
+function getOne(req, res) {
+  var query = 'SELECT a.nome, a.especieId as especie, a.raca, a.porte, a.idade ' +
+              'FROM animais a ' +
+              'WHERE a.id = $1 and a.usuarioId = $2';
+  var params = [req.params.id, req.user.id];
+
+  db.query(query, params, function (err, result) {
+    if (err) {
+      return res.status(500).send(err);
+    }
+
+    if (result.rowCount === 0) {
+      return res.status(404).send();
+    }
+
+    var animal = result.rows[0];
+
+    query = 'SELECT foto FROM animais_fotos WHERE animalId = $1';
+
+    db.query(query, [req.params.id], function (err, result) {
+      if (err) {
+        return res.status(500).send(err);
+      }
+
+      animal.fotos = [];
+
+      for (var i = 0; i < result.rowCount; i++) {
+        animal.fotos.push(result.rows[i].foto);
+      }
+
+      return res.send(animal);
+    });
+  });
+}
+
 function post(req, res) {
-  var dados = {
-    id: 0,
-    nome: req.body.nome,
-    especieId: parseInt(req.body.especie) || null,
-    raca: req.body.raca,
-    porte: parseInt(req.body.porte) || null,
-    idade: parseInt(req.body.idade) || null,
-    usuarioId: req.user.id,
-    fotos: req.body.fotos
-  };
+  var dados = parseAnimal(req);
 
   validarAnimal(dados, function (err, erros) {
     if (err) {
@@ -38,14 +64,7 @@ function post(req, res) {
                 '(nome, especieId, raca, porte, idade, usuarioId) ' +
                 'VALUES ($1, $2, $3, $4, $5, $6) RETURNING id';
 
-    var params = [
-      dados.nome,
-      dados.especieId,
-      dados.raca,
-      dados.porte,
-      dados.idade,
-      dados.usuarioId
-    ];
+    var params = buildParams(dados);
 
     db.query(query, params, function (err, result) {
       if (err) {
@@ -57,6 +76,68 @@ function post(req, res) {
       });
     });
   });
+}
+
+function put(req, res) {
+  var dados = parseAnimal(req);
+
+  validarAnimal(dados, function (err, erros) {
+    if (err) {
+      return res.status(500).send(err);
+    } else if (Object.keys(erros).length > 0) {
+      return res.status(400).json(erros);
+    }
+
+    var query = 'UPDATE animais ' +
+                'SET nome = $1, especieId = $2, raca = $3, ' +
+                'porte = $4, idade = $5 ' +
+                'WHERE usuarioId = $6 and id = $7';
+
+    var params = buildParams(dados);
+
+    db.query(query, params, function (err, result) {
+      if (err) {
+        return res.status(500).send(err);
+      }
+
+      query = 'DELETE FROM animais_fotos WHERE animalId = $1';
+
+      db.query(query, [dados.id], function (err, result) {
+        if (err) {
+          return res.status(500).send(err);
+        }
+
+        async.each(dados.fotos, createSaveFoto(dados.id), function () {
+          return res.status(204).send();
+        });
+      });
+    });
+  });
+}
+
+function parseAnimal(req) {
+  return {
+    id: req.params.id || 0,
+    nome: req.body.nome,
+    especieId: parseInt(req.body.especie) || null,
+    raca: req.body.raca,
+    porte: parseInt(req.body.porte) || null,
+    idade: parseInt(req.body.idade) || null,
+    usuarioId: req.user.id,
+    fotos: req.body.fotos
+  };
+}
+
+function buildParams(dados) {
+  return [
+    dados.nome,
+    dados.especieId,
+    dados.raca,
+    dados.porte,
+    dados.idade,
+    dados.usuarioId,
+    dados.id
+  ];
 }
 
 function validarAnimal(dados, callback) {
@@ -143,7 +224,9 @@ function postAdotado(req, res) {
 
 module.exports = function (app) {
   app.get('/animais', auth(), get);
+  app.get('/animais/:id', auth(), getOne);
   app.post('/animais', auth(), post);
+  app.put('/animais/:id', auth(), put);
   app.post('/animais/interesse/:id', auth(), postInteresse);
   app.delete('/animais/interesse/:id', auth(), deleteInteresse);
   app.post('/animais/adotado/:id', auth(), postAdotado);

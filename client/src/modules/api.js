@@ -3,26 +3,41 @@ import qs from 'qs/dist/qs';
 
 const basePath = '/api/';
 
-export function get(endpoint, params) {
-  return new Promise((resolve, reject) => {
-    const headers = {};
-
-    includeAuthorization(headers);
-
-    const options = {
-      method: 'GET',
-      headers
-    };
-
-    const query = qs.stringify(params);
-
-    const url = basePath + endpoint + (query ? '?' + query : '');
-
-    fetch(url, options).then(handleResponse(resolve, reject));
+export function get(endpoint, query) {
+  return makePromise({
+    method: 'GET',
+    endpoint,
+    query
   });
 }
 
-export function post(endpoint, data) {
+export function post(endpoint, body, query) {
+  return makePromise({
+    method: 'POST',
+    endpoint,
+    body,
+    query
+  });
+}
+
+export function put(endpoint, body, query) {
+  return makePromise({
+    method: 'PUT',
+    endpoint,
+    body,
+    query
+  });
+}
+
+export function del(endpoint, query) {
+  return makePromise({
+    method: 'DELETE',
+    endpoint,
+    query
+  });
+}
+
+export function makePromise(options) {
   return new Promise((resolve, reject) => {
     const headers = {
       'Accept': 'application/json',
@@ -31,28 +46,16 @@ export function post(endpoint, data) {
 
     includeAuthorization(headers);
 
-    const options = {
-      method: 'POST',
+    const fetchOpts = {
+      method: options.method,
       headers: headers,
-      body: JSON.stringify(data)
+      body: JSON.stringify(options.body)
     };
 
-    fetch(basePath + endpoint, options).then(handleResponse(resolve, reject));
-  });
-}
+    const query = qs.stringify(options.query);
+    const url = basePath + options.endpoint + (query ? '?' + query : '');
 
-export function del(endpoint) {
-  return new Promise((resolve, reject) => {
-    const headers = {};
-
-    includeAuthorization(headers);
-
-    const options = {
-      method: 'DELETE',
-      headers
-    };
-
-    fetch(basePath + endpoint, options).then(handleResponse(resolve, reject));
+    fetch(url, fetchOpts).then(handleResponse(resolve, reject));
   });
 }
 

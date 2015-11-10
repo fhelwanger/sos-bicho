@@ -8,8 +8,13 @@ class Table extends Component {
       header: PropTypes.string.isRequired
     })).isRequired,
     data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    onEditClick: PropTypes.func.isRequired,
     onAdotadoClick: PropTypes.func.isRequired,
     onAdotadoClick: PropTypes.func.isRequired
+  }
+
+  handleEditClick(animalId) {
+    this.props.onEditClick(animalId);
   }
 
   handleAdotadoClick(animalId) {
@@ -30,6 +35,7 @@ class Table extends Component {
           <tr>
             {columns.map(c => <th key={c.key}>{c.header}</th>)}
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -45,6 +51,11 @@ class Table extends Component {
     return (
       <tr key={row.id} className={row.adotado ? 'adotado' : null}>
         {columns.map(c => <td key={c.key}>{row[c.key]}</td>)}
+        <td>
+          <Button onClick={this.handleEditClick.bind(this, row.id)}>
+            <i className="fa fa-pencil-square-o"></i>
+          </Button>
+        </td>
         <td>
           {
             row.adotado
