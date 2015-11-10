@@ -36,3 +36,19 @@ export function adicionarFoto(foto) {
     foto
   };
 }
+
+export function setAdotado(animalId) {
+  const data = { adotado: true };
+
+  return dispatch => post(`/animais/adotado/${animalId}`, data).then(() => {
+    dispatch(carregarLista());
+  });
+}
+
+export function setDisponivel(animalId) {
+  const data = { adotado: false };
+
+  return dispatch => post(`/animais/adotado/${animalId}`, data).then(() => {
+    dispatch(carregarLista());
+  });
+}

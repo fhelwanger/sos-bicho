@@ -1,5 +1,6 @@
 .meus-animais {
-  margin-top: 20px;
+  margin: 20px auto;
+  width: 500px;
 
   h2 .button {
     margin-top: 0px;
@@ -7,10 +8,27 @@
   }
 
   table {
+    width: 100%;
     margin-top: 10px;
 
     th {
       text-align: left;
+    }
+
+    th:last-child {
+        width: 100px;
+    }
+
+    .button {
+      margin-top: 0px;
+
+      button {
+        width: 100%;
+      }
+    }
+
+    tr.adotado {
+      text-decoration: line-through;
     }
   }
 }

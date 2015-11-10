@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import Button from './Button';
 
 class Table extends Component {
   static propTypes = {
@@ -6,7 +7,17 @@ class Table extends Component {
       key: PropTypes.string.isRequired,
       header: PropTypes.string.isRequired
     })).isRequired,
-    data: PropTypes.arrayOf(PropTypes.object).isRequired
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+    onAdotadoClick: PropTypes.func.isRequired,
+    onAdotadoClick: PropTypes.func.isRequired
+  }
+
+  handleAdotadoClick(animalId) {
+    this.props.onAdotadoClick(animalId);
+  }
+
+  handleDisponivelClick(animalId) {
+    this.props.onDisponivelClick(animalId);
   }
 
   render() {
@@ -18,6 +29,7 @@ class Table extends Component {
         <thead>
           <tr>
             {columns.map(c => <th key={c.key}>{c.header}</th>)}
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -31,8 +43,21 @@ class Table extends Component {
     const columns = this.props.columns;
 
     return (
-      <tr key={row.id}>
+      <tr key={row.id} className={row.adotado ? 'adotado' : null}>
         {columns.map(c => <td key={c.key}>{row[c.key]}</td>)}
+        <td>
+          {
+            row.adotado
+            ?
+            <Button onClick={this.handleDisponivelClick.bind(this, row.id)}>
+              Disponível
+            </Button>
+            :
+            <Button onClick={this.handleAdotadoClick.bind(this, row.id)}>
+              Adotado
+            </Button>
+          }
+        </td>
       </tr>
     );
   }

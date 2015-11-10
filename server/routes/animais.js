@@ -3,7 +3,8 @@ var auth = require('../auth');
 var db = require('../db');
 
 function get(req, res) {
-  var query = 'SELECT id, nome FROM animais WHERE usuarioId = $1';
+  var query = 'SELECT id, nome, adotado FROM animais ' +
+              'WHERE usuarioId = $1 ORDER BY nome';
 
   db.query(query, [req.user.id], function (err, result) {
     if (err) {
