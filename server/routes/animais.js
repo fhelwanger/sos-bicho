@@ -146,15 +146,20 @@ function parseAnimal(req) {
 }
 
 function buildParams(dados) {
-  return [
+  var params = [
     dados.nome,
     dados.especieId,
     dados.raca,
     dados.porte,
     dados.idade,
-    dados.usuarioId,
-    dados.id
+    dados.usuarioId
   ];
+
+  if (dados.id) {
+    params.push(dados.id);
+  }
+
+  return params;
 }
 
 function validarAnimal(dados, callback) {
