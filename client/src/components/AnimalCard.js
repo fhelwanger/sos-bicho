@@ -53,13 +53,27 @@ class AnimalCard extends Component {
   }
 
   render() {
+    const photosCount = this.props.animal.fotos.length;
+    const hasPrevPhoto = this.state.currentFoto > 0;
+    const hasNextPhoto = this.state.currentFoto < (photosCount - 1);
+
     return (
       <div className="animal-card">
-        <a className="foto-nav" href="#" onClick={::this.handlePreviousFoto}>
+        <a
+          className="foto-nav"
+          href="#"
+          onClick={::this.handlePreviousFoto}
+          style={{visibility: (hasPrevPhoto ? 'visible' : 'hidden')}}
+        >
           <i className="fa fa-arrow-left"></i>
         </a>
         <img src={this.props.animal.fotos[this.state.currentFoto]} />
-        <a className="foto-nav" href="#" onClick={::this.handleNextFoto}>
+        <a
+          className="foto-nav"
+          href="#"
+          onClick={::this.handleNextFoto}
+          style={{visibility: (hasNextPhoto ? 'visible' : 'hidden')}}
+        >
           <i className="fa fa-arrow-right"></i>
         </a>
 
